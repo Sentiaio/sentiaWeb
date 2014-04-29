@@ -1,0 +1,1646 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"jslint",
+				"jslint	js.jslint.node"
+			],
+			[
+				"jslin",
+				"jslint	js.jslint.node"
+			],
+			[
+				"jsli",
+				"jslint	js.jslint.node"
+			],
+			[
+				"getHeat",
+				"getHeatTimeline"
+			],
+			[
+				"btn-grou",
+				"btn-group-justified"
+			],
+			[
+				"drop",
+				"dropdown-menu"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"widge",
+				"widget-bg"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"padding-",
+				"padding-top"
+			],
+			[
+				"font-",
+				"font-weight"
+			],
+			[
+				"overflow",
+				"overflow-y"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"gray-light",
+				"gray-lighter"
+			],
+			[
+				"active",
+				"active-user-name"
+			],
+			[
+				"node",
+				"nodeEngine	js.engineModule"
+			],
+			[
+				"jslit",
+				"jslint	js.lint.browser"
+			],
+			[
+				"dashboa",
+				"dashboardPage"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"margin-",
+				"margin-left"
+			],
+			[
+				"col",
+				"col5"
+			],
+			[
+				"border",
+				"border-left"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"list-s",
+				"list-style-type"
+			],
+			[
+				"table",
+				"table-cell"
+			],
+			[
+				"page-header",
+				"page-header-text"
+			],
+			[
+				"j",
+				"jquery.plugin	js.jquery.plugin"
+			],
+			[
+				"flowmap",
+				"flowmapWidget"
+			],
+			[
+				"heatmap",
+				"heatmapWidget"
+			],
+			[
+				"dashbo",
+				"dashboardPage"
+			],
+			[
+				"process",
+				"process.exit(code);"
+			],
+			[
+				"data",
+				"dataSet"
+			],
+			[
+				"save",
+				"saveData"
+			],
+			[
+				"login",
+				"login-box"
+			],
+			[
+				"trans",
+				"transparent"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"keyboard",
+				"keyboardBusy"
+			],
+			[
+				"javascrip",
+				"javascript"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"line",
+				"line-height"
+			],
+			[
+				"trasn",
+				"transparent"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"inline",
+				"inline-block"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "/**\n * \n * Lists \n * \n */\n.list {\n	&:extend(.list-unstyled);\n	margin:0;\n	padding:0;\n}\n .list-inline {\n 	&>li {\n 		display:inline-block;\n 	}\n }\n .list-header {\n    padding:10px;\n    text-align: center;\n }\n /*stacked list*/\n .stacked-list {\n    display: block;\n    margin:0;\n    padding : 0;\n    &>li {\n        display:block;\n        padding: 10px;\n        &>.thumbnail {\n            display:inline-block;\n            vertical-align: top;\n            width:80px;\n            height:80px;\n            background-size: cover;\n            background-position: center center;\n            background-repeat: no-repeat;\n            // background-color: #bababa;\n        }\n        &>.list-title {\n            display:inline-block;\n            padding-left:10px;\n            vertical-align: top;\n        }\n    }\n    &.bg-primary {\n        &>li {\n        	.bg-variant(@brand-primary);\n        }\n    }\n\n }\n .full-height-list {\n    &:extend(.stacked-list);\n    height: 100%;\n }\n .flex-list-sm {\n    &:extend(.stacked-list all);\n    display:table;\n    padding:0;\n    table-layout: fixed;\n    width:100%;\n    @media (max-width: @screen-sm-min) {\n        &>li {\n            text-align: center;\n            display:table-cell;\n        }\n    }\n }\n/* apple-list */\n.apple-list-item,\n.apple-list-header {\n	min-width:200px;\n    height:40px;\n    text-align: center;\n    line-height: 40px;\n    vertical-align: middle;\n}\n.apple-list-item {\n    cursor: pointer;\n    border-top: 1px solid #ddd;\n    border: 1px solid #bababa;\n    border-bottom:none;\n    &:hover {\n        background-color: white;\n    }\n    &.active {\n        background-color: #e4e4e4;\n        box-shadow: 0px 0px 5px #bababa inset;\n    }\n    &:first-child {\n        border-radius : 10px 10px 0px 0px;\n    }\n    &:last-child {\n        border-radius: 0px 0px 10px 10px;\n        border-bottom: 1px solid #bababa;\n    }\n}\n.apple-list-header {\n    background-color: #f5f5f5;\n    border-radius: 10px 10px 0px 0px;\n}\n.emptylist {\n   height:80px;\n   line-height: 80px;\n   width:100%;\n   vertical-align: middle;\n   text-align: center; \n}\n// .timeline {\n// 	margin: 40px 0 20px;\n// 	width:100%;\n//     padding: 0;\n//     border-top: 4px solid @gray-lighter;\n//     display: table;\n//     border-spacing: 30px;\n//     li {\n//     	display:table-cell;\n//     	position:relative;\n//     	.circle {\n// 	    	position: relative;\n// 	    	width: 14px;\n// 	    	height: 14px;\n// 	    	top: -9px;\n// 	    	background: @gray-lighter;\n// 	    	border: 2px solid white;\n// 	    	border-radius: 50%;\n// 	    	display: block;\n// 	    	margin: 0 auto;\n// 	    	&:hover {\n// 	    		background:@gray-light;\n// 	    	}\n// 	    	&.active {\n// 	    		background:@brand-primary;\n// 	    	}\n//     	}\n//     }\n//}\n\n",
+			"file": "assets/styles/less/lists.less",
+			"file_size": 2071,
+			"file_write_time": 130419905680000000,
+			"settings":
+			{
+				"buffer_size": 2726,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/styles/less/widgets.less",
+			"settings":
+			{
+				"buffer_size": 909,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/styles/less/timeline.less",
+			"settings":
+			{
+				"buffer_size": 591,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/styles/style.less",
+			"settings":
+			{
+				"buffer_size": 1628,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/node.sublime-build",
+	"command_palette":
+	{
+		"height": 137.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"tidy",
+				"Tidy Tabs"
+			],
+			[
+				"isntall",
+				"Package Control: Install Package"
+			],
+			[
+				"renam",
+				"File: Rename"
+			],
+			[
+				"copy",
+				"File: Copy Path From Project"
+			],
+			[
+				"rename",
+				"File: Rename"
+			],
+			[
+				"ejs",
+				"Set Syntax: EJS (<% and %>)"
+			],
+			[
+				"html",
+				"Set Syntax: HTML5"
+			],
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"ex",
+				"Emmet: Expand Abbreviation"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"mov",
+				"File: Move"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"emm",
+				"Emmet: Expand Abbreviation"
+			],
+			[
+				"ej",
+				"Set Syntax: EJS (<% and %>)"
+			],
+			[
+				"delte",
+				"File: Delete"
+			],
+			[
+				"lint",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"emme",
+				"Emmet: Expand Abbreviation"
+			],
+			[
+				"java",
+				"Set Syntax: Java"
+			],
+			[
+				"stall",
+				"Package Control: Install Package"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"git",
+				"Git: Commit"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"INSER",
+				"InsertDate: Default"
+			],
+			[
+				"isner",
+				"InsertDate: Custom"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"color",
+				"ColorSchemeSelector: Next Color Scheme"
+			],
+			[
+				"grun",
+				"Grunt"
+			],
+			[
+				"jav",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"open",
+				"File: Open In Browser - Testing Server"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Function"
+			],
+			[
+				"less",
+				"Set Syntax: LESS"
+			],
+			[
+				"fom",
+				"Format: Javascript"
+			],
+			[
+				"jade",
+				"Set Syntax: Jade"
+			],
+			[
+				"fomr",
+				"Format: Javascript"
+			],
+			[
+				"stylu",
+				"Set Syntax: Stylus"
+			],
+			[
+				"themr",
+				"Themr: List themes"
+			],
+			[
+				"therm",
+				"Themr: List themes"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"thm",
+				"Themr: List themes"
+			],
+			[
+				"ther",
+				"Themr: List themes"
+			],
+			[
+				"thmr",
+				"Themr: List themes"
+			],
+			[
+				"form",
+				"Format: Javascript"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"STYLUS",
+				"Set Syntax: Stylus"
+			],
+			[
+				"fo",
+				"Format: Javascript"
+			],
+			[
+				"copyscri",
+				"File: Copy as Tag script"
+			],
+			[
+				"copyscr",
+				"File: Copy as Tag script"
+			],
+			[
+				"format",
+				"Format: Javascript"
+			],
+			[
+				"forma",
+				"Format: Javascript"
+			],
+			[
+				"cpyt",
+				"File: Copy as Tag script"
+			],
+			[
+				"fet",
+				"Fetch: Package"
+			],
+			[
+				"gist",
+				"Gist: Delete Gist File"
+			],
+			[
+				"brpa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"bropac",
+				"Preferences: Browse Packages"
+			],
+			[
+				"gitlog",
+				"Git: Log All"
+			],
+			[
+				"git log",
+				"Git: Log All"
+			],
+			[
+				"gt",
+				"Git: Graph All"
+			],
+			[
+				"gitadd",
+				"Git: Add..."
+			],
+			[
+				"git bra",
+				"Git: New Branch"
+			],
+			[
+				"git pull",
+				"Git: Pull Current Branch"
+			],
+			[
+				"gitbra",
+				"Git: Change Branch"
+			],
+			[
+				"git st",
+				"Git: Status"
+			],
+			[
+				"save",
+				"Project: Save As"
+			],
+			[
+				"saveas",
+				"Project: Save As"
+			],
+			[
+				"sni!",
+				"Snippet: #!/usr/bin/env"
+			],
+			[
+				"jva",
+				"Format: Javascript"
+			],
+			[
+				"bropa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"proje",
+				"Project: Save As"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 453.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/js/linker/controllers.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/controllers.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/carousel.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/ui-bootstrap/misc/demo/assets/rainbow.css",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/maps.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/views/partials/cam.ejs",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/jquery/src/manipulation.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/style.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/api/controllers/HeatController.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/type.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/api/models/Heat.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/views/partials/header.ejs",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/api/controllers/CamerasController.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/csrf.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/scaffolding.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/ui-bootstrap/LICENSE",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/views/layout.ejs",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/forms.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/charts.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/wells.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/jquery/src/var/toString.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/timeline.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/scroll.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular-ui-utils/CHANGELOG.md",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/js/linker/ngTimeline.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/routes.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/views/home/index.ejs",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/ui-bootstrap/karma.conf.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/i18n.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/js/app.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/api/controllers/UsersController.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/jquery/src/var/rnotwhite.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/app.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/robots.txt",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/README.md",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/js/sails.io.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular-sanitize/angular-sanitize.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/api/models/Cameras.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/session.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/sentiaWeb.sublime-project",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular-md5/lib/index.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/adapters.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/ui-bootstrap/misc/validate-commit-msg.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails-mongo/node_modules/mongodb/node_modules/bson/lib/bson/timestamp.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/ejs-locals/test/fixtures/subfolder/sublocals.ejs",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/connect-redis/node_modules/redis/examples/subqueries.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-less/node_modules/less/node_modules/source-map/build/suffix-utils.jsm",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/grunt/node_modules/rimraf/test/setup.sh",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/waterline/lib/waterline/adapter/setupTeardown.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-uglify/.idea/scopes/scope_settings.xml",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/testApp/api/responses/serverError.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/jquery/src/effects/animatedSelector.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/testApp/tasks/register/linkAssets.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/Gruntfile.js",
+		"/Users/andreasmoller/Library/Application Support/Sublime Text 3/Packages/User/ZenTabs.sublime-settings",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/testApp/tasks/register/linkAssetsBuild.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails-mongo/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos_sspi.c",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-less/node_modules/less/test/css/extract-and-length.css",
+		"/Users/andreasmoller/Library/Application Support/Sublime Text 3/Packages/Zen Tabs/ZenTabs.sublime-settings",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/policies.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular/bower.json",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/package.json",
+		"/Users/andreasmoller/Library/Application Support/Sublime Text 3/Packages/Less Tabs/lessTabs.sublime-settings",
+		"/Users/andreasmoller/Library/Application Support/Sublime Text 3/Packages/User/lessTabs.sublime-settings",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/bootstrap/less/variables.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/bootstrap/less/glyphicons.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/js/controllers.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/views/partials/dashboard.ejs",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular-bootstrap/ui-bootstrap.min.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/bower_components/angular-bootstrap/ui-bootstrap.min.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/local.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/api/controllers/StoresController.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/api/models/Stores.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/ejs/ejs.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular-md5/angular-md5.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/views/partials/login.ejs",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/bin/boilerplates/views/jade/home/index.jade",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/animate.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/winston/test/fixtures/scripts/default-exceptions.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/api/policies/authenticated.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/testApp/api/controllers/UserController.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/api/models/Users.js",
+		"/Users/andreasmoller/Library/Application Support/Sublime Text 3/Packages/TidyTabs-Sublime/TidyTabs.sublime-settings",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/bower_components/angular-bootstrap/ui-bootstrap.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/.bowerrc",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-cli/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/test/memory-leak.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/datepicker.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/js/ngTimeline.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/waterline/test/unit/callbacks/beforeCreate.findOrCreateEach.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/bootstrap.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/locales/en.json",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/locales/fr.json",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/grunt/node_modules/dateformat/package.json",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/winston/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/integration/test-pipe-resumes.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/testApp/api/policies/error_policy.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/datemodal.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular-bootstrap/ui-bootstrap.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular-ui-utils/ui-utils-ieshiv.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-uglify/docs/uglify-options.md",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-uglify/.idea/grunt-contrib-uglify.iml",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular-ui-utils/.bower.json",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/socket.io/node_modules/socket.io-client/node_modules/ws/test/BufferPool.test.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/bower_components/angular/bower.json",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/bootstrap/dist/css/bootstrap.min.css",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/bootstrap/less/scaffolding.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/bootstrap/less/input-groups.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/bootstrap/less/bootstrap.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/angular/angular.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-jst/test/expected/amd_wrapper_no_ns.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/connect-redis/lib/connect-redis.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-clean/docs/clean-options.md",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/grunt/AUTHORS",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/.bin/sails",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/.tmp/public/styles/less/timeline.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/ejs-locals/test/fixtures/with-two-includes.ejs",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/waterline/test/unit/callbacks/afterCreate.findOrCreate.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-less/node_modules/less/test/less/errors/property-asterisk-only-name.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-less/node_modules/less/test/less/errors/property-asterisk-only-name.txt",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/include-all/test/filterdir/root.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/assets/styles/less/labels.less",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/minimatch/node_modules/lru-cache/CONTRIBUTORS",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/include-all/test/controllers/main-Controller.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/sails/node_modules/grunt-contrib-uglify/test/fixtures/expected/compress_mangle_sourcemap",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/config/log.js",
+		"/Users/andreasmoller/repos/sails/sentiaWeb/node_modules/optimist/example/line_count_options.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"login.ejs",
+			"/views/home/login.ejs"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"map",
+			"timeline",
+			"day",
+			"i",
+			"Date",
+			"data",
+			"input",
+			"ui.bootstrap.transition",
+			"reg",
+			"response",
+			"script",
+			"btn",
+			"default",
+			"button",
+			"rootScope",
+			"HEXADECIMAL",
+			"attrs",
+			"paritals",
+			"partials",
+			"</div>",
+			"User",
+			"user",
+			"import",
+			"assets",
+			"import",
+			")",
+			"(",
+			"public",
+			"internal_return",
+			"getDate",
+			"customers",
+			"Date",
+			"date",
+			"template",
+			"next",
+			"table",
+			"cameraDetails",
+			"gutter",
+			"top",
+			".col-sm-4",
+			"top",
+			"btn",
+			"item",
+			"app.",
+			"element",
+			"elements",
+			"typeof",
+			"returnVal",
+			"option",
+			"result",
+			"light",
+			"circle",
+			"gray",
+			"circle",
+			"\n#",
+			"white",
+			"li",
+			"button",
+			"scroll",
+			"scoll",
+			"src",
+			"@shadow",
+			" @s",
+			" @",
+			"shadow",
+			" @",
+			"@shadow",
+			"@gutter-width",
+			"6",
+			"h4",
+			"lig",
+			"@primary",
+			"@danger",
+			"@success",
+			"red",
+			"green",
+			"blue",
+			"clickable",
+			"f-right",
+			"@",
+			":focus",
+			"9c9c9c",
+			".abs",
+			"h1",
+			"@toolbar-height",
+			"@navbar-height",
+			"sentia.",
+			"sentia",
+			"sentia.",
+			"sentia",
+			"control",
+			"sentia.",
+			"sentia",
+			"sentia.",
+			"sentia",
+			"sentia.",
+			"sentia",
+			"sentia.",
+			"sentia",
+			"sentia.",
+			"sentia",
+			"sentia.",
+			"sentia",
+			"sentia.",
+			"firstname",
+			"sentia",
+			"app",
+			"         #",
+			"\n#",
+			"input",
+			"none",
+			"/control",
+			"control",
+			"Control",
+			"control",
+			"model",
+			"scripts",
+			"255",
+			"cameras",
+			"text",
+			"newpagedList",
+			"pagedList",
+			"AList",
+			"aList",
+			"AList",
+			"aList",
+			"maps",
+			"camEngine"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"]",
+			"[",
+			"game",
+			"Math",
+			"();"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "assets/styles/less/lists.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2726,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2725,
+								2725
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "assets/styles/less/widgets.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "assets/styles/less/timeline.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 591,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								143,
+								143
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "assets/styles/style.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1628,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 114.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 114.0
+	},
+	"output.jslint_result_view":
+	{
+		"height": 114.0
+	},
+	"project": "sentiaWeb.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"main.css",
+				"assets/bower_components/ui-bootstrap/misc/demo/assets/rainbow.css"
+			],
+			[
+				"style",
+				"assets/styles/style.less"
+			],
+			[
+				"cam",
+				"views/partials/cam.ejs"
+			],
+			[
+				"typele",
+				"assets/styles/less/type.less"
+			],
+			[
+				"heatcon",
+				"api/controllers/HeatController.js"
+			],
+			[
+				"contro",
+				"assets/js/linker/controllers.js"
+			],
+			[
+				"controller",
+				"assets/js/linker/controllers.js"
+			],
+			[
+				"timl",
+				"assets/styles/less/timeline.less"
+			],
+			[
+				"timli",
+				"assets/styles/less/timeline.less"
+			],
+			[
+				"timeli",
+				"assets/styles/less/timeline.less"
+			],
+			[
+				"lis",
+				"assets/styles/less/lists.less"
+			],
+			[
+				"tim",
+				"assets/styles/less/timeline.less"
+			],
+			[
+				"wid",
+				"assets/styles/less/widgets.less"
+			],
+			[
+				"sty",
+				"assets/styles/style.less"
+			],
+			[
+				"type",
+				"assets/styles/less/type.less"
+			],
+			[
+				"sca",
+				"assets/styles/less/scaffolding.less"
+			],
+			[
+				"for",
+				"assets/styles/less/forms.less"
+			],
+			[
+				"char",
+				"assets/styles/less/charts.less"
+			],
+			[
+				"timlie",
+				"assets/styles/less/timeline.less"
+			],
+			[
+				"controll",
+				"config/controllers.js"
+			],
+			[
+				"heatcont",
+				"api/controllers/HeatController.js"
+			],
+			[
+				"heat",
+				"api/models/Heat.js"
+			],
+			[
+				"routes",
+				"config/routes.js"
+			],
+			[
+				"head",
+				"views/partials/header.ejs"
+			],
+			[
+				"inde",
+				"views/home/index.ejs"
+			],
+			[
+				"controllers",
+				"assets/js/linker/controllers.js"
+			],
+			[
+				"user",
+				"api/controllers/UsersController.js"
+			],
+			[
+				"layou",
+				"views/layout.ejs"
+			],
+			[
+				"app.js",
+				"assets/js/app.js"
+			],
+			[
+				"layout",
+				"views/layout.ejs"
+			],
+			[
+				"sessionjs",
+				"config/session.js"
+			],
+			[
+				"sublim",
+				"sentiaWeb.sublime-project"
+			],
+			[
+				"session",
+				"config/session.js"
+			],
+			[
+				"grun",
+				"Gruntfile.js"
+			],
+			[
+				"ada",
+				"config/adapters.js"
+			],
+			[
+				"app.",
+				"assets/js/app.js"
+			],
+			[
+				"ads",
+				"assets/bower_components/jquery/src/effects/animatedSelector.js"
+			],
+			[
+				"",
+				"app.js"
+			],
+			[
+				"lasj",
+				"node_modules/sails/testApp/tasks/register/linkAssets.js"
+			],
+			[
+				"laksj",
+				"node_modules/sails/testApp/tasks/register/linkAssets.js"
+			],
+			[
+				"bower",
+				"assets/bower_components/angular/bower.json"
+			],
+			[
+				"polic",
+				"config/policies.js"
+			],
+			[
+				"timline",
+				"assets/styles/less/timeline.less"
+			],
+			[
+				"app.s",
+				"assets/js/app.js"
+			],
+			[
+				"anima",
+				"assets/styles/less/animate.less"
+			],
+			[
+				"ind",
+				"views/home/index.ejs"
+			],
+			[
+				"dashja",
+				"views/partials/dashboard.ejs"
+			],
+			[
+				"dash",
+				"views/partials/dashboard.ejs"
+			],
+			[
+				"login",
+				"views/partials/login.ejs"
+			],
+			[
+				"timelin",
+				"assets/styles/less/timeline.less"
+			],
+			[
+				"ejs",
+				"node_modules/ejs/ejs.js"
+			],
+			[
+				"from",
+				"assets/styles/less/forms.less"
+			],
+			[
+				"fromle",
+				"assets/styles/less/forms.less"
+			],
+			[
+				"fomrla",
+				"node_modules/sails/node_modules/grunt-cli/node_modules/findup-sync/node_modules/glob/node_modules/minimatch/node_modules/lru-cache/test/memory-leak.js"
+			],
+			[
+				"form",
+				"assets/styles/less/forms.less"
+			],
+			[
+				"datepic",
+				"assets/styles/less/datepicker.less"
+			],
+			[
+				"datep",
+				"assets/styles/less/datepicker.less"
+			],
+			[
+				"stylel",
+				"assets/styles/style.less"
+			],
+			[
+				"date",
+				"assets/styles/less/datemodal.less"
+			],
+			[
+				"camej",
+				"api/models/Cameras.js"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"uiboo",
+				"assets/bower_components/angular-bootstrap/ui-bootstrap.min.js"
+			],
+			[
+				"lay",
+				"views/layout.ejs"
+			],
+			[
+				"uiboot",
+				"bower_components/angular-bootstrap/ui-bootstrap.js"
+			],
+			[
+				"laye",
+				"views/layout.ejs"
+			],
+			[
+				"app",
+				"assets/js/app.js"
+			],
+			[
+				"gruntfil",
+				"Gruntfile.js"
+			],
+			[
+				"angub",
+				"bower_components/angular-bootstrap/ui-bootstrap.min.js"
+			],
+			[
+				"angulmd5",
+				"assets/bower_components/angular-md5/angular-md5.js"
+			],
+			[
+				"header",
+				"views/partials/header.ejs"
+			],
+			[
+				"usercon",
+				"api/controllers/UsersController.js"
+			],
+			[
+				"usercontro",
+				"api/controllers/UsersController.js"
+			],
+			[
+				"usersjs",
+				"api/models/Users.js"
+			],
+			[
+				"index",
+				"views/home/index.ejs"
+			],
+			[
+				"users",
+				"api/models/Users.js"
+			],
+			[
+				"usercontr",
+				"node_modules/sails/testApp/api/controllers/UserController.js"
+			],
+			[
+				"logine",
+				"views/partials/login.ejs"
+			],
+			[
+				"authe",
+				"api/policies/authenticated.js"
+			],
+			[
+				"userscon",
+				"api/controllers/UsersController.js"
+			],
+			[
+				"poli",
+				"config/policies.js"
+			],
+			[
+				"timlin",
+				"assets/js/linker/ngTimeline.js"
+			],
+			[
+				"scroll",
+				"assets/styles/less/scroll.less"
+			],
+			[
+				"forml",
+				"assets/styles/less/forms.less"
+			],
+			[
+				"formle",
+				"assets/styles/less/forms.less"
+			],
+			[
+				"con",
+				"assets/js/controllers.js"
+			],
+			[
+				"hea",
+				"views/partials/header.ejs"
+			],
+			[
+				"contr",
+				"assets/js/controllers.js"
+			],
+			[
+				"he",
+				"views/partials/header.ejs"
+			],
+			[
+				"control",
+				"assets/js/controllers.js"
+			],
+			[
+				"scaffo",
+				"assets/styles/less/scaffolding.less"
+			],
+			[
+				"a",
+				"config/adapters.js"
+			],
+			[
+				"sani",
+				"assets/bower_components/angular-sanitize/angular-sanitize.js"
+			],
+			[
+				"pac",
+				"package.json"
+			],
+			[
+				"store",
+				"api/models/Store.js"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"came",
+				"api/models/Cameras.js"
+			],
+			[
+				"ca",
+				"assets/styles/less/carousel.less"
+			],
+			[
+				"camj",
+				"views/partials/cam.ejs"
+			],
+			[
+				"app.sj",
+				"assets/js/app.js"
+			],
+			[
+				"headej",
+				"views/partials/header.ejs"
+			],
+			[
+				"appjs",
+				"assets/js/app.js"
+			],
+			[
+				"heade",
+				"views/partials/header.ejs"
+			],
+			[
+				"dashej",
+				"views/home/dashboard.ejs"
+			],
+			[
+				"inexe",
+				"views/home/index.ejs"
+			],
+			[
+				"indeja",
+				"node_modules/sails/bin/boilerplates/views/jade/home/index.jade"
+			],
+			[
+				"adap",
+				"config/adapters.js"
+			],
+			[
+				"gly",
+				"assets/bower_components/bootstrap/less/glyphicons.less"
+			],
+			[
+				"vari",
+				"assets/bower_components/bootstrap/less/variables.less"
+			],
+			[
+				"stylle",
+				"assets/styles/style.less"
+			],
+			[
+				"layo",
+				"views/layout.ejs"
+			],
+			[
+				"indeeje",
+				"node_modules/sails/node_modules/winston/test/fixtures/scripts/default-exceptions.js"
+			],
+			[
+				"stylele",
+				"assets/styles/style.less"
+			],
+			[
+				"json",
+				"package.json"
+			],
+			[
+				"ap",
+				"public/js/app.js"
+			],
+			[
+				"headja",
+				"views/header.jade"
+			],
+			[
+				"angular-rou",
+				"public/bower_components/angular-route/angular-route.min.js"
+			],
+			[
+				"bowerjs",
+				"public/bower_components/angular/bower.json"
+			],
+			[
+				"bower.js",
+				"node_modules/js-yaml/bower.json"
+			],
+			[
+				"indexja",
+				"views/index.jade"
+			],
+			[
+				"lgoinja",
+				"views/login.jade"
+			],
+			[
+				"server.js",
+				"server.js"
+			],
+			[
+				"angula",
+				"public/bower_components/angular/angular.js"
+			],
+			[
+				"logija",
+				"views/login.jade"
+			],
+			[
+				"lo",
+				"views/login.jade"
+			],
+			[
+				"loginja",
+				"views/login.jade"
+			],
+			[
+				"datepicker",
+				"public/js/bootstrap/datepicker.js"
+			],
+			[
+				"timeline",
+				"public/js/jquery.timeline.js"
+			],
+			[
+				"heatma",
+				"engine/heatmap.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"inxi",
+				"~/repos/inxite/inxiteserver/inxiteserver.sublime-project"
+			],
+			[
+				"",
+				"~/repos/inxite/inxiteserver/inxiteserver.sublime-project"
+			],
+			[
+				"mobil",
+				"~/repos/inxite/mobile/inxiteMobile.sublime-project"
+			],
+			[
+				"app",
+				"~/repos/app.sentia.io/app.sentia.io.sublime-project"
+			],
+			[
+				"inxite",
+				"~/repos/inxite/inxiteserver/inxiteserver.sublime-project"
+			],
+			[
+				"insi",
+				"/Users/andreasmoller/repos/Insight/Insight.sublime-project"
+			],
+			[
+				"Ins",
+				"/Users/andreasmoller/repos/Insight/Insight.sublime-project"
+			],
+			[
+				"Insi",
+				"/Users/andreasmoller/repos/Insight/Insight.sublime-project"
+			],
+			[
+				"insight",
+				"/Users/andreasmoller/repos/Insight/Insight.sublime-project"
+			],
+			[
+				"Insight",
+				"/Users/andreasmoller/repos/Insight/Insight.sublime-project"
+			],
+			[
+				"ins",
+				"/Users/andreasmoller/repos/Insight/Insight.sublime-project"
+			],
+			[
+				"I",
+				"/Users/andreasmoller/repos/Insight/Insight.sublime-project"
+			],
+			[
+				"and",
+				"/Users/andreasmoller/repos/andreasmoller.net/andreasmoller.sublime-project"
+			],
+			[
+				"Insigh",
+				"/Users/andreasmoller/Iceton/Repositories/Insight-board/Insight-board.sublime-project"
+			],
+			[
+				"bo",
+				"/Users/andreasmoller/Iceton/Repositories/Insight-board/Insight-board.sublime-project"
+			],
+			[
+				"si",
+				"/Users/andreasmoller/Documents/Projects/sciencemanJS/sciencemanJS.sublime-project"
+			],
+			[
+				"andreoi",
+				"/Users/andreasmoller/Iceton/Repositories/Insight-android/Insight-android.sublime-project"
+			],
+			[
+				"scie",
+				"/Users/andreasmoller/Documents/Projects/scienceman/scienceman.sublime-project"
+			],
+			[
+				"boa",
+				"/Users/andreasmoller/Iceton/Repositories/Insight-board/Insight-board.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 197.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

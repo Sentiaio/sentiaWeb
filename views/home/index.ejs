@@ -1,0 +1,15 @@
+<!-- Default home page -->
+<!--[if IE 7]>
+    <style>
+    .getting-started li{overflow:visible;clear:both}.delete{width:690px}
+    </style>
+<![endif]-->
+<div id="content" class="full-height full-width has-lg-toolbar-top" ng-controller="root">
+    <% include ../partials/header.ejs %>
+    <div ng-view="" class="full-height full-width" ng-animate="'slide'"></div>
+
+</div> 
+<!-- Views -->
+<% include ../partials/login.ejs %>
+<% include ../partials/dashboard.ejs %>
+<% include ../partials/cam.ejs %>

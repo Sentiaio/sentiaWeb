@@ -1,4 +1,2 @@
-sentiaWeb
-=========
-
-Sentia Web server
+# sentiaWeb
+### a Sails application
