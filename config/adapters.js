@@ -28,7 +28,7 @@ module.exports.adapters = {
     module: 'sails-mongo',
     host: 'localhost',
     port: 27017,
-    database: 'sentiaWeb'
+    database: 'sentia'
   },
 
   // MySQL is the world's most popular relational database.
