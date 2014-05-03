@@ -149,6 +149,8 @@ module.exports = function(grunt) {
         sentiaAWS: {
             host: 'app.sentia.io',
             username: 'ubuntu',
+            // privateKey: grunt.file.read("~/.ssh/sentia.pem"),
+            // passphrase: <%= secret.passphrase %>
             agent: process.env.SSH_AUTH_SOCK
         }
     };

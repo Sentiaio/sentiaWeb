@@ -26,7 +26,7 @@ module.exports.adapters = {
 
   mongo: {
     module: 'sails-mongo',
-    host: 'localhost',
+    host: 'app.sentia.io',
     port: 27017,
     database: 'sentia'
   },

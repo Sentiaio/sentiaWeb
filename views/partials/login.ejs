@@ -1,9 +1,9 @@
 <script type="text/ng-template" id="login-page">
-    <div class="page container">
+     <div class="page container" ng-animate>
         <div id="login-box" class="center-block form" style="margin-top:10%; width:300px;">
         	
             <h4 class="caps block text-primary">Welcome</h4>
-            <form action="#" ng-submit ="login()" >
+            <form ng-submit ="login()" >
                 <div class="form-group">
                     <input type="email" id="login-email" class="form-control email" ng-model="credentials.email" ui-keypress="{'enter':'login()'}" placeholder="Email">
                     <input type="password" id="login-password" class="form-control password" ng-model="credentials.password" placeholder="Password">
