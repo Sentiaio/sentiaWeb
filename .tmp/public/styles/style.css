@@ -728,6 +728,11 @@ address {
   color: #36a3ff;
   font-weight: inherit;
 }
+.stamped {
+  color: rgba(0, 0, 0, 0.04);
+  text-shadow: 0 2px rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+}
 code,
 kbd,
 pre,

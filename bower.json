@@ -1,0 +1,19 @@
+{
+  "name": "sentiaWeb",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Sentiaio/sentiaWeb",
+  "authors": [
+    "Andreas Møller <andreas.moller@gmail.com>"
+  ],
+  "description": "Retail Intelligence",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "angular-animate": "~1.2.16",
+    "angular-bootstrap": "~0.10.0",
+    "angular-ui": "~0.4.0",
+    "angular-route": "~1.2.16",
+    "angular-sanitize": "~1.2.16",
+    "jquery": "~2.1.0"
+  }
+}

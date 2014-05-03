@@ -18,6 +18,7 @@
             'ui.bootstrap',
             'ngSanitize',
             'ui.utils',
+            'ngAnimate',
             'controllers'
         ]);
     // configure routes
