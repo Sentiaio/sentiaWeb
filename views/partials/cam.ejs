@@ -1,6 +1,6 @@
 <script type="text/ng-template" id="cam-page">
-<div class="page container-fluid full-height">
-    <div class="col-sm-3 full-height">
+<div class="page container-fluid container-swipe full-height">
+    <div class="col-sm-3 col-swipe full-height">
         <div class="row full-height">
             <div id="camera-list" class="col-xs-12 full-height scroll scroll-y p-top">
                 <input type="text" id="camera-list-search" class="form-control" role="search" ng-model="camSearch">
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-9 full-height full-height scroll scroll-y p-top">
+    <div class="col-sm-9 col-swipe full-height full-height scroll scroll-y p-top">
         <div id="camera-details" class="widget widget-white" ng-show="selectedCam">
             <div class="container-fluid p-bottom">
                 <div class="container-fluid">

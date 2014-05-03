@@ -24,23 +24,27 @@ module.exports = {
             pipeline = [];
             pipeline.push({
                 $match : {
-                    date : {
-                        $gte : new Date(Number(req.param('from', 0))),
-                        $lt : new Date(Number(req.param('to', 0)))
+                    time : {
+                        $gte : Number(req.param('from', 0)),
+                        $lt : Number(req.param('to', 0))
                     }
                 }
             });
+            console.log(pipeline[0]);
             pipeline.push({
                 $group : {
-                    _id : {$hour : '$date'},
+                    _id : {$hour : '$time'},
                     avg : {$max : '$avg'}
                 }
             });
+            console.log(pipeline[1]);
             heat.aggregate(pipeline, function (err, result) {
                 if (err) {
+                    console.log(err);
                     res.send(err, 500);
                     return;
                 }
+                console.log(result);
                 res.send(result);
             })
         });
