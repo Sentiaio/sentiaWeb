@@ -19,7 +19,8 @@
             'ngSanitize',
             'ui.utils',
             'ngAnimate',
-            'controllers'
+            'sHeatmap',
+            'sFlowmap'
         ]);
     // configure routes
     // Controllers are definedd in controllers.js

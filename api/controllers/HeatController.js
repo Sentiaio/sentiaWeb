@@ -14,9 +14,11 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-
 /*jslint node:true, nomen:true*/
+/*globals Heat:true*/
 'use strict';
+var objectId = require('mongodb').ObjectID,
+    _ = require('underscore');
 module.exports = {
     timeline : function (req, res) {
         Heat.native(function (err, heat) {
@@ -46,15 +48,49 @@ module.exports = {
                 }
                 console.log(result);
                 res.send(result);
-            })
+            });
         });
+    },
+    find : function (req, res) {
+        var data = _.extend(req.body, req.query);
+        Heat.native(function (err, heat) {
+            var query, projection;
+            query =  {
+                cam : objectId(data.cam),
+                data : {$ne : []}
+            };
+            projection = {
+                data : 1,
+                cam :1,
+                store: 1,
+                company : 1,
+                time : 1,
+                cols :1,
+                rows : 1,
+                max : 1,
+                avg : 1
+
+            };
+            console.log(query);
+            console.log(data);
+            heat.findOne(query, function (err, result) {
+                if (err) {
+                    console.log(err);
+                    res.send(err, 500);
+                }
+                console.log(result);
+                res.send(result);
+
+            });
+        });
+
     },
 
   /**
    * Overrides for the settings in `config/controllers.js`
    * (specific to HeatController)
    */
-  _config: {}
+    _config: {}
 
   
 };

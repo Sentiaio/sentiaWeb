@@ -152,6 +152,9 @@ angular.module('sHeatmap', [])
                     data: '='
                 },
                 link: function postLink(scope, element) {
+                    if (!scope.data) {
+                        return;
+                    }
                     var canvas = element.find('canvas')[0];
                     canvas.width = scope.data.cols;
                     canvas.height = scope.data.rows;

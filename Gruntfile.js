@@ -68,7 +68,10 @@ module.exports = function(grunt) {
         // *->    put other dependencies here   <-*
 
         // All of the rest of your app scripts imported here
-        'js/linker/*.js'
+        'js/controllers/*.js',
+        'js/directives/*.js',
+        'js/filters/*.js'
+
     ];
 
 

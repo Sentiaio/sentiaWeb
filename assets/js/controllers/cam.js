@@ -1,53 +1,14 @@
-/*jslint browser:true, nomen:true*/
-/*global app:true, $:true, console: false, angular:false */
-var controllers = angular.module('controllers', []);
 /**
  * login controller
  * @author Andreas
  * @date   2014-04-11
  */
-(function () {
-    'use strict';
-    /**
-     * Controller for the logn view
-     * @author Andreas
-     * @date   2014-04-12
-     */
-    function loginController ($scope,  $http, $location) {
-        $scope.$root.showHeader = false;
-        $scope.credentials = {};
-        $scope.login = function () {
-            console.log($scope.credentials);
-            if(!$scope.credentials.email || !$scope.credentials.password) {return;}
-            $http.post('/users/login', $scope.credentials)
-                .success(function (response, status) {
-                    $location.path('/dashboard');
-                    $scope.$root.showHeader = true;
-                    $scope.$root.user = response;
-                })
-                .error(function (error, status) {
-                    console.log('ERROR');
-                    $scope.loginError = error;
-                });
-        };
-        
-    }
-    /**
-     * Controller for the dashborad view
-     * @author Andreas
-     * @date   2014-04-11
-     */
-    function dashController ($scope, $http) {
-        $scope.$root.showHeader = true;
-        $scope.$root.page = 'dash';
 
-    }
-    /**
-     * Controller for the cam view
-     * @author Andreas
-     * @date   2014-04-11
-     */
-    function camController ($scope, $http) {
+/*jslint browser:true, nomen:true*/
+/*global app:true, $:true, console: false, angular:false */
+angular.module('app')
+    .controller('cam', ['$scope', '$http' , function ($scope, $http) {
+        'use strict';
         $scope.$root.showHeader = true;
         $scope.$root.page = 'cam';
         $scope.store = "52fd38afe0461b48a7f9c297";
@@ -100,40 +61,20 @@ var controllers = angular.module('controllers', []);
 
                 })
                 .error(function (err, status) {
-                    console.log(status + ' : ' + err);
+                    console.error(err);
                 });
         });
         $scope.updateMap = function (hour) {
             $scope.mapQuery.date.setHours(hour);
+            $scope.mapQuery.cam = $scope.selectedCam.id;
             $http.post('/heat/find', $scope.mapQuery)
                 .success(function (response) {
-                    $scope.map = response;
+                    $scope.heatmap = response;
                     console.log(response);
                 })
                 .error(function (error, status) {
 
                 });
         };
-    }
-    function rootController ($scope, $http, $location) {
-        $scope.logout = function () {
-            $http.post('/users/logout')
-                .success(function () {
-                    $location.path('/login');
-                })
-                .error(function (err, status) {
-                    console.log(status + ' : ' + err);
-                });
-        }
-
-    }
-
-
-    // register controllers
-    controllers.controller('login', ['$scope', '$http', '$location', loginController]);
-    controllers.controller('dashboard', ['$scope', '$http', dashController]);
-    controllers.controller('cam', ['$scope', '$http' , camController]);
-    controllers.controller('root', ['$scope', '$http', '$location', rootController]);
-})();
-
+    }]);
 
