@@ -7,7 +7,7 @@
 /*jslint browser:true, nomen:true*/
 /*global app:true, $:true, console: false, angular:false */
 angular.module('app')
-    .controller('cam', ['$scope', '$http' , function ($scope, $http) {
+    .controller('CamCtrl', ['$scope', '$http' , function ($scope, $http) {
         'use strict';
         $scope.$root.showHeader = true;
         $scope.$root.page = 'cam';

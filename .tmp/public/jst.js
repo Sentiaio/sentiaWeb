@@ -524,3 +524,33 @@ __p += '<ul class="dropdown-menu" ng-style="{display: isOpen()&&\'block\' || \'n
 }
 return __p
 };
+
+this["JST"]["assets/views/cam.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="page container-fluid container-swipe full-height">\n    <div class="col-sm-3 col-swipe full-height">\n        <div class="row full-height">\n            <div id="camera-list" class="col-xs-12 full-height scroll scroll-y p-top">\n                <input type="text" id="camera-list-search" class="form-control" role="search" ng-model="camSearch">\n                <ul class="list list-widgets">\n                    <li ng-repeat="cam in cams | filter: camSearch " ng-click="$parent.selectedCam = cam" ng-class="{active: selectedCam.id === cam.id}" class="widget widget-white a widget-content gutter-top">\n                        <img ng-src="/images/cameras/{{cam.id}}.png" alt="" class="header-image">\n                        <h5 class="searchable caps" ng-bind-html="\'{{cam.name}}\' | highlight:camSearch:false"></h5>\n                    </li>  \n                </ul>\n            </div>\n        </div>\n    </div>\n    <div class="col-sm-9 col-swipe full-height full-height scroll scroll-y p-top">\n        <div id="camera-details" class="widget widget-white" ng-show="selectedCam">\n            <div class="container-fluid p-bottom">\n                <div class="container-fluid">\n                    <h3 id="camera-details-title" class="caps"></h3>\n                </div>\n                <div class="col-lg-9 col-md-8 gutter-bottom">\n                    <div id="camera-shot" class="map-container">\n                        <img ng-show="selectedCam" ng-src="/images/cameras/{{selectedCam.id}}.png" alt="" class="header-image">\n                        <s-heatmap data="heatmap" ng-show="heatmap"></heatmap>\n                    </div>\n                    <div class="container-fluid">\n                        <div class="row">\n                            <ul id="camera-timeline" class="timeline well" ng-show="timeline">\n                                <li ng-repeat="value in timeline.data track by $index" class="timeline-item" tooltip="{{$index}}:00" tooltip-append-to-body="true" tooltip-placement="bottom" ng-click="updateMap($index)">\n                                    <div class="timeline-bar" style="height: {{10 + (value / timeline.max) *100}}%" ></div>\n                                </li>    \n                            </ul>\n                        </div>\n                    </div>\n                </div>\n                <div class="col-lg-3 col-md-4">\n                    <div id="camera-control" class="row clearfix" role="form">\n                        <div class="col-sm-4 col-md-12">\n                            <div class="form-group">\n                            <input type="radio" name="mapType" ng-model="map.type" value="heat" id ="cam-maptype-heat">\n                                <label class="radio-inline" for="cam-maptype-heat">Heatmap</label>\n                            <input type="radio" name="mapType" ng-model="map.type" value="flow" id ="cam-maptype-flow"> \n                                <label class="radio-inline"  for="cam-maptype-flow">Flowmap</label>\n                            </div>\n                        </div>\n                        <div class="col-sm-4 col-md-12">\n                            <div class="form-group well">\n                                <datepicker class="datepicker" show-weeks="false" ng-model="mapQuery.date"></datepicker>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n\n';
+
+}
+return __p
+};
+
+this["JST"]["assets/views/dashboard.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="page container">\n   <h1 class="big-text stamped text-center"> No Widgets Awailable</h1>\n</div> \n            ';
+
+}
+return __p
+};
+
+this["JST"]["assets/views/login.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += ' <div class="page container" ng-animate>\n    <div id="login-box" class="center-block form" style="margin-top:10%; width:300px;">\n    \t\n        <h4 class="caps block text-primary">Welcome</h4>\n        <form ng-submit ="login()" >\n            <div class="form-group">\n                <input type="email" id="login-email" class="form-control email" ng-model="credentials.email" ui-keypress="{\'enter\':\'login()\'}" placeholder="Email">\n                <input type="password" id="login-password" class="form-control password" ng-model="credentials.password" placeholder="Password">\n                <button id="login-submit" class="btn btn-block btn-primary" type="submit">Go!</button>\n                <a href="" id="forgot-password-link" class="text-center col-xs-12" style="display:none;">Forgot your password?</a>\n                <h4 class="text-center text-danger col-xs-12">{{loginError}}</h4>\n            </div>\n        </form>\n    </div>\n</div>\n';
+
+}
+return __p
+};

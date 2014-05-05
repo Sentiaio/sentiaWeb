@@ -28,16 +28,16 @@
         function($routeProvider) {
             $routeProvider
                 .when('/login', {
-                    templateUrl: 'login-page',
-                    controller: 'login'
+                    templateUrl: 'views/login.html',
+                    controller: 'LoginCtrl'
                 })
                 .when('/dashboard', {
-                    templateUrl : 'dashboard-page',
-                    controller: 'dashboard'
+                    templateUrl : 'views/dashboard.html',
+                    controller: 'DashboardCtrl'
                 })
                 .when('/cameras', {
-                    templateUrl : 'cam-page',
-                    controller: 'cam'
+                    templateUrl : 'views/cam.html',
+                    controller: 'CamCtrl'
                 })
                 .otherwise({
                     redirectTo: '/login'

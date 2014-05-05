@@ -447,7 +447,14 @@ module.exports = function(grunt) {
             }
         },
         sshconfig : sshconfig,
-        sshexec : sshexec
+        sshexec : sshexec,
+        // Test settings
+        karma: {
+          unit: {
+            configFile: 'karma.conf.js',
+            singleRun: true
+          }
+        }
     });
 
     // When Sails is lifted:
@@ -455,6 +462,9 @@ module.exports = function(grunt) {
         'compileAssets',
         'linkAssets',
         'watch'
+    ]);
+    grunt.registerTask('test', [
+        'karma'
     ]);
 
     grunt.registerTask('compileAssets', [
@@ -506,7 +516,8 @@ module.exports = function(grunt) {
     grunt.registerTask('deploy', [
         'sshexec:deploy'
     ]);
-    grunt.loadNpmTasks('grunt-ssh')
+    grunt.loadNpmTasks('grunt-ssh');
+    grunt.loadNpmTasks('grunt-karma');
 
 
     // When API files are changed:

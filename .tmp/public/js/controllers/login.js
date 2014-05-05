@@ -8,7 +8,7 @@
 /*global app:true, $:true, console: false, angular:false */
 
 angular.module('app')
-    .controller('login', ['$scope', '$http', '$location', function ($scope,  $http, $location) {
+    .controller('LoginCtrl', ['$scope', '$http', '$location', function ($scope,  $http, $location) {
         'use strict';
         $scope.$root.showHeader = false;
         $scope.credentials = {};

@@ -151,19 +151,18 @@ angular.module('sHeatmap', [])
                 scope: {
                     data: '='
                 },
-                link: function postLink(scope, element) {
-                    if (!scope.data) {
-                        return;
-                    }
-                    var canvas = element.find('canvas')[0];
-                    canvas.width = scope.data.cols;
-                    canvas.height = scope.data.rows;
-                    console.log(element[0].offsetWidth);
-                    simpleheat(canvas)
-                        .radius(2, 1)
-                        .max(scope.data.max)
-                        .data(scope.data.data)
-                        .draw();
+                link: function (scope, element, attrs) {
+                    attrs.$observe('data', function(data) {
+                        var canvas = element.find('canvas')[0];
+                        canvas.width = data.cols;
+                        canvas.height = data.rows;
+                        console.log(element[0].offsetWidth);
+                        simpleheat(canvas)
+                            .radius(2, 1)
+                            .max(data.max)
+                            .data(data.data)
+                            .draw();
+                    });
                 }
 
             };
