@@ -41,10 +41,10 @@ angular.module('app')
         $scope.$watch('mapQuery.date', function () {
             if (!$scope.mapQuery.date) {return;}
             var data = {
-                from : $scope.mapQuery.date.getTime(),
-                to : $scope.mapQuery.date.getTime() + 86400000 // + 1 DAY
+                date : $scope.mapQuery.date,
+                cam : $scope.selectedCam.id
             };
-            $http.post('/heat/timeline', data)
+            $http.post('/' + $scope.map.type + '/timeline', data)
                 .success(function (response) {
                     var data = [24], i, j, max = 1;
                     for (i = 0; i < 24; i += 1) {
@@ -67,9 +67,15 @@ angular.module('app')
         $scope.updateMap = function (hour) {
             $scope.mapQuery.date.setHours(hour);
             $scope.mapQuery.cam = $scope.selectedCam.id;
-            $http.post('/heat/find', $scope.mapQuery)
+            $http.post('/' + $scope.map.type + '/find', $scope.mapQuery)
                 .success(function (response) {
-                    $scope.heatmap = response;
+                    if ($scope.map.type === 'heat') {
+                        $scope.flowmap = undefined;
+                        $scope.heatmap = response;
+                    } else {
+                        $scope.flowmap = response;
+                        $scope.heatmap = undefined;
+                    }
                     console.log(response);
                 })
                 .error(function (error, status) {

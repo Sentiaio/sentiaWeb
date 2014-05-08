@@ -23,7 +23,7 @@ angular.module('app')
                 })
                 .error(function (error) {
                     console.log('ERROR');
-                    $scope.loginError = error;
+                    $scope.loginError = error.error;
                 });
         };
         

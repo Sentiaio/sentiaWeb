@@ -22,14 +22,20 @@ var objectId = require('mongodb').ObjectID,
 module.exports = {
     timeline : function (req, res) {
         Heat.native(function (err, heat) {
+            var data = _.extend(req.body, req.query);
+            var from = new Date(data.date);
+            var to = new Date(data.date);
+            to.setDate(to.getDate()+1);
             var pipeline;
             pipeline = [];
             pipeline.push({
                 $match : {
+                    cam : objectId(data.cam),
                     time : {
-                        $gte : Number(req.param('from', 0)),
-                        $lt : Number(req.param('to', 0))
-                    }
+                        $gte : from,
+                        $lt : to
+                    },
+                    data : {$ne : []}
                 }
             });
             console.log(pipeline[0]);
@@ -53,11 +59,17 @@ module.exports = {
     },
     find : function (req, res) {
         var data = _.extend(req.body, req.query);
+        var from = new Date(data.date);
+        var to = new Date(data.date);
+        to.setHours(to.getHours() + 1);
         Heat.native(function (err, heat) {
             var query, projection;
             query =  {
                 cam : objectId(data.cam),
-                data : {$ne : []}
+                time : {
+                    $gte : from,
+                    $lt : to
+                }
             };
             projection = {
                 data : 1,
@@ -71,14 +83,11 @@ module.exports = {
                 avg : 1
 
             };
-            console.log(query);
-            console.log(data);
             heat.findOne(query, function (err, result) {
                 if (err) {
                     console.log(err);
                     res.send(err, 500);
                 }
-                console.log(result);
                 res.send(result);
 
             });

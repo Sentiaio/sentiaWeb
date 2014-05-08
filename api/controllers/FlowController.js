@@ -15,16 +15,99 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+/*globals Flow:true*/
+'use strict';
+var objectId = require('mongodb').ObjectID,
+    _ = require('underscore');
+
 module.exports = {
-    
-  
+    timeline: function(req, res) {
+        Flow.native(function(err, flow) {
+            var data = _.extend(req.body, req.query),
+                from = new Date(data.date),
+                to = new Date(data.date);
+            to.setDate(to.getDate() + 1);
+            var pipeline;
+            pipeline = [];
+            pipeline.push({
+                $match: {
+                    cam: objectId(data.cam),
+                    time: {
+                        $gte: from,
+                        $lt: to
+                    },
+                    data: {
+                        $ne: []
+                    }
+                }
+            });
+            console.log(pipeline[0]);
+            pipeline.push({
+                $group: {
+                    _id: {
+                        $hour: '$time'
+                    },
+                    avg: {
+                        $max: '$avg'
+                    }
+                }
+            });
+            console.log(pipeline[1]);
+            flow.aggregate(pipeline, function(err, result) {
+                if (err) {
+                    console.log(err);
+                    res.send(err, 500);
+                    return;
+                }
+                console.log(result);
+                res.send(result);
+            });
+        });
+    },
+    find: function(req, res) {
+        var data = _.extend(req.body, req.query);
+        var from = new Date(data.date);
+        var to = new Date(data.date);
+        to.setHours(to.getHours() + 1);
+        Flow.native(function(err, flow) {
+            var query, projection;
+            query = {
+                cam: objectId(data.cam),
+                time: {
+                    $gte: from,
+                    $lt: to
+                }
+            };
+            projection = {
+                data: 1,
+                cam: 1,
+                store: 1,
+                company: 1,
+                time: 1,
+                cols: 1,
+                rows: 1,
+                max: 1,
+                avg: 1
+
+            };
+            flow.findOne(query, function(err, result) {
+                if (err) {
+                    console.log(err);
+                    res.send(err, 500);
+                }
+                res.send(result);
+
+            });
+        });
+
+    },
 
 
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to FlowController)
-   */
-  _config: {}
+    /**
+     * Overrides for the settings in `config/controllers.js`
+     * (specific to FlowController)
+     */
+    _config: {}
 
-  
+
 };

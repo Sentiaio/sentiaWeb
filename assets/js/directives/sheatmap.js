@@ -143,23 +143,28 @@ angular.module('sHeatmap', [])
 
         return simpleheat;
     })
-    .directive('sHeatmap', ['simpleheat',
-        function(simpleheat) {
+    .directive('sHeatmap', ['simpleheat', '$filter',
+        function(simpleheat, $filter) {
             return {
                 template: '<canvas style="width : 100%; height : 100%"></canvas>',
                 restrict: 'E',
                 scope: {
                     data: '='
                 },
-                link: function (scope, element, attrs) {
-                    attrs.$observe('data', function(data) {
-                        var canvas = element.find('canvas')[0];
+                link: function (scope, element) {
+                    scope.$watch('data', function() {
+                        var canvas = element.find('canvas')[0],
+                        data;
+
+                        if (!scope.data) {
+                            return;
+                        }
+                        data = $filter('heatfilter')(scope.data, 10);
                         canvas.width = data.cols;
                         canvas.height = data.rows;
-                        console.log(element[0].offsetWidth);
                         simpleheat(canvas)
-                            .radius(2, 1)
-                            .max(data.max)
+                            .radius(18,40)
+                            .max(data.max * 2.5)
                             .data(data.data)
                             .draw();
                     });

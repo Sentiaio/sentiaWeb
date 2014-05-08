@@ -49,6 +49,7 @@ module.exports = function(grunt) {
 
         // Bring in the socket.io client
         'bower_components/jquery/dist/jquery.min.js',
+        'bower_components/d3/d3.js',
         'bower_components/angular/angular.min.js',
         'bower_components/angular-route/angular-route.min.js',
         'bower_components/angular-sanitize/angular-sanitize.min.js',
