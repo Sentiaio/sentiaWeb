@@ -38,21 +38,18 @@ module.exports = {
                     data : {$ne : []}
                 }
             });
-            console.log(pipeline[0]);
             pipeline.push({
                 $group : {
                     _id : {$hour : '$time'},
                     avg : {$max : '$avg'}
                 }
             });
-            console.log(pipeline[1]);
             heat.aggregate(pipeline, function (err, result) {
                 if (err) {
                     console.log(err);
                     res.send(err, 500);
                     return;
                 }
-                console.log(result);
                 res.send(result);
             });
         });

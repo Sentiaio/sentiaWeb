@@ -17,7 +17,7 @@ angular.module('app')
             if(!$scope.credentials.email || !$scope.credentials.password) {return;}
             $http.post('/users/login', $scope.credentials)
                 .success(function (response) {
-                    $location.path('/dashboard');
+                    $location.path('/cameras');
                     $scope.$root.showHeader = true;
                     $scope.$root.user = response;
                 })

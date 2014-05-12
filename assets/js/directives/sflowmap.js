@@ -19,9 +19,8 @@ angular.module('sFlowmap', [])
                     if (!scope.data) {
                         return;
                     }
-                    width = element.width() * 4;
-                    height = element.height() * 4;
-
+                    width = element.width()*5;
+                    height = element.height() * 5;
                     opacity = d3.scale.linear()
                         .domain([0, scope.data.max])
                         .range(['.1', '.5']);
@@ -32,13 +31,11 @@ angular.module('sFlowmap', [])
                     scaley = d3.scale.linear()
                         .domain([0, scope.data.rows])
                         .range([0, height]);
-
-
                     d3.select(element[0])
                         .select('svg')
+                        .text('')
                         .attr('viewBox', '0 0 '+width+' '+height) // + scope.data.cols + ' ' + scope.data.rows)
-                    .selectAll('path')
-                        .remove()
+                        .selectAll('path')
                         .data(scope.data.data)
                         .enter()
                         .append('path')
