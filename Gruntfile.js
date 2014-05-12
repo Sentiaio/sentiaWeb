@@ -14,7 +14,7 @@
  * More information on using Grunt to work with static assets:
  * http://gruntjs.com/configuring-tasks
  */
-
+'use strict';
 module.exports = function(grunt) {
 
 
@@ -57,6 +57,7 @@ module.exports = function(grunt) {
         'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
         'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-md5/angular-md5.js',
+        'bower_components/moment/moment.js',
         'js/socket.io.js',
 
         // then beef it up with some convenience logic for talking to Sails.js

@@ -26,8 +26,8 @@
                     </div>
                     <div class="container-fluid">
                         <div class="row">
-                            <ul id="camera-timeline" class="timeline well" ng-show="timeline">
-                                <li ng-repeat="value in timeline.data track by $index" class="timeline-item" tooltip="{{$index}}:00" tooltip-append-to-body="true" tooltip-placement="bottom" ng-click="updateMap($index)">
+                            <ul id="camera-timeline" class="timeline well">
+                                <li ng-repeat="value in timeline.data track by $index" class="timeline-item" tooltip="{{$index}}:00" tooltip-append-to-body="true" tooltip-placement="bottom" ng-click="setHour($index)" ng-class="{active: mapQuery.hour === $index}">
                                     <div class="timeline-bar" style="height: {{10 + (value / timeline.max) *100}}%" ></div>
                                 </li>    
                             </ul>
@@ -38,9 +38,9 @@
                     <div id="camera-control" class="row clearfix" role="form">
                         <div class="col-sm-4 col-md-12">
                             <div class="form-group">
-                            <input type="radio" name="mapType" ng-model="map.type" value="heat" id ="cam-maptype-heat">
+                            <input type="radio" name="mapType" ng-model="mapQuery.type" value="heat" id ="cam-maptype-heat">
                                 <label class="radio-inline" for="cam-maptype-heat">Heatmap</label>
-                            <input type="radio" name="mapType" ng-model="map.type" value="flow" id ="cam-maptype-flow"> 
+                            <input type="radio" name="mapType" ng-model="mapQuery.type" value="flow" id ="cam-maptype-flow"> 
                                 <label class="radio-inline"  for="cam-maptype-flow">Flowmap</label>
                             </div>
                         </div>

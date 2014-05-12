@@ -164,7 +164,7 @@ angular.module('sHeatmap', [])
                         canvas.height = data.rows;
                         simpleheat(canvas)
                             .radius(18,40)
-                            .max(data.max * 2.5)
+                            .max(data.max * 2)
                             .data(data.data)
                             .draw();
                     });

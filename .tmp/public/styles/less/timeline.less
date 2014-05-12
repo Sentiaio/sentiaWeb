@@ -15,6 +15,7 @@
 	position:relative;
 	cursor:pointer;
 	color : white;
+
 }
 .timeline-bar {
 	position:absolute;
@@ -22,7 +23,10 @@
 	bottom: 0;
 	width:100%;
 	border:1px solid white;
-	background-color : @brand-primary;
+	background-color : lighten(@brand-primary, 20%);
+	.active>& {
+		background-color : @brand-primary
+	}
 }
 .timeline-header {
 	display: block;

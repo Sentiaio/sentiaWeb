@@ -26,7 +26,8 @@
 	"globals" : {
 		"angular" : false,
 		"$": true,
-		"d3": false
+		"d3": false,
+		"moment" : false
 
 	}	
 }

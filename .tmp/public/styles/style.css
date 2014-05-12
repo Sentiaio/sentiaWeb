@@ -3164,6 +3164,10 @@ s-flowmap {
   left: 0;
   top: 0;
 }
+s-heatmap > canvas,
+s-flowmap > canvas {
+  opacity: 0.6;
+}
 .scroll-x {
   overflow-x: auto;
 }
@@ -3532,6 +3536,9 @@ svg .arrow {
   bottom: 0;
   width: 100%;
   border: 1px solid white;
+  background-color: #9cd2ff;
+}
+.active > .timeline-bar {
   background-color: #36a3ff;
 }
 .timeline-header {
@@ -3766,7 +3773,14 @@ svg .arrow {
 }
 @media (max-width: 768px) {
   .container-swipe {
-    overflow: auto;
+    overflow: visible;
+    width: 100%;
+    -webkit-transition: left 300ms;
+    -moz-transition: left 300ms;
+    -ms-transition: left 300ms;
+    -o-transition: left 300ms;
+    transition: left 300ms;
+    position: relative;
     white-space: nowrap;
   }
   .container-swipe .col-swipe {

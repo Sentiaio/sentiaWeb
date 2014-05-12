@@ -42,10 +42,10 @@ angular.module('sFlowmap', [])
                         .attr('fill', 'red')
                         .attr('d', 'm 15 0 l-30 -10 l 5 10 l-5 10 z')
                         .attr('transform', function(d) {
-                            return 'translate(' + scalex(d.x) + ',' + scaley(d.y) + '), rotate(' + d.angle + ')';
+                            return 'translate(' + scalex(d.x) + ',' + scaley(d.y) + '), rotate(' + d.angle/(2*Math.Pi)*360 + ')';
                         })
                         .attr('opacity', function(d) {
-                            return opacity(d.value);
+                            return opacity(d.magnitude);
                         });
                 });
             }
