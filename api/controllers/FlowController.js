@@ -31,6 +31,7 @@ module.exports = {
             pipeline = [];
             pipeline.push({
                 $match: {
+                    company : objectId(req.session.user.company),
                     cam: objectId(data.cam),
                     time: {
                         $gte: from,
@@ -72,6 +73,7 @@ module.exports = {
         Flow.native(function(err, flow) {
             var query, projection;
             query = {
+                company : objectId(req.session.user.company),
                 cam: objectId(data.cam),
                 time: {
                     $gte: from,

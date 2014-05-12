@@ -14,17 +14,24 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-
+/*globals Cameras:false*/
+var objectId = require('mongodb').ObjectID;
+'use strict';
 module.exports = {
-    
-  
-
-
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to CamerasController)
-   */
-  _config: {}
-
-  
+    find: function(req, res) {
+        console.log(req.session.user.company);
+        console.log(typeof req.session.user.company);
+        Cameras.find()
+            .where({
+                company: objectId(req.session.user.company)
+            })
+            .exec(function(err, cameras) {
+                res.send(cameras);
+            });
+    },
+    /**
+     * Overrides for the settings in `config/controllers.js`
+     * (specific to CamerasController)
+     */
+    _config: {}
 };

@@ -30,6 +30,7 @@ module.exports = {
             pipeline = [];
             pipeline.push({
                 $match : {
+                    company : objectId(req.session.user.company),
                     cam : objectId(data.cam),
                     time : {
                         $gte : from,
@@ -62,6 +63,7 @@ module.exports = {
         Heat.native(function (err, heat) {
             var query, projection;
             query =  {
+                company : objectId(req.session.user.company),
                 cam : objectId(data.cam),
                 time : {
                     $gte : from,
