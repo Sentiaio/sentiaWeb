@@ -14,16 +14,23 @@ angular.module('sFlowmap', [])
             },
             link: function postLink(scope, element) {
                 scope.$watch('data', function() {
-                    var opacity, scalex, scaley, width, height;
+                    var color, scalex, scaley, width, height;
 
                     if (!scope.data) {
                         return;
                     }
-                    width = element.width()*5;
-                    height = element.height() * 5;
-                    opacity = d3.scale.linear()
+                    var data = [];
+                    for (var i = 0; i < scope.data.data.length; i += 1){
+                    	if (scope.data.data[i].x%3 === 0 && scope.data.data[i].y%3 === 0) {
+                    		data.push(scope.data.data[i]);
+                    	}
+                    }
+                    width = element.width()*2.5;
+                    height = element.height() * 2.5;
+                    color = d3.scale.linear()
                         .domain([0, scope.data.max])
-                        .range(['.1', '.5']);
+                        .range(['#fee0d2', 'red']);
+
 
                     scalex = d3.scale.linear()
                         .domain([0, scope.data.cols])
@@ -36,17 +43,17 @@ angular.module('sFlowmap', [])
                         .text('')
                         .attr('viewBox', '0 0 '+width+' '+height) // + scope.data.cols + ' ' + scope.data.rows)
                         .selectAll('path')
-                        .data(scope.data.data)
+                        // .data(scope.data.data)
+                        .data(data)
                         .enter()
                         .append('path')
-                        .attr('fill', 'red')
+                        .attr('fill', function (d) {
+                        	return color(d.magnitude);
+                        })
                         .attr('d', 'm 15 0 l-30 -10 l 5 10 l-5 10 z')
                         .attr('transform', function(d) {
                             return 'translate(' + scalex(d.x) + ',' + scaley(d.y) + '), rotate(' + d.angle/(2*Math.PI)*360 + ')';
                         })
-                        .attr('opacity', function(d) {
-                            return opacity(d.magnitude);
-                        });
                 });
             }
         };
