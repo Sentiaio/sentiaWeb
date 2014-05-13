@@ -37,7 +37,7 @@ module.exports.session = {
   // Uncomment the following lines to use your Mongo adapter as a session store
   adapter: 'mongo',
   
-  host: 'localhost',
+  host: 'app.sentia.io',
   port: 27017,
   db: 'sentiaWeb',
   collection: 'sessions',
