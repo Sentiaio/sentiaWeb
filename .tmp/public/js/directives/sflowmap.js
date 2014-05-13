@@ -29,7 +29,7 @@ angular.module('sFlowmap', [])
                     height = element.height() * 2.5;
                     color = d3.scale.linear()
                         .domain([0, scope.data.max])
-                        .range(['#fee0d2', 'red']);
+                        .range(['#FFFF83', 'red']);
 
 
                     scalex = d3.scale.linear()
