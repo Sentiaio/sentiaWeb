@@ -8,40 +8,40 @@
 /*jslint node:true, nomen:true*/
 'use strict';
 var bcrypt = require('bcrypt');
-
 module.exports = {
-    attributes: {
-        firstname : 'STRING',
-        lastname : 'STRING',
-        email : {
-            type : 'email',
-            required : true,
-            unique : true
-        },
-        password: {
-            type: 'string',
-            minLength: 8,
-            required: true
-        },
-        toJSON: function() {
-            var obj = this.toObject();
-            delete obj.password;
-            return obj;
+  attributes: {
+    firstname: 'STRING',
+    lastname: 'STRING',
+    email: {
+      type: 'email',
+      required: true,
+      unique: true
+    },
+    password: {
+      type: 'string',
+      minLength: 8,
+      required: true
+    },
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      return obj;
+    }
+  },
+  beforeCreate: function(attrs, next) {
+    bcrypt.genSalt(10, function(err, salt) {
+      if (err) {
+        return next(err);
+      }
+
+      bcrypt.hash(attrs.password, salt, function(err, hash) {
+        if (err) {
+          return next(err);
         }
 
-    },
-    beforeCreate: function (attrs, next) {
-        bcrypt.genSalt(10, function(err, salt) {
-            if (err) {return next(err);}
-
-            bcrypt.hash(attrs.password, salt, function(err, hash) {
-                if (err) {return next(err);}
-
-                attrs.password = hash;
-                next();
-            });
-        });
-    }
-    
-
+        attrs.password = hash;
+        next();
+      });
+    });
+  }
 };
