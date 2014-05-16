@@ -17,6 +17,14 @@ angular.module('app')
             if(!$scope.credentials.email || !$scope.credentials.password) {return;}
             $http.post('/users/login', $scope.credentials)
                 .success(function (response) {
+                    mixpanel.identify(response.id);
+                    mixpanel.people.set(angular.copy({
+                      "$first_name": response.firstname,
+                      "$last_name": response.lastname,
+                      "$created": response.createdAt,
+                      "$email": response.email
+                  }, response));
+                    mixpanel.track('logged in', response);
                     $location.path('/cameras');
                     $scope.$root.showHeader = true;
                     $scope.$root.user = response;
@@ -24,9 +32,12 @@ angular.module('app')
                 .error(function (error) {
                     console.log('ERROR');
                     $scope.loginError = error.error;
+                    mixpanel.track('Login Fail', {
+                      email : $scope.cedentials.email
+                    });
                 });
         };
-        
+
     }]);
 
 

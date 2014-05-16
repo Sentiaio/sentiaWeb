@@ -44,7 +44,7 @@ module.exports = function(grunt) {
 
     var jsFilesToInject = [
 
-        // Below, as a demonstration, you'll see the built-in dependencies 
+        // Below, as a demonstration, you'll see the built-in dependencies
         // linked in the proper order order
 
         // Bring in the socket.io client
@@ -57,6 +57,10 @@ module.exports = function(grunt) {
         'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
         'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-md5/angular-md5.js',
+        'bower_components/angulartics/dist/angulartics.min.js',
+        'bower_components/angulartics/dist/angulartics-ga.min.js',
+
+        'bower_components/angulartics/dist/angulartics-mixpanel.min.js',
         'bower_components/moment/moment.js',
         'js/socket.io.js',
 
@@ -119,12 +123,12 @@ module.exports = function(grunt) {
     /////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////
 
-    // Modify css file injection paths to use 
+    // Modify css file injection paths to use
     cssFilesToInject = cssFilesToInject.map(function(path) {
         return '.tmp/public/' + path;
     });
 
-    // Modify js file injection paths to use 
+    // Modify js file injection paths to use
     jsFilesToInject = jsFilesToInject.map(function(path) {
         return '.tmp/public/' + path;
     });
@@ -445,8 +449,12 @@ module.exports = function(grunt) {
                 files: ['assets/**/*'],
 
                 // When assets are changed:
-                tasks: ['compileAssets', 'linkAssets']
+                tasks: ['compileAssets', 'linkAssets'],
+                options : {
+                  livereload : 35729
+                }
             }
+
         },
         sshconfig : sshconfig,
         sshexec : sshexec,

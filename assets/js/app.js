@@ -20,7 +20,10 @@
             'ui.utils',
             'ngAnimate',
             'sHeatmap',
-            'sFlowmap'
+            'sFlowmap',
+            'angulartics',
+            'angulartics.google.analytics',
+            'angulartics.mixpanel',
         ]);
     // configure routes
     // Controllers are definedd in controllers.js
@@ -54,7 +57,7 @@
 // init sockets
 (function (io) {
     'use strict';
-  // as soon as this file is loaded, connect automatically, 
+  // as soon as this file is loaded, connect automatically,
     var socket = io.connect();
     // Simple log function to keep the example simple
     function log () {
@@ -84,7 +87,7 @@
 
         ///////////////////////////////////////////////////////////
         // Here's where you'll want to add any custom logic for
-        // when the browser establishes its socket connection to 
+        // when the browser establishes its socket connection to
         // the Sails.js server.
         ///////////////////////////////////////////////////////////
         log(
