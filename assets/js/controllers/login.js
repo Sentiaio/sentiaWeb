@@ -25,6 +25,7 @@ angular.module('app')
                       "$email": response.email
                   }, response));
                     mixpanel.track('logged in', response);
+                    ga('send', 'event', 'login', 'Login', response);
                     $location.path('/cameras');
                     $scope.$root.showHeader = true;
                     $scope.$root.user = response;
@@ -33,6 +34,9 @@ angular.module('app')
                     console.log('ERROR');
                     $scope.loginError = error.error;
                     mixpanel.track('Login Fail', {
+                      email : $scope.cedentials.email
+                    });
+                    ga('send', 'event', 'login', 'Login Fail', {
                       email : $scope.cedentials.email
                     });
                 });

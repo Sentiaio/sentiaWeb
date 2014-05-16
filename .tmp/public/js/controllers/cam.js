@@ -34,6 +34,12 @@ angular.module('app')
               cam: $scope.selectedCam.id,
               camName: $scope.selectedCam.name,
             });
+            ga('send', 'event', 'cam', 'updateMap',{
+              type: $scope.mapQuery.typ,
+              date : query.date,
+              cam: $scope.selectedCam.id,
+              camName: $scope.selectedCam.name,
+            });
             console.log(response);
           })
           .error(function(error, status) {
@@ -57,6 +63,7 @@ angular.module('app')
           $scope.cams = response;
           mixpanel.track('Get Camera List', {
           });
+          ga('send', 'event', 'cam', 'getCams',{});
         });
       };
       getTimeline = function() {
@@ -83,6 +90,11 @@ angular.module('app')
               data: data
             };
             mixpanel.track('Get Timeline', {
+              date: data.date,
+              cam: $scope.selectedCam.id,
+              camName: $scope.selectedCam.name,
+            });
+            ga('send', 'event', 'cam', 'getTimeline',{
               date: data.date,
               cam: $scope.selectedCam.id,
               camName: $scope.selectedCam.name,
