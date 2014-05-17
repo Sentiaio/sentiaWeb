@@ -58,8 +58,6 @@ module.exports = function(grunt) {
         'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-md5/angular-md5.js',
         'bower_components/angulartics/dist/angulartics.min.js',
-        'bower_components/angulartics/dist/angulartics-ga.min.js',
-
         'bower_components/angulartics/dist/angulartics-mixpanel.min.js',
         'bower_components/moment/moment.js',
         'js/socket.io.js',

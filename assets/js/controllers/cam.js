@@ -28,27 +28,23 @@ angular.module('app')
               $scope.flowmap = response;
               $scope.heatmap = undefined;
             }
-            mixpanel.track('Update Map', {
-              type: $scope.mapQuery.typ,
+            mixpanel.track('View Map', {
+              cam : query.cam,
               date : query.date,
-              cam: $scope.selectedCam.id,
-              camName: $scope.selectedCam.name,
-            });
-            ga('send', 'event', 'cam', 'updateMap',{
-              type: $scope.mapQuery.typ,
-              date : query.date,
-              cam: $scope.selectedCam.id,
-              camName: $scope.selectedCam.name,
+              type : $scope.mapQuery.type
             });
             console.log(response);
           })
           .error(function(error, status) {
           console.log(status);
           console.log(error);
+          mixpanel.track('View Map Error', {
+              cam : query.cam,
+              date : query.date
+            });
         });
       };
       getCams = function() {
-        console.log("fetching cams");
         var query = {
           // where : {
           //     store : "52fd38afe0461b48a7f9c297"
@@ -61,9 +57,6 @@ angular.module('app')
           }
           console.log(response);
           $scope.cams = response;
-          mixpanel.track('Get Camera List', {
-          });
-          ga('send', 'event', 'cam', 'getCams',{});
         });
       };
       getTimeline = function() {
@@ -82,22 +75,16 @@ angular.module('app')
               data[i] = 0;
             }
             for (i = 0; i < response.length; i += 1) {
-              data[response[i]._id] = response[i].avg || 0;
-              max = Math.max(max, response[i].avg);
+              data[response[i]._id] = response[i].count || 0;
+              max = Math.max(max, response[i].count);
             }
             $scope.timeline = {
               max: max,
               data: data
             };
-            mixpanel.track('Get Timeline', {
-              date: data.date,
-              cam: $scope.selectedCam.id,
-              camName: $scope.selectedCam.name,
-            });
-            ga('send', 'event', 'cam', 'getTimeline',{
-              date: data.date,
-              cam: $scope.selectedCam.id,
-              camName: $scope.selectedCam.name,
+            mixpanel.track('Update Timeline', {
+              cam : data.cam,
+              date : data.date
             });
 
           })
@@ -139,6 +126,4 @@ angular.module('app')
         getTimeline();
         updateMap();
       });
-
-
     }]);

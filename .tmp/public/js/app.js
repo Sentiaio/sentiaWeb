@@ -11,6 +11,7 @@
 
 (function () {
     'use strict';
+
     // create new angular module app
     var app = angular.module('app', [
             'ngRoute',
@@ -22,8 +23,7 @@
             'sHeatmap',
             'sFlowmap',
             'angulartics',
-            'angulartics.google.analytics',
-            'angulartics.mixpanel',
+            'angulartics.mixpanel'
         ]);
     // configure routes
     // Controllers are definedd in controllers.js

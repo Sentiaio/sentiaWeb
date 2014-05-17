@@ -7,7 +7,7 @@
                     <li ng-repeat="cam in cams | filter: camSearch " ng-click="$parent.selectedCam = cam" ng-class="{active: selectedCam.id === cam.id}" class="widget widget-white a widget-content gutter-top">
                         <img ng-src="/images/cameras/{{cam.id}}.png" alt="" class="header-image">
                         <h5 class="searchable caps" ng-bind-html="'{{cam.name}}' | highlight:camSearch:false"></h5>
-                    </li>  
+                    </li>
                 </ul>
             </div>
         </div>
@@ -29,7 +29,7 @@
                             <ul id="camera-timeline" class="timeline well">
                                 <li ng-repeat="value in timeline.data track by $index" class="timeline-item" tooltip="{{$index}}:00" tooltip-append-to-body="true" tooltip-placement="bottom" ng-click="setHour($index)" ng-class="{active: mapQuery.hour === $index}">
                                     <div class="timeline-bar" style="height: {{10 + (value / timeline.max) *100}}%" ></div>
-                                </li>    
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                             <div class="form-group">
                             <input type="radio" name="mapType" ng-model="mapQuery.type" value="heat" id ="cam-maptype-heat">
                                 <label class="radio-inline" for="cam-maptype-heat">Heatmap</label>
-                            <input type="radio" name="mapType" ng-model="mapQuery.type" value="flow" id ="cam-maptype-flow"> 
+                            <input type="radio" name="mapType" ng-model="mapQuery.type" value="flow" id ="cam-maptype-flow">
                                 <label class="radio-inline"  for="cam-maptype-flow">Flowmap</label>
                             </div>
                         </div>
