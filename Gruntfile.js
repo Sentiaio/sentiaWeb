@@ -421,7 +421,7 @@ module.exports = function(grunt) {
                 command: [
                     'pm2 dump',
                     'pm2 kill',
-                    'pm2 start app.js --nodeArgs "--prod" --name sentia'
+                    'pm2 start /home/ubuntu/www/app.js --name sentia'
                 ].join('&&')
             }
         }
