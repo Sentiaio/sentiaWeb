@@ -173,11 +173,6 @@ module.exports = function(grunt) {
                     src: ['**/*'],
                     dest: 'www'
                 }]
-            },
-            deploy : {
-                expand : true,
-                src : '**',
-                dest : '/home/ubuntu/www/'
             }
         },
 
@@ -489,7 +484,6 @@ module.exports = function(grunt) {
         // 'prod',
         // 'jshint',
         // 'test',
-        'copy:deploy',
         'shell:pm2'
 
     ]);
