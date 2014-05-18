@@ -1,11 +1,11 @@
 {
   "name": "sentiaWeb",
   "private": true,
-  "version": "0.0.6",
+  "version": "0.0.1",
   "description": "a Sails application",
   "dependencies": {
     "sails": "0.9.16",
-    "grunt": "0.4.1",
+    "grunt": "0.4.4",
     "sails-disk": "~0.9.0",
     "ejs": "0.8.4",
     "optimist": "0.3.4",
