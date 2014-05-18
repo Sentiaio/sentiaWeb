@@ -417,7 +417,7 @@ module.exports = function(grunt) {
                     'export PORT=3000',
                     'pm2 dump',
                     'pm2 kill',
-                    'pm2 start /home/ubuntu/www/app.js --name sentia'
+                    'pm2 start app.js --name sentia'
                 ].join('&&')
             }
         }
