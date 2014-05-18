@@ -462,7 +462,6 @@ module.exports = function(grunt) {
         'copy:build'
     ]);
     grunt.registerTask('test', [
-        'karma'
     ]);
     // When sails is lifted in production
     grunt.registerTask('prod', [
