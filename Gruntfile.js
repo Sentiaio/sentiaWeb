@@ -148,35 +148,6 @@ module.exports = function(grunt) {
     grunt.loadTasks(depsPath + '/grunt-contrib-uglify/tasks');
     grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
     grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
-    grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
-
-
-
-    var sshconfig = {
-        sentiaAWS: {
-            host: 'app.sentia.io',
-            username: 'ubuntu',
-            // privateKey: grunt.file.read("~/.ssh/sentia.pem"),
-            // passphrase: <%= secret.passphrase %>
-            agent: process.env.SSH_AUTH_SOCK
-        }
-    };
-    console.log(process.env.SSH_AUTH_SOCK);
-    var sshexec = {
-        deploy: {
-            command: [
-                'cd ~/repos/sentiaWeb',
-                'git pull origin master',
-                'npm install',
-                'forever stop app.js',
-                'forever start app.js',
-                'forever list'
-            ].join(' && '),
-            options: {
-                config: 'sentiaAWS'
-            }
-        }
-    };
 
 
 
@@ -191,7 +162,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: './assets',
-                    src: ['**/*.!(coffee)'],
+                    src: ['**/*'],
                     dest: '.tmp/public'
                 }]
             },
@@ -202,6 +173,11 @@ module.exports = function(grunt) {
                     src: ['**/*'],
                     dest: 'www'
                 }]
+            },
+            deploy : {
+                expand : true,
+                src : '**',
+                dest : '/home/ubuntu/www/'
             }
         },
 
@@ -240,27 +216,6 @@ module.exports = function(grunt) {
                     src: ['*.less'],
                     dest: '.tmp/public/linker/styles/',
                     ext: '.css'
-                }]
-            }
-        },
-
-        coffee: {
-            dev: {
-                options: {
-                    bare: true
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'assets/js/',
-                    src: ['**/*.coffee'],
-                    dest: '.tmp/public/js/',
-                    ext: '.js'
-                }, {
-                    expand: true,
-                    cwd: 'assets/linker/js/',
-                    src: ['**/*.coffee'],
-                    dest: '.tmp/public/linker/js/',
-                    ext: '.js'
                 }]
             }
         },
@@ -454,14 +409,21 @@ module.exports = function(grunt) {
             }
 
         },
-        sshconfig : sshconfig,
-        sshexec : sshexec,
         // Test settings
         karma: {
           unit: {
             configFile: 'karma.conf.js',
             singleRun: true
           }
+        },
+        shell : {
+            pm2 : {
+                command: [
+                    'pm2 dump',
+                    'pm2 kill',
+                    'pm2 start app.js --nodeArgs "--prod" --name sentia'
+                ].join('&&')
+            }
         }
     });
 
@@ -503,14 +465,15 @@ module.exports = function(grunt) {
         'clean:build',
         'copy:build'
     ]);
-
+    grunt.registerTask('test', [
+        'karma'
+    ]);
     // When sails is lifted in production
     grunt.registerTask('prod', [
         'clean:dev',
         'jst:dev',
         'less:dev',
         'copy:dev',
-        'coffee:dev',
         'concat',
         'uglify',
         'cssmin',
@@ -522,10 +485,16 @@ module.exports = function(grunt) {
         'sails-linker:devTplJADE'
     ]);
     grunt.registerTask('deploy', [
-        'sshexec:deploy'
+        // 'prod',
+        // 'jshint',
+        // 'test',
+        'copy:deploy',
+        'shell:pm2'
+
     ]);
     grunt.loadNpmTasks('grunt-ssh');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-shell');
 
 
     // When API files are changed:
