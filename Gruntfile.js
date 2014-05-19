@@ -327,7 +327,6 @@ module.exports = function(grunt) {
         'jst:dev',
         'less:dev',
         'copy:dev',
-        'coffee:dev'
     ]);
 
     grunt.registerTask('linkAssets', [
@@ -335,10 +334,7 @@ module.exports = function(grunt) {
         // Update link/script/template references in `assets` index.html
         'sails-linker:devJs',
         'sails-linker:devStyles',
-        'sails-linker:devTpl',
-        'sails-linker:devJsJADE',
-        'sails-linker:devStylesJADE',
-        'sails-linker:devTplJADE'
+        'sails-linker:devTpl'
     ]);
 
 
@@ -362,10 +358,7 @@ module.exports = function(grunt) {
         'cssmin',
         'sails-linker:prodJs',
         'sails-linker:prodStyles',
-        'sails-linker:devTpl',
-        'sails-linker:prodJsJADE',
-        'sails-linker:prodStylesJADE',
-        'sails-linker:devTplJADE'
+        'sails-linker:devTpl'
     ]);
     grunt.registerTask('deploy', [
         // 'prod',
