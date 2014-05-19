@@ -83,7 +83,6 @@ module.exports = function(grunt) {
         'js/controllers/*.js',
         'js/directives/*.js',
         'js/filters/*.js'
-
     ];
 
     /**
