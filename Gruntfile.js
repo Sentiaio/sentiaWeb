@@ -117,8 +117,6 @@ module.exports = function(grunt) {
         return 'assets/' + path;
     });
 
-
-
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
