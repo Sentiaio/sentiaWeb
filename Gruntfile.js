@@ -481,7 +481,6 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('deploy', [
         // 'prod',
-        // 'jshint',
         // 'test',
         'shell:pm2'
 
