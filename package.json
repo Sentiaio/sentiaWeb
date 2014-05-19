@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "node app.js --prod",
+    "postinstall" : "grunt deploy",
     "debug": "node debug app.js"
   },
   "main": "app.js",
