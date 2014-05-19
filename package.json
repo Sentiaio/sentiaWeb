@@ -6,19 +6,19 @@
   "dependencies": {
     "sails": "0.9.16",
     "grunt-ssh": "~0.11.1",
-    "grunt-legacy-util" : "*",
+    "grunt-legacy-util": "*",
     "grunt-karma": "~0.8.3",
     "sails-disk": "~0.9.0",
     "ejs": "0.8.4",
     "optimist": "0.3.4",
     "bcrypt": "0.7.8",
     "sails-mongo": "~0.9.7",
-    "mongodb": "~1.4.3"
-
+    "mongodb": "~1.4.3",
+    "grunt-shell": "~0.7.0"
   },
   "scripts": {
     "start": "node app.js --prod",
-    "postinstall" : "grunt deploy",
+    "postinstall": "grunt deploy",
     "debug": "node debug app.js"
   },
   "main": "app.js",
