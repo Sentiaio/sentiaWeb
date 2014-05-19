@@ -17,6 +17,17 @@
 'use strict';
 module.exports = function(grunt) {
 
+    // Get path to core grunt dependencies from Sails
+    var depsPath = grunt.option('gdsrc') || 'node_modules/sails/node_modules';
+    grunt.loadTasks(depsPath + '/grunt-contrib-clean/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-copy/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-concat/tasks');
+    grunt.loadTasks(depsPath + '/grunt-sails-linker/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-jst/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-watch/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-uglify/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
 
 
     /**
@@ -28,12 +39,9 @@ module.exports = function(grunt) {
      * below for more options.  For this to work, you may need to install new
      * dependencies, e.g. `npm install grunt-contrib-sass`
      */
-
     var cssFilesToInject = [
         'linker/**/*.css'
     ];
-
-
     /**
      * Javascript files to inject in order
      * (uses Grunt-style wildcard/glob/splat expressions)
@@ -94,33 +102,6 @@ module.exports = function(grunt) {
     ];
 
 
-
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    //
-    // DANGER:
-    //
-    // With great power comes great responsibility.
-    //
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////
-
     // Modify css file injection paths to use
     cssFilesToInject = cssFilesToInject.map(function(path) {
         return '.tmp/public/' + path;
@@ -135,21 +116,6 @@ module.exports = function(grunt) {
     templateFilesToInject = templateFilesToInject.map(function(path) {
         return 'assets/' + path;
     });
-
-
-    // Get path to core grunt dependencies from Sails
-    var depsPath = grunt.option('gdsrc') || 'node_modules/sails/node_modules';
-    grunt.loadTasks(depsPath + '/grunt-contrib-clean/tasks');
-    grunt.loadTasks(depsPath + '/grunt-contrib-copy/tasks');
-    grunt.loadTasks(depsPath + '/grunt-contrib-concat/tasks');
-    grunt.loadTasks(depsPath + '/grunt-sails-linker/tasks');
-    grunt.loadTasks(depsPath + '/grunt-contrib-jst/tasks');
-    grunt.loadTasks(depsPath + '/grunt-contrib-watch/tasks');
-    grunt.loadTasks(depsPath + '/grunt-contrib-uglify/tasks');
-    grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
-    grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
-
-
 
 
 
@@ -183,13 +149,6 @@ module.exports = function(grunt) {
 
         jst: {
             dev: {
-
-                // To use other sorts of templates, specify the regexp below:
-                // options: {
-                //   templateSettings: {
-                //     interpolate: /\{\{(.+?)\}\}/g
-                //   }
-                // },
 
                 files: {
                     '.tmp/public/jst.js': templateFilesToInject
@@ -241,7 +200,6 @@ module.exports = function(grunt) {
         },
 
         'sails-linker': {
-
             devJs: {
                 options: {
                     startTag: '<!--SCRIPTS-->',
@@ -313,76 +271,7 @@ module.exports = function(grunt) {
                     'views/**/*.html': ['.tmp/public/jst.js'],
                     'views/**/*.ejs': ['.tmp/public/jst.js']
                 }
-            },
-
-
-            /*******************************************
-             * Jade linkers (TODO: clean this up)
-             *******************************************/
-
-            devJsJADE: {
-                options: {
-                    startTag: '// SCRIPTS',
-                    endTag: '// SCRIPTS END',
-                    fileTmpl: 'script(type="text/javascript", src="%s")',
-                    appRoot: '.tmp/public'
-                },
-                files: {
-                    'views/**/*.jade': jsFilesToInject
-                }
-            },
-
-            prodJsJADE: {
-                options: {
-                    startTag: '// SCRIPTS',
-                    endTag: '// SCRIPTS END',
-                    fileTmpl: 'script(type="text/javascript", src="%s")',
-                    appRoot: '.tmp/public'
-                },
-                files: {
-                    'views/**/*.jade': ['.tmp/public/min/production.js']
-                }
-            },
-
-            devStylesJADE: {
-                options: {
-                    startTag: '// STYLES',
-                    endTag: '// STYLES END',
-                    fileTmpl: 'link(rel="stylesheet", href="%s")',
-                    appRoot: '.tmp/public'
-                },
-                files: {
-                    'views/**/*.jade': cssFilesToInject
-                }
-            },
-
-            prodStylesJADE: {
-                options: {
-                    startTag: '// STYLES',
-                    endTag: '// STYLES END',
-                    fileTmpl: 'link(rel="stylesheet", href="%s")',
-                    appRoot: '.tmp/public'
-                },
-                files: {
-                    'views/**/*.jade': ['.tmp/public/min/production.css']
-                }
-            },
-
-            // Bring in JST template object
-            devTplJADE: {
-                options: {
-                    startTag: '// TEMPLATES',
-                    endTag: '// TEMPLATES END',
-                    fileTmpl: 'script(type="text/javascript", src="%s")',
-                    appRoot: '.tmp/public'
-                },
-                files: {
-                    'views/**/*.jade': ['.tmp/public/jst.js']
-                }
             }
-            /************************************
-             * Jade linker end
-             ************************************/
         },
 
         watch: {
@@ -398,21 +287,21 @@ module.exports = function(grunt) {
 
                 // When assets are changed:
                 tasks: ['compileAssets', 'linkAssets'],
-                options : {
-                  livereload : 35729
+                options: {
+                    livereload: 35729
                 }
             }
 
         },
         // Test settings
         karma: {
-          unit: {
-            configFile: 'karma.conf.js',
-            singleRun: true
-          }
+            unit: {
+                configFile: 'karma.conf.js',
+                singleRun: true
+            }
         },
-        shell : {
-            pm2 : {
+        shell: {
+            pm2: {
                 command: [
                     'export PORT=3000',
                     'pm2 dump',
@@ -461,8 +350,7 @@ module.exports = function(grunt) {
         'clean:build',
         'copy:build'
     ]);
-    grunt.registerTask('test', [
-    ]);
+    grunt.registerTask('test', []);
     // When sails is lifted in production
     grunt.registerTask('prod', [
         'clean:dev',
