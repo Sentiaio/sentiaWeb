@@ -86,7 +86,6 @@ module.exports = function(grunt) {
 
     ];
 
-
     /**
      * Client-side HTML templates are injected using the sources below
      * The ordering of these templates shouldn't matter.
