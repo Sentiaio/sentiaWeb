@@ -300,7 +300,6 @@ module.exports = function(grunt) {
             pm2: {
                 command: [
                     'export PORT=3000',
-                    'npm install bcrypt',
                     'forever stopall',
                     'forever start app.js'
                 ].join('&&')
