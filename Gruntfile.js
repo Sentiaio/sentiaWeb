@@ -299,9 +299,9 @@ module.exports = function(grunt) {
         shell: {
             pm2: {
                 command: [
-                    'export PORT=3000',
-                    'forever stopall',
-                    'forever start app.js'
+                    'pm2 dump',
+                    'pm2 kill',
+                    'pm2 start app.js --name sentia'
                 ].join('&&')
             }
         }
