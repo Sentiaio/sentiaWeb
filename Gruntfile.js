@@ -300,9 +300,9 @@ module.exports = function(grunt) {
             pm2: {
                 command: [
                     'export PORT=3000',
-                    'pm2 dump',
-                    'pm2 kill',
-                    'pm2 start app.js --name sentia'
+                    'npm install bcrypt',
+                    'forever stopall',
+                    'forever start app.js'
                 ].join('&&')
             }
         }
