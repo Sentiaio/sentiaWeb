@@ -14,13 +14,14 @@
     "sails-mongo": "~0.9.7",
     "mongodb": "~1.4.3",
     "grunt-shell": "~0.7.0",
-    "bcrypt": "~0.7.8"
+    "bcrypt": "~0.7.8",
+    "underscore": "~1.6.0"
   },
   "scripts": {
     "start": "node app.js --prod",
     "postinstall": "grunt deploy",
     "debug": "node debug app.js",
-    "test" : "grunt test"
+    "test": "grunt test"
   },
   "main": "app.js",
   "repository": "",
