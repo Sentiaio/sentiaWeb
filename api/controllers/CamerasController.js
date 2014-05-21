@@ -15,8 +15,8 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 /*globals Cameras:false*/
-var objectId = require('mongodb').ObjectID;
 'use strict';
+var objectId = require('mongodb').ObjectID;
 module.exports = {
     find: function(req, res) {
         console.log(req.session.user.company);

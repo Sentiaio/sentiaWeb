@@ -26,40 +26,44 @@ module.exports = {
             var from = new Date(data.date);
             var to = new Date(data.date);
             to.setDate(to.getDate() + 1);
-            var pipeline;
-            pipeline = [];
-            pipeline.push({
-                $match: {
-                    company: objectId(req.session.user.company),
-                    cam: objectId(data.cam),
-                    time: {
-                        $gte: from,
-                        $lt: to
-                    },
-                    data: {
-                        $ne: []
+
+            function buildPipeline () {
+                var pipeline = [];
+                pipeline.push({
+                    $match: {
+                        company: objectId(req.session.user.company),
+                        cam: objectId(data.cam),
+                        time: {
+                            $gte: from,
+                            $lt: to
+                        },
+                        data: {
+                            $ne: []
+                        }
                     }
-                }
-            });
-            pipeline.push({
-                $unwind: '$data'
-            });
-            pipeline.push({
-                $group: {
-                    _id: {
-                        $hour: '$time'
-                    },
-                    avg: {
-                        $avg: '$avg'
-                    },
-                    count: {
-                        $sum: 1
+                });
+                pipeline.push({
+                    $unwind: '$data'
+                });
+                pipeline.push({
+                    $group: {
+                        _id: {
+                            $hour: '$time'
+                        },
+                        avg: {
+                            $avg: '$avg'
+                        },
+                        count: {
+                            $sum: 1
+                        }
                     }
-                }
-            });
-            pipeline.push({
-                $sort : {_id : 1}
-            });
+                });
+                pipeline.push({
+                    $sort : {_id : 1}
+                });
+            }
+            var pipeline = buildPipeline();
+
             heat.aggregate(pipeline, function(err, result) {
                 var i;
                 if (err) {

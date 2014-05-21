@@ -46,7 +46,8 @@ module.exports = function(grunt) {
      * Javascript files to inject in order
      * (uses Grunt-style wildcard/glob/splat expressions)
      *
-     * To use client-side CoffeeScript, TypeScript, etc., edit the
+     * To use client-side
+     * eScript, TypeScript, etc., edit the
      * `sails-linker:devJs` task below for more options.
      */
 
@@ -304,6 +305,44 @@ module.exports = function(grunt) {
                     'pm2 start app.js --name sentia'
                 ].join('&&')
             }
+        },
+        mochaTest: {
+            server: {
+                options: {
+                    reporter: 'spec',
+                    timeout: 4000
+                },
+                src: ['test/api/**/*.js']
+            }
+        },
+        jshint: {
+            options: {
+                jshintrc: true, // use .jshintrc in project root
+                reporter: require('jshint-stylish') // pretty output
+            },
+            server: ['api/**/*.js'],
+            frontend: [
+                'assets/js/app/**/*.js',
+                'assets/js/app/*.js'
+            ]
+        },
+        docco: {
+            frontend: {
+                src: ['assets/js/app/**/*.js'],
+                options: {
+                    output: 'documentation/frontend/'
+                }
+            },
+            server: {
+                src: [
+                    'api/models/*.js',
+                    'api/policies/*.js',
+                    'api/services/*.js'
+                ],
+                options: {
+                    output: 'documentation/server/'
+                }
+            }
         }
     });
 
@@ -364,6 +403,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ssh');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-docco');
+    grunt.loadNpmTasks('grunt-mocha-test');
 
 
     // When API files are changed:
