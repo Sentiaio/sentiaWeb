@@ -1,0 +1,31 @@
+{
+    "bitwise" : true,
+    "curly" : true,
+    "eqeqeq":true,
+    "forin":true,
+    "freeze":true,
+    "indent" :4,
+    "latedef":true,
+    "newcap":true,
+    "noarg":true,
+    "node" : true,
+    "noempty":true,
+    "nomen" : false,
+    "nonbsp":true,
+    "nonew":true,
+    "plusplus":true,
+    "quotmark":false,
+    "undef":true,
+    "unused":true,
+    "strict":true,
+    "trailing":true,
+    "maxparams":3,
+    "maxdepth":4,
+    "maxstatements" : 10,
+    "globals" : {
+        "describe":false,
+        "it" : false,
+        "before":false,
+        "after":false
+    }
+}

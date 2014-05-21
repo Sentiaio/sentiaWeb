@@ -13,15 +13,31 @@ module.exports = {
         /* e.g.
         nickname: 'string'
         */
-        id : "STRING",
-        store : 'STRING',
-        name : 'STRING'
-    
+        id : {
+            type :"string",
+            required : true
+        },
+        company : {
+            type :"string",
+            required : true
+        },
+        store : {
+            type :"string",
+            required : true
+        },
+        name : {
+            type :"string",
+            required : true
+        },
+
     },
-    beforeCreate: function (cam, next) {
+    beforeCreate: function (attrs, next) {
         try {
-            cam.store = objectId(cam.store);
-            cam.id = objectId(cam.id);
+            attrs.company = objectId(attrs.company);
+            attrs.store = objectId(attrs.store);
+            if (attrs.id) {
+                attrs.id = objectId(attrs.id);
+            }
         } catch (e) {
             return next('invalid object id');
         }

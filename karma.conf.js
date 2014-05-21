@@ -8,7 +8,7 @@ module.exports = function(config) {
         basePath: '',
 
         // testing framework to use (jasmine/mocha/qunit/...)
-        frameworks: ['jasmine'],
+        frameworks: ['mocha', 'sinon', 'chai'],
 
         // list of files / patterns to load in the browser
         files: [
@@ -31,8 +31,7 @@ module.exports = function(config) {
             'assets/js/controllers/*.js',
             'assets/js/directives/*.js',
             'assets/js/filters/*.js',
-            'karma/mock/**/*.js',
-            'karma/spec/**/*.js'
+            'test/karma/**/*.js'
         ],
 
         // list of files / patterns to exclude
@@ -48,7 +47,7 @@ module.exports = function(config) {
 
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: true,
-
+        reporters : ['mocha'],
 
         // Start these browsers, currently available:
         // - Chrome

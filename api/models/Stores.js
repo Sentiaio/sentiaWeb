@@ -16,11 +16,14 @@ module.exports = {
         /* e.g.
         nickname: 'string'
         */
-    
+
     },
-    beforeCreate: function (cam, next) {
+    beforeCreate: function (attrs, next) {
         try {
-            cam.id = objectId(cam.id);
+            if (attrs.hasOwnProperty('id')) {
+                attrs.id = objectId(attrs.id);
+            }
+            attrs.company = objectId(attrs.company);
         } catch (e) {
             return next('"id" is invalid');
         }

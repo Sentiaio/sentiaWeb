@@ -328,7 +328,7 @@ module.exports = function(grunt) {
         },
         docco: {
             frontend: {
-                src: ['assets/js/app/**/*.js'],
+                src: ['assets/js/**/*.js'],
                 options: {
                     output: 'documentation/frontend/'
                 }
@@ -352,8 +352,10 @@ module.exports = function(grunt) {
         'linkAssets',
         'watch'
     ]);
+
     grunt.registerTask('test', [
-        'karma'
+        'karma:unit',
+        'mochaTest:server'
     ]);
 
     grunt.registerTask('compileAssets', [
@@ -380,7 +382,6 @@ module.exports = function(grunt) {
         'clean:build',
         'copy:build'
     ]);
-    grunt.registerTask('test', []);
     // When sails is lifted in production
     grunt.registerTask('prod', [
         'clean:dev',
@@ -396,7 +397,7 @@ module.exports = function(grunt) {
     ]);
     grunt.registerTask('deploy', [
         // 'prod',
-        // 'test',
+        'test',
         'shell:pm2'
 
     ]);

@@ -23,6 +23,7 @@
 	"maxdepth":4,
 	"maxstatements" : 10,
 	"globals" : {
+    "Users":false
 
 	}
 }
