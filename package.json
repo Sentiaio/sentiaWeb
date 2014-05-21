@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "node app.js --prod",
-    "postinstall": "./node_modules/grunt/bin/grunt deploy",
+    "postinstall": "grunt deploy",
     "debug": "node debug app.js",
     "test": "grunt test"
   },
