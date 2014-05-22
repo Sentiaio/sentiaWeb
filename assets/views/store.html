@@ -1,0 +1,21 @@
+<div class="page container-fluid container-swipe">
+    <div class="row">
+        <div id="camera-list" class="container scroll scroll-y p-top p-bottom">
+            <div class="container-fluid">
+                <input type="text" id="camera-list-search" class="form-control" role="search" ng-model="camSearch">
+            </div>
+            <ul class="list list-widgets row">
+                <li ng-repeat="cam in cameras | filter : camSearch | orderBy : 'name'" ng-click="$parent.selectedCam = cam" ng-class="{active: selectedCam.id === cam.id}" class="col-md-4 col-sm-6">
+                <a href="#/store/camera#{{cam.id}}">
+                    <div class="widget widget-white a widget-content gutter-top">
+                        <div style="height :195px; overflow: hidden;">
+                            <img ng-src="/images/cameras/{{cam.id}}.png" alt="" class="header-image">
+                        </div>
+                        <h5 class="searchable caps" ng-bind-html="'{{cam.name}}' | highlight:camSearch:false"></h5>
+                    </div>
+                </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

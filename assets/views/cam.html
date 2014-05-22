@@ -1,32 +1,20 @@
-<div class="page container-fluid container-swipe full-height">
-    <div class="col-sm-3 col-swipe full-height">
-        <div class="row full-height">
-            <div id="camera-list" class="col-xs-12 full-height scroll scroll-y p-top">
-                <input type="text" id="camera-list-search" class="form-control" role="search" ng-model="camSearch">
-                <ul class="list list-widgets">
-                    <li ng-repeat="cam in cams | filter: camSearch " ng-click="$parent.selectedCam = cam" ng-class="{active: selectedCam.id === cam.id}" class="widget widget-white a widget-content gutter-top">
-                        <img ng-src="/images/cameras/{{cam.id}}.png" alt="" class="header-image">
-                        <h5 class="searchable caps" ng-bind-html="'{{cam.name}}' | highlight:camSearch:false"></h5>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-9 col-swipe full-height full-height scroll scroll-y p-top">
-        <div id="camera-details" class="widget widget-white" ng-show="selectedCam">
+<div class="page container-fluid gutter-top">
+    <div class="container-fluid">
+
+        <div id="camera-details" class="widget widget-white">
             <div class="container-fluid p-bottom">
                 <div class="container-fluid">
                     <h3 id="camera-details-title" class="caps"></h3>
                 </div>
-                <div class="col-lg-9 col-md-8 gutter-bottom">
+                <div class="col-sm-9 gutter-bottom">
                     <div id="camera-shot" class="map-container">
-                        <img ng-show="selectedCam" ng-src="/images/cameras/{{selectedCam.id}}.png" alt="" class="header-image">
+                        <img ng-src="/images/cameras/{{selected}}.png" alt="" class="header-image">
                         <s-heatmap data="heatmap" ng-show="heatmap"></s-heatmap>
                         <s-flowmap data="flowmap" ng-show="flowmap"></s-flowmap>
                     </div>
                     <div class="container-fluid">
                         <div class="row">
-                            <ul id="camera-timeline" class="timeline well">
+                            <ul id="camera-timeline" class="timeline">
                                 <li ng-repeat="value in timeline.data track by $index" class="timeline-item" tooltip="{{$index}}:00" tooltip-append-to-body="true" tooltip-placement="bottom" ng-click="setHour($index)" ng-class="{active: mapQuery.hour === $index}">
                                     <div class="timeline-bar" style="height: {{10 + (value / timeline.max) *100}}%" ></div>
                                 </li>
@@ -34,19 +22,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4">
+                <div class="col-sm-3">
                     <div id="camera-control" class="row clearfix" role="form">
-                        <div class="col-sm-4 col-md-12">
-                            <div class="form-group">
-                            <input type="radio" name="mapType" ng-model="mapQuery.type" value="heat" id ="cam-maptype-heat">
-                                <label class="radio-inline" for="cam-maptype-heat">Heatmap</label>
-                            <input type="radio" name="mapType" ng-model="mapQuery.type" value="flow" id ="cam-maptype-flow">
-                                <label class="radio-inline"  for="cam-maptype-flow">Flowmap</label>
+                        <div class="container-fluid">
+                            <div class="well">
+
+                                <div class="form-group text-center">
+                                <input type="radio" name="mapType" ng-model="mapQuery.type" value="heat" id ="cam-maptype-heat">
+                                    <label class="radio-inline" for="cam-maptype-heat">Heatmap</label>
+                                <input type="radio" name="mapType" ng-model="mapQuery.type" value="flow" id ="cam-maptype-flow">
+                                    <label class="radio-inline"  for="cam-maptype-flow">Flowmap</label>
+                                </div>
+                                <div class="form-group">
+                                    <datepicker class="datepicker" show-weeks="false" ng-model="mapQuery.date"></datepicker>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-4 col-md-12">
-                            <div class="form-group well">
-                                <datepicker class="datepicker" show-weeks="false" ng-model="mapQuery.date"></datepicker>
                         </div>
                     </div>
                 </div>

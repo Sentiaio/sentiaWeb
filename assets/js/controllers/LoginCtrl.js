@@ -27,7 +27,7 @@ angular.module('app')
                   }, response));
                   mixpanel.track('Logged In');
 
-                    $location.path('/cameras');
+                    $location.path('/store');
                     $scope.$root.showHeader = true;
                     $scope.$root.user = response;
                 })

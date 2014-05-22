@@ -11,7 +11,6 @@
 
 (function () {
     'use strict';
-
     // create new angular module app
     var app = angular.module('app', [
             'ngRoute',
@@ -38,9 +37,13 @@
                     templateUrl : 'views/dashboard.html',
                     controller: 'DashboardCtrl'
                 })
-                .when('/cameras', {
+                .when('/store/camera', {
                     templateUrl : 'views/cam.html',
                     controller: 'CamCtrl'
+                })
+                .when('/store', {
+                    templateUrl : 'views/store.html',
+                    controller: 'StoreCtrl'
                 })
                 .otherwise({
                     redirectTo: '/login'
