@@ -61,6 +61,7 @@ module.exports = {
                 pipeline.push({
                     $sort : {_id : 1}
                 });
+                return pipeline;
             }
             var pipeline = buildPipeline();
 

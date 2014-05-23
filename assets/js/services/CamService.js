@@ -2,7 +2,6 @@ angular.module('app')
     .service('Cam', function($http) {
         'use strict';
         this.getOverlay = function(query) {
-            console.log(query);
             return $http.post('/' + query.type + '/find', query)
                 .then(function(response) {
                     mixpanel.track('View Map', {
@@ -23,10 +22,8 @@ angular.module('app')
                 });
         };
         this.getTimeline = function(query) {
-            console.log(query);
             return $http.post('/' + query.type + '/timeline', query)
                 .then(function(response) {
-                    console.log(response);
                     var data = [24],
                         i,
                         max = 1;

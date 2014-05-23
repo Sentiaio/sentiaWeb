@@ -16,10 +16,12 @@ angular.module('app')
                 type : $scope.mapQuery.type,
                 cam : $scope.cam
             };
-            query.date.hour($scope.mapQuery.hour);
+            query.date.setHours($scope.mapQuery.hour);
             return query;
         }
         function updateOverlay() {
+            $scope.heatmap = undefined;
+            $scope.flowmap = undefined;
             Cam.getTimeline({
                 date : $scope.mapQuery.date,
                 cam : $scope.cam,
@@ -45,11 +47,11 @@ angular.module('app')
             .minutes(0)
             .seconds(0)
             .millisecond(0)
-            .subtract('hours', 1);
+            .subtract('hours', 1).toDate();
         $scope.mapQuery = {
             limit: 1,
             date: today,
-            hour: today.hour(),
+            hour: today.getHours(),
             type: 'heat',
             cam : $scope.cam
         };
