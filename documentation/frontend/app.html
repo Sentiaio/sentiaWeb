@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>app.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="app.html">
+                app.js
+              </a>
+            
+              
+              <a class="source" href="cam.html">
+                cam.js
+              </a>
+            
+              
+              <a class="source" href="dashboard.html">
+                dashboard.js
+              </a>
+            
+              
+              <a class="source" href="login.html">
+                login.js
+              </a>
+            
+              
+              <a class="source" href="main.html">
+                main.js
+              </a>
+            
+              
+              <a class="source" href="sflowmap.html">
+                sflowmap.js
+              </a>
+            
+              
+              <a class="source" href="sheatmap.html">
+                sheatmap.js
+              </a>
+            
+              
+              <a class="source" href="heatFilter.html">
+                heatFilter.js
+              </a>
+            
+              
+              <a class="source" href="sails.io.html">
+                sails.io.js
+              </a>
+            
+              
+              <a class="source" href="socket.io.html">
+                socket.io.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>app.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * app.js
+ *
+ * This file contains some conventional defaults for working with Socket.io + Sails.
+ * It is designed to get you up and running fast, but is by no means anything special.
+ *
+ * Feel free to change none, some, or ALL of this file to fit your needs!
+ */</span>
+ <span class="hljs-comment">/*jslint browser:true, nomen:true*/</span>
+ <span class="hljs-comment">/*global app:true, $:true, console: false, angular : false */</span>
+
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+<span class="hljs-pi">    'use strict'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>create new angular module app</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> app = angular.module(<span class="hljs-string">'app'</span>, [
+            <span class="hljs-string">'ngRoute'</span>,
+            <span class="hljs-string">'angular-md5'</span>,
+            <span class="hljs-string">'ui.bootstrap'</span>,
+            <span class="hljs-string">'ngSanitize'</span>,
+            <span class="hljs-string">'ui.utils'</span>,
+            <span class="hljs-string">'ngAnimate'</span>,
+            <span class="hljs-string">'sHeatmap'</span>,
+            <span class="hljs-string">'sFlowmap'</span>,
+            <span class="hljs-string">'angulartics'</span>,
+            <span class="hljs-string">'angulartics.mixpanel'</span>
+        ]);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>configure routes
+Controllers are definedd in controllers.js</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    app.config([<span class="hljs-string">'$routeProvider'</span>,
+        <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($routeProvider)</span> {</span>
+            $routeProvider
+                .when(<span class="hljs-string">'/login'</span>, {
+                    templateUrl: <span class="hljs-string">'views/login.html'</span>,
+                    controller: <span class="hljs-string">'LoginCtrl'</span>
+                })
+                .when(<span class="hljs-string">'/dashboard'</span>, {
+                    templateUrl : <span class="hljs-string">'views/dashboard.html'</span>,
+                    controller: <span class="hljs-string">'DashboardCtrl'</span>
+                })
+                .when(<span class="hljs-string">'/cameras'</span>, {
+                    templateUrl : <span class="hljs-string">'views/cam.html'</span>,
+                    controller: <span class="hljs-string">'CamCtrl'</span>
+                })
+                .otherwise({
+                    redirectTo: <span class="hljs-string">'/login'</span>
+                });
+        }
+    ]);
+    app.run([<span class="hljs-string">'$rootScope'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($rootScope)</span> {</span>
+        $rootScope.showHeader = <span class="hljs-literal">false</span>;
+        $rootScope.user = {};
+    }]);
+    window.app = app;
+})();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>init sockets</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(io)</span> {</span>
+<span class="hljs-pi">    'use strict'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>as soon as this file is loaded, connect automatically,</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> socket = io.connect();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Simple log function to keep the example simple</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">log</span> <span class="hljs-params">()</span> {</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> console !== <span class="hljs-string">'undefined'</span>) {
+            console.log.apply(console, <span class="hljs-built_in">arguments</span>);
+        }
+    }
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> console !== <span class="hljs-string">'undefined'</span>) {
+        log(<span class="hljs-string">'Connecting to Sails.js...'</span>);
+    }
+
+    socket.on(<span class="hljs-string">'connect'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">socketConnected</span><span class="hljs-params">()</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Listen for Comet messages from Sails</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        socket.on(<span class="hljs-string">'message'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">messageReceived</span><span class="hljs-params">(message)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>/////////////////////////////////////////////////////////
+Replace the following with your own custom logic
+to run when a new message arrives from the Sails.js
+server.
+/////////////////////////////////////////////////////////</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            log(<span class="hljs-string">'New comet message received :: '</span>, message);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>////////////////////////////////////////////////////</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+        });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>/////////////////////////////////////////////////////////
+Here’s where you’ll want to add any custom logic for
+when the browser establishes its socket connection to
+the Sails.js server.
+/////////////////////////////////////////////////////////</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        log(
+            <span class="hljs-string">'Socket is now connected and globally accessible as `socket`.\n'</span> +
+            <span class="hljs-string">'e.g. to send a GET request to Sails, try \n'</span> +
+            <span class="hljs-string">'`socket.get("/", function (response) '</span> +
+            <span class="hljs-string">'{ console.log(response); })`'</span>
+        );</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>/////////////////////////////////////////////////////////</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Expose connected <code>socket</code> instance globally so that it’s easy
+to experiment with from the browser console while prototyping.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    window.socket = socket;
+
+})(</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>In case you’re wrapping socket.io to prevent pollution of the global namespace,
+you can replace <code>window.io</code> with your own <code>io</code> here:</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    window.io
+
+);</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

@@ -44,4 +44,4 @@ config/local.js
 #######################
 # docs
 #######################
-documentation/
+#documentation/

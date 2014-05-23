@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Users.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="Cameras.html">
+                Cameras.js
+              </a>
+            
+              
+              <a class="source" href="Companies.html">
+                Companies.js
+              </a>
+            
+              
+              <a class="source" href="Customers.html">
+                Customers.js
+              </a>
+            
+              
+              <a class="source" href="Flow.html">
+                Flow.js
+              </a>
+            
+              
+              <a class="source" href="Heat.html">
+                Heat.js
+              </a>
+            
+              
+              <a class="source" href="Stores.html">
+                Stores.js
+              </a>
+            
+              
+              <a class="source" href="Users.html">
+                Users.js
+              </a>
+            
+              
+              <a class="source" href="authenticated.html">
+                authenticated.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Users.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * Users
+ *
+ * @module      :: Model
+ * @description :: A short summary of how this model works and what it represents.
+ * @docs        :: http://sailsjs.org/#!documentation/models
+ */</span>
+<span class="hljs-comment">/*jslint node:true, nomen:true*/</span>
+<span class="hljs-pi">'use strict'</span>;
+<span class="hljs-keyword">var</span> bcrypt = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bcrypt'</span>);
+module.exports = {
+  attributes: {
+    firstname: <span class="hljs-string">'STRING'</span>,
+    lastname: <span class="hljs-string">'STRING'</span>,
+    email: {
+      type: <span class="hljs-string">'email'</span>,
+      required: <span class="hljs-literal">true</span>,
+      unique: <span class="hljs-literal">true</span>
+    },
+    password: {
+      type: <span class="hljs-string">'string'</span>,
+      minLength: <span class="hljs-number">8</span>,
+      required: <span class="hljs-literal">true</span>
+    },
+    toJSON: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+      <span class="hljs-keyword">var</span> obj = <span class="hljs-keyword">this</span>.toObject();
+      <span class="hljs-keyword">delete</span> obj.password;
+      <span class="hljs-keyword">return</span> obj;
+    }
+  },
+  beforeCreate: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(attrs, next)</span> {</span>
+    bcrypt.genSalt(<span class="hljs-number">10</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, salt)</span> {</span>
+      <span class="hljs-keyword">if</span> (err) {
+        <span class="hljs-keyword">return</span> next(err);
+      }
+
+      bcrypt.hash(attrs.password, salt, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, hash)</span> {</span>
+        <span class="hljs-keyword">if</span> (err) {
+          <span class="hljs-keyword">return</span> next(err);
+        }
+
+        attrs.password = hash;
+        next();
+      });
+    });
+  }
+};</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

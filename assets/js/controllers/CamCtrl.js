@@ -9,35 +9,63 @@ angular.module('app')
     .controller('CamCtrl', function($scope, $location, Cam) {
         'use strict';
         var today;
-        $scope.selected = $location.$$hash;
+        function buildQuery() {
+            var query = {
+                limit : 1,
+                date : $scope.mapQuery.date,
+                type : $scope.mapQuery.type,
+                cam : $scope.cam
+            };
+            query.date.hour($scope.mapQuery.hour);
+            return query;
+        }
+        function updateOverlay() {
+            Cam.getTimeline({
+                date : $scope.mapQuery.date,
+                cam : $scope.cam,
+                type : $scope.mapQuery.type
+            })
+            .then(function (response) {
+                $scope.timeline = response;
+            });
+            Cam.getOverlay(buildQuery())
+                .then(function (response) {
+                    if ($scope.mapQuery.type === 'heat') {
+                        $scope.heatmap = response;
+                    } else {
+                        $scope.flowmap = response;
+                    }
+                });
+        }
+        $scope.store = "52fd38afe0461b48a7f9c297"; // because we only have one :)
+        $scope.cam = $location.$$hash;
+        $scope.$root.showHeader = true;
+        $scope.$root.page = 'cam';
         today = moment()
             .minutes(0)
             .seconds(0)
             .millisecond(0)
             .subtract('hours', 1);
-        console.log(today);
         $scope.mapQuery = {
             limit: 1,
             date: today,
             hour: today.hour(),
-            type: 'heat'
+            type: 'heat',
+            cam : $scope.cam
         };
-        $scope.setHour = function(hour) {
-            $scope.mapQuery.hour = hour;
-            // updateMap();
-        };
-        $scope.$root.showHeader = true;
-        $scope.$root.page = 'cam';
-        $scope.store = "52fd38afe0461b48a7f9c297"; // because we only have one :)
-        $scope.cams = [];
+        updateOverlay();
+        $scope.$watch('mapQuery.hour', function() {
+            updateOverlay();
+        });
         $scope.$watch('mapQuery.date', function() {
-            // updateMap();
+
+            updateOverlay();
         });
         $scope.$watch('mapQuery.type', function() {
-            // updateMap();
+            updateOverlay();
         });
         $scope.$watch('selectedCam', function() {
-            // updateMap();
+            updateOverlay();
         });
     }
 );

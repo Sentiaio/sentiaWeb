@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Customers.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="Cameras.html">
+                Cameras.js
+              </a>
+            
+              
+              <a class="source" href="Companies.html">
+                Companies.js
+              </a>
+            
+              
+              <a class="source" href="Customers.html">
+                Customers.js
+              </a>
+            
+              
+              <a class="source" href="Flow.html">
+                Flow.js
+              </a>
+            
+              
+              <a class="source" href="Heat.html">
+                Heat.js
+              </a>
+            
+              
+              <a class="source" href="Stores.html">
+                Stores.js
+              </a>
+            
+              
+              <a class="source" href="Users.html">
+                Users.js
+              </a>
+            
+              
+              <a class="source" href="authenticated.html">
+                authenticated.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Customers.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * Customers
+ *
+ * @module      :: Model
+ * @description :: A short summary of how this model works and what it represents.
+ * @docs    :: http://sailsjs.org/#!documentation/models
+ */</span>
+<span class="hljs-pi">'use strict'</span>;
+<span class="hljs-keyword">var</span> objectId = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongodb'</span>).ObjectID;
+module.exports = {
+
+  attributes: {
+    cam: {
+      type: <span class="hljs-string">'STRING'</span>,
+      required: <span class="hljs-literal">true</span>
+    },
+    store: {
+      type: <span class="hljs-string">'STRING'</span>,
+      required: <span class="hljs-literal">true</span>
+    },
+    company: {
+      type: <span class="hljs-string">'STRING'</span>,
+      required: <span class="hljs-literal">true</span>
+    },
+    time: {
+      type: <span class="hljs-string">'INTEGER'</span>,
+      required: <span class="hljs-literal">true</span>
+    },
+    <span class="hljs-comment">/* e.g.
+    nickname: 'string'
+    */</span>
+
+  },
+  beforeCreate: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(attrs, next)</span> {</span>
+    console.log(<span class="hljs-string">'before create!'</span>);
+    attrs.cam = objectId(attrs.cam);
+    attrs.store = objectId(attrs.store);
+    attrs.company = objectId(attrs.company);
+    attrs.time = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(attrs.time);
+    console.log(attrs);
+    next();
+  }
+};</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

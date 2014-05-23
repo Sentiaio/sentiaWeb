@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>sails.io.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="app.html">
+                app.js
+              </a>
+            
+              
+              <a class="source" href="cam.html">
+                cam.js
+              </a>
+            
+              
+              <a class="source" href="dashboard.html">
+                dashboard.js
+              </a>
+            
+              
+              <a class="source" href="login.html">
+                login.js
+              </a>
+            
+              
+              <a class="source" href="main.html">
+                main.js
+              </a>
+            
+              
+              <a class="source" href="sflowmap.html">
+                sflowmap.js
+              </a>
+            
+              
+              <a class="source" href="sheatmap.html">
+                sheatmap.js
+              </a>
+            
+              
+              <a class="source" href="heatFilter.html">
+                heatFilter.js
+              </a>
+            
+              
+              <a class="source" href="sails.io.html">
+                sails.io.js
+              </a>
+            
+              
+              <a class="source" href="socket.io.html">
+                socket.io.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>sails.io.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * sails.io.js
+ *
+ * This file allows you to send and receive socket.io messages to &amp; from Sails 
+ * by simulating a REST client interface on top of socket.io.
+ *
+ * It models its API after the $.ajax pattern from jQuery you might be familiar with.
+ * 
+ * So to switch from using AJAX to Socket.io, instead of:
+ *    `$.post( url, [data], [cb] )`
+ *
+ * You would use:
+ *    `socket.post( url, [data], [cb] )`
+ *
+ * For more information, visit:
+ * http://sailsjs.org/#documentation
+ */</span>
+
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(io)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>We’ll be adding methods to <code>io.SocketNamespace.prototype</code>, the prototype for the 
+Socket instance returned when the browser connects with <code>io.connect()</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> Socket = io.SocketNamespace;
+
+
+
+  <span class="hljs-comment">/**
+   * Simulate a GET request to sails
+   * e.g.
+   *    `socket.get('/user/3', Stats.populate)`
+   *
+   * @param {String} url    ::    destination URL
+   * @param {Object} params ::    parameters to send with the request [optional]
+   * @param {Function} cb   ::    callback function to call when finished [optional]
+   */</span>
+
+  Socket.prototype.get = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, data, cb)</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.request(url, data, cb, <span class="hljs-string">'get'</span>);
+  };
+
+
+
+  <span class="hljs-comment">/**
+   * Simulate a POST request to sails
+   * e.g.
+   *    `socket.post('/event', newMeeting, $spinner.hide)`
+   *
+   * @param {String} url    ::    destination URL
+   * @param {Object} params ::    parameters to send with the request [optional]
+   * @param {Function} cb   ::    callback function to call when finished [optional]
+   */</span>
+
+  Socket.prototype.post = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, data, cb)</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.request(url, data, cb, <span class="hljs-string">'post'</span>);
+  };
+
+
+
+  <span class="hljs-comment">/**
+   * Simulate a PUT request to sails
+   * e.g.
+   *    `socket.post('/event/3', changedFields, $spinner.hide)`
+   *
+   * @param {String} url    ::    destination URL
+   * @param {Object} params ::    parameters to send with the request [optional]
+   * @param {Function} cb   ::    callback function to call when finished [optional]
+   */</span>
+
+  Socket.prototype.put = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, data, cb)</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.request(url, data, cb, <span class="hljs-string">'put'</span>);
+  };
+
+
+
+  <span class="hljs-comment">/**
+   * Simulate a DELETE request to sails
+   * e.g.
+   *    `socket.delete('/event', $spinner.hide)`
+   *
+   * @param {String} url    ::    destination URL
+   * @param {Object} params ::    parameters to send with the request [optional]
+   * @param {Function} cb   ::    callback function to call when finished [optional]
+   */</span>
+
+  Socket.prototype[<span class="hljs-string">'delete'</span>] = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, data, cb)</span> {</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.request(url, data, cb, <span class="hljs-string">'delete'</span>);
+  };
+
+
+
+
+   <span class="hljs-comment">/**
+   * Simulate HTTP over Socket.io
+   * @api private :: but exposed for backwards compatibility w/ &lt;= sails@~0.8
+   */</span>
+
+  Socket.prototype.request = request;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">request</span> <span class="hljs-params">(url, data, cb, method)</span> {</span>
+
+    <span class="hljs-keyword">var</span> socket = <span class="hljs-keyword">this</span>;
+
+    <span class="hljs-keyword">var</span> usage = <span class="hljs-string">'Usage:\n socket.'</span> +
+      (method || <span class="hljs-string">'request'</span>) +
+      <span class="hljs-string">'( destinationURL, dataToSend, fnToCallWhenComplete )'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Remove trailing slashes and spaces</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    url = url.replace(<span class="hljs-regexp">/^(.+)\/*\s*$/</span>, <span class="hljs-string">'$1'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>If method is undefined, use ‘get’</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    method = method || <span class="hljs-string">'get'</span>;
+
+
+    <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> url !== <span class="hljs-string">'string'</span> ) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Invalid or missing URL!\n'</span> + usage);
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Allow data arg to be optional</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> data === <span class="hljs-string">'function'</span> ) {
+      cb = data;
+      data = {};
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Build to request</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> json = io.JSON.stringify({
+      url: url,
+      data: data
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Send the message over the socket</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    socket.emit(method, json, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">afterEmitted</span> <span class="hljs-params">(result)</span> {</span>
+
+      <span class="hljs-keyword">var</span> parsedResult = result;
+
+      <span class="hljs-keyword">if</span> (result &amp;&amp; <span class="hljs-keyword">typeof</span> result === <span class="hljs-string">'string'</span>) {
+        <span class="hljs-keyword">try</span> {
+          parsedResult = io.JSON.parse(result);
+        } <span class="hljs-keyword">catch</span> (e) {
+          <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> console !== <span class="hljs-string">'undefined'</span>) {
+            console.warn(<span class="hljs-string">"Could not parse:"</span>, result, e);
+          }
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Server response could not be parsed!\n"</span> + result);
+        }
+      }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>TODO: Handle errors more effectively</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> (parsedResult === <span class="hljs-number">404</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"404: Not found"</span>);
+      <span class="hljs-keyword">if</span> (parsedResult === <span class="hljs-number">403</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"403: Forbidden"</span>);
+      <span class="hljs-keyword">if</span> (parsedResult === <span class="hljs-number">500</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"500: Server error"</span>);
+
+      cb &amp;&amp; cb(parsedResult);
+
+    });
+  }
+  
+
+
+
+}) (</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>In case you’re wrapping socket.io to prevent pollution of the global namespace,
+you can replace <code>window.io</code> with your own <code>io</code> here:</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  window.io
+
+);</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

@@ -6,7 +6,7 @@
 
 /*jslint browser:true, nomen:true*/
 angular.module('app')
-    .controller('StoreCtrl', function($scope, Store) {
+    .controller('StoreCtrl', function($scope, Store, Cam) {
         'use strict';
         $scope.$root.showHeader = true;
         $scope.$root.page = 'store';
