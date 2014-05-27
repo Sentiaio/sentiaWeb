@@ -10,18 +10,10 @@ angular.module('app')
         'use strict';
         var today;
         function buildQuery() {
-            var query = {
-                limit : 1,
-                date : $scope.mapQuery.date,
-                type : $scope.mapQuery.type,
-                cam : $scope.cam
-            };
-            query.date.setHours($scope.mapQuery.hour);
+
             return query;
         }
-        function updateOverlay() {
-            $scope.heatmap = undefined;
-            $scope.flowmap = undefined;
+        function updateTimeline() {
             Cam.getTimeline({
                 date : $scope.mapQuery.date,
                 cam : $scope.cam,
@@ -30,6 +22,17 @@ angular.module('app')
             .then(function (response) {
                 $scope.timeline = response;
             });
+        }
+        function updateOverlay() {
+            var query = {
+                limit : 1,
+                date : $scope.mapQuery.date,
+                type : $scope.mapQuery.type,
+                hour : $scope.mapQuery.hour,
+                cam : $scope.cam
+            };
+            $scope.heatmap = undefined;
+            $scope.flowmap = undefined;
             Cam.getOverlay(buildQuery())
                 .then(function (response) {
                     if ($scope.mapQuery.type === 'heat') {

@@ -23,7 +23,9 @@
 	"maxdepth":4,
 	"maxstatements" : 10,
 	"globals" : {
-    "Users":false
+        "Users":false,
+        "Heat" : false,
+        "HeatService" : false
 
 	}
 }
