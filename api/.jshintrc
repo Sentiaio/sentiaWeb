@@ -25,7 +25,10 @@
 	"globals" : {
         "Users":false,
         "Heat" : false,
-        "HeatService" : false
+        "HeatService" : false,
+        "Flow" : false,
+        "FlowService" : false
+
 
 	}
 }

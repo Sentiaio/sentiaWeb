@@ -9,6 +9,10 @@ angular.module('app')
                         date: query.date,
                         type: query.type
                     });
+                    console.log('count');
+                    console.log(query.date);
+                    console.log(query.hour);
+                    console.log(response.data.data.length);
                     return response.data;
                 })
                 .catch(function(error) {

@@ -14,13 +14,11 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-/*jslint node:true, nomen:true*/
-/*globals Heat:true*/
 'use strict';
 var _ = require('underscore');
 module.exports = {
     timeline: function(req, res) {
-        HeatService.getTimeline(_.extend(req.body, req.query), res.session.user)
+        HeatService.getTimeline(_.extend(req.body, req.query), req.session.user)
             .then(function (timeline) {
                 res.send(timeline);
             })

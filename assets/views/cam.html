@@ -16,7 +16,7 @@
                         <div class="row">
                             <ul id="camera-timeline" class="timeline">
                                 <li ng-repeat="value in timeline.data track by $index" class="timeline-item" tooltip="{{$index}}:00" tooltip-append-to-body="true" tooltip-placement="bottom" ng-click="mapQuery.hour = $index" ng-class="{active: mapQuery.hour === $index}">
-                                    <div class="timeline-bar" style="height: {{5 + (value / timeline.max) *95}}%" ></div>
+                                    <div class="timeline-bar" style="height: {{((value / timeline.max) *100) + '%'}}" ></div>
                                 </li>
                             </ul>
                         </div>

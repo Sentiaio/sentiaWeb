@@ -6,7 +6,8 @@
  * @docs    :: http://sailsjs.org/#!documentation/models
  */
 'use strict';
-var objectId = require('mongodb').ObjectID;
+var objectId = require('mongodb').ObjectID,
+    moment = require('moment');
 module.exports = {
 
     attributes: {
@@ -34,7 +35,7 @@ module.exports = {
             attrs.cam = objectId(attrs.cam);
             attrs.store = objectId(attrs.store);
             attrs.company = objectId(attrs.company);
-            attrs.time = new Date(attrs.time);
+            attrs.time = moment.utc(attrs.time).toDate();
         } catch (e) {
             return next('invalid object id');
         }

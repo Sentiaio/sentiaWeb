@@ -9,10 +9,6 @@ angular.module('app')
     .controller('CamCtrl', function($scope, $location, Cam) {
         'use strict';
         var today;
-        function buildQuery() {
-
-            return query;
-        }
         function updateTimeline() {
             Cam.getTimeline({
                 date : $scope.mapQuery.date,
@@ -33,7 +29,7 @@ angular.module('app')
             };
             $scope.heatmap = undefined;
             $scope.flowmap = undefined;
-            Cam.getOverlay(buildQuery())
+            Cam.getOverlay(query)
                 .then(function (response) {
                     if ($scope.mapQuery.type === 'heat') {
                         $scope.heatmap = response;
@@ -42,6 +38,7 @@ angular.module('app')
                     }
                 });
         }
+
         $scope.store = "52fd38afe0461b48a7f9c297"; // because we only have one :)
         $scope.cam = $location.$$hash;
         $scope.$root.showHeader = true;
@@ -58,18 +55,17 @@ angular.module('app')
             type: 'heat',
             cam : $scope.cam
         };
+        updateTimeline();
         updateOverlay();
         $scope.$watch('mapQuery.hour', function() {
             updateOverlay();
         });
         $scope.$watch('mapQuery.date', function() {
-
+            updateTimeline();
             updateOverlay();
         });
         $scope.$watch('mapQuery.type', function() {
-            updateOverlay();
-        });
-        $scope.$watch('selectedCam', function() {
+            updateTimeline();
             updateOverlay();
         });
     }
