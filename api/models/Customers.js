@@ -30,7 +30,6 @@ module.exports = {
         /* e.g.
     nickname: 'string'
     */
-
     },
     beforeCreate: function(attrs, next) {
         try {
