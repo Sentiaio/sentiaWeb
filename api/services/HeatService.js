@@ -77,13 +77,13 @@ exports.find = function (data, user) {
     return when.promise(function (resolve, reject) {
         var from, to;
         // define the time range
-        to = moment.utc(data.date).hour(data.hour)
+        from = moment.utc(data.date).hour(data.hour)
             .minutes(0)
             .seconds(0)
             .milliseconds(0)
             .toDate();
-        from = moment.utc(to)
-            .subtract('hour', 1)
+        to = moment.utc(from)
+            .add('hour', 1)
             .toDate();
         Heat.native(function(err, heat) {
             var query, projection;

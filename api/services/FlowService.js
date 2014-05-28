@@ -78,15 +78,15 @@ exports.find = function (data, user) {
     return when.promise(function (resolve, reject) {
         var from, to;
         // define the time range
-        to = moment(data.date).hour(data.hour)
+        from = moment(data.date).hour(data.hour)
             .utc()
             .minutes(0)
             .seconds(0)
             .milliseconds(0)
             .toDate();
-        from = moment(to)
+        to = moment(from)
             .utc()
-            .subtract('hour', 1)
+            .add('hour', 1)
             .toDate();
         Flow.native(function(err, flow) {
             var query, projection;

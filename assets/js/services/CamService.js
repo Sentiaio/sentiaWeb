@@ -10,10 +10,10 @@ angular.module('app')
                         type: query.type
                     });
                     console.log('count');
-                    console.log(query.date);
-                    console.log(query.hour);
-                    console.log(response.data.data.length);
-                    return response.data;
+                    if (response.data) {
+                        console.log(response.data.data.length);
+                    }
+                    return response.data || undefined;
                 })
                 .catch(function(error) {
                     console.log(status);
