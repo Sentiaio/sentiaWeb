@@ -6,7 +6,7 @@
 
 /*jslint browser:true, nomen:true*/
 angular.module('app')
-    .controller('CamCtrl', function($scope, $location, Cam) {
+    .controller('CamCtrl', function($scope, $route, $routeParams, $location, Cam) {
         'use strict';
         var today;
         function updateTimeline() {
@@ -38,12 +38,12 @@ angular.module('app')
                     }
                 });
         }
-
+        $route.current.params.date = 123;
+        $scope.cam = $routeParams.id;
         $scope.store = "52fd38afe0461b48a7f9c297"; // because we only have one :)
-        $scope.cam = $location.$$hash;
         $scope.$root.showHeader = true;
         $scope.$root.page = 'cam';
-        today = moment()
+        today = moment.utc()
             .minutes(0)
             .seconds(0)
             .millisecond(0)

@@ -58,6 +58,7 @@ module.exports = function(grunt) {
 
         // Bring in the socket.io client
         'bower_components/jquery/dist/jquery.min.js',
+        'bower_components/fastclick/lib/fastclick.js',
         'bower_components/d3/d3.js',
         'bower_components/angular/angular.min.js',
         'bower_components/angular-route/angular-route.min.js',
@@ -284,7 +285,7 @@ module.exports = function(grunt) {
                 files: ['assets/**/*'],
 
                 // When assets are changed:
-                tasks: ['compileAssets', 'linkAssets'],
+                tasks: ['compileAssets'],
                 options: {
                     livereload: 35729
                 }

@@ -7,7 +7,7 @@
  * Feel free to change none, some, or ALL of this file to fit your needs!
  */
  /*jslint browser:true, nomen:true*/
- /*global app:true, $:true, console: false, angular : false */
+ /*global FastClick: false */
 
 (function () {
     'use strict';
@@ -37,7 +37,7 @@
                     templateUrl : 'views/dashboard.html',
                     controller: 'DashboardCtrl'
                 })
-                .when('/store/camera', {
+                .when('/store/camera/:id', {
                     templateUrl : 'views/cam.html',
                     controller: 'CamCtrl'
                 })
@@ -53,6 +53,7 @@
     app.run(['$rootScope', function ($rootScope) {
         $rootScope.showHeader = false;
         $rootScope.user = {};
+        FastClick.attach(document.body);
     }]);
     window.app = app;
 })();

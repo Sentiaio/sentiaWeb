@@ -19,7 +19,6 @@ exports.getTimeline = function (data, user) {
             to = moment.utc(from)
                 .add('days', 1)
                 .toDate();
-            console.log(from.getTimezoneOffset());
             function buildPipeline () {
                 var pipeline = [];
                 pipeline.push({
