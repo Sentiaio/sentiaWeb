@@ -1,95 +1,24 @@
-.chart {
+linechart {
     display:block;
-    height:250px;
-}
-svg .chart-title {
-    text-anchor : middle;
-    font-size: 18px;
-    font: 15px "Gill Sans", Verdana, Arial, sans-serif;
-    font-weight: 200;
-    letter-spacing: 4px;
-    fill: #bababa;
-    text-transform: uppercase;
-}
-svg path.success {
-    stroke: @brand-success;
-}
-svg path.primary {
-    stroke: @brand-primary;
-}
-svg path.danger {
-    stroke: @brand-danger;
-}
-svg text.success {
-    stroke: @brand-success;
-    fill: @brand-success;
-}
-svg text.primary {
-    stroke: @brand-primary;
-    fill: @brand-primary;
-}
-svg text.danger {
-    stroke: @brand-danger;
-    fill: @brand-danger;
-}
+    &>svg {
+        display : block;
+        height : 100%;
+    }
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
 
-svg rect.primary {
-    fill : @brand-primary;
-}
-svg rect.success {
-    fill : @brand-success;
-}
+    .x.axis path {
+      display: none;
+    }
 
-svg rect.danger {
-    fill : @brand-danger;
-}
-/*** barchart ***/
-svg .bar {
-    fill :  @gray-lighter;
-    stroke-width: 0;
-}
-svg .bar:hover {
-    fill: @brand-primary;
-}
-svg .bar-label {
-    text-anchor: middle;
-    fill : #c7cbd5;
-    font-size: 14px;
-}
-#Barchart-tooltip {
-    position : absolute;
-    // text-align: center;
-    padding: 5px 5px;
-    color: @brand-primary;
-    background-color: white;
-    // border: 2px solid @brand-primary;
-    // border-radius: 3px;
-    // box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
-    z-index: 10;
-    transition: opacity 400ms;
-}
-/*** piecharts ***/
-svg .pie-label {
-    // fill : @brand-primary;
-}
-svg .pie-slice {
-    stroke: @brand-primary;
-    stroke-width : 20;
-}
-svg .pie-slice.success {
-    stroke: @brand-success;
-}
-svg .pie-slice.danger {
-    stroke: @brand-danger;
-}
-svg .pie-bg-circle {
-    stroke-width:20;
-    stroke : @gray-lighter;
-}
-/*** flowmap ***/
-svg .arrow {
-    fill-opacity: 1;
-    stroke-width: 0px;
-}
-/*** other ***/
+    .line {
+      fill: none;
+      stroke: steelblue;
+      stroke-width: 1.5px;
+    }
 
+}

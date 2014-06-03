@@ -7,7 +7,7 @@
 /*jslint browser:true, nomen:true*/
 /*global app:true, $:true, console: false, angular:false */
 angular.module('app')
-    .controller('MainCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+    .controller('MainCtrl', function ($scope, $http, $location) {
         'use strict';
         $scope.logout = function () {
             $http.post('/users/logout')
@@ -19,6 +19,6 @@ angular.module('app')
                 });
         };
 
-    }]);
+    });
 
 

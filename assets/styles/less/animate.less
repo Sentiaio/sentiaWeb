@@ -1,43 +1,45 @@
 
 .animate-fade {
-    -webkit-transition:0.3s linear all;
-    -moz-transition:0.3s linear all;
-    -o-transition:0.3s linear all;
-    transition:0.3s linear all;
+    -webkit-transition:0.2s linear all;
+    -moz-transition:0.2s linear all;
+    -o-transition:0.2s linear all;
+    transition:0.2s linear all;
     position:relative;
     &.ng-enter {
         opacity:0;
-        margin-bottom : -25rem;
+         -webkit-transform: translate(-100%, 0);
         &.ng-enter-active {
-            margin-bottom:0;
             opacity : 1;
+             -webkit-transform: translate(0, 0);
         }
     }
     &.ng-leave {
         opacity:1;
-        margin-bottom: 0;
+         -webkit-transform: translate(0, 0);
         &.ng-leave-active {
             opacity:0;
-            margin-bottom:-25rem;
+             -webkit-transform: translate(-100%, 0);
+        }
+    }
+    &.ng-move {
+         -webkit-transform: translate(-100%, 0);
+        &.ng-move-active {
+             -webkit-transform: translate(0, 0);
         }
     }
 
 }
 @media (min-width: @screen-sm-min) {
     .animate-fade {
+        &.ng-leave-active,
         &.ng-enter {
-            margin-right : -100%;
-            margin-bottom:0;
-            &.ng-enter-active {
-                margin-right:0;
-            }
+            opacity : 0;
+            -webkit-transform: translate(-100%, 0);
         }
+        &.ng-enter-acitve,
         &.ng-leave {
-            margin-right: 0;
-            &.ng-leave-active {
-                margin-right:-100%;
-                margin-bottom:0;
-            }
+            opacity : 1;
+             -webkit-transform: translate(0, 0);
         }
     }
 }
@@ -57,23 +59,5 @@
         display:none;
     }
 }
-.animate-scale.ng-hide-add {
-    transition-duration: 250ms;
-    -webkit-transition-duration: 250ms;
-    opacity: 1;
-}
 
-.animate-scale.ng-hide-add.ng-hide-add-active {
-    opacity: 0;
-}
 
-.animate-scale.ng-hide-remove {
-    transition-duration: 250ms;
-    -webkit-transition-duration: 250ms;
-    display: block !important;
-    opacity: 0;
-}
-
-.animate-scale.ng-hide-remove.ng-hide-remove-active {
-    opacity: 1;
-}

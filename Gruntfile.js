@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         // linked in the proper order order
 
         // Bring in the socket.io client
-        'bower_components/jquery/dist/jquery.min.js',
+        // 'bower_components/jquery/dist/jquery.min.js',
         'bower_components/fastclick/lib/fastclick.js',
         'bower_components/d3/d3.js',
         'bower_components/angular/angular.min.js',
@@ -274,11 +274,6 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            api: {
-
-                // API files to watch:
-                files: ['api/**/*']
-            },
             assets: {
 
                 // Assets to watch:
@@ -287,7 +282,7 @@ module.exports = function(grunt) {
                 // When assets are changed:
                 tasks: ['compileAssets'],
                 options: {
-                    livereload: 35729
+                    livereload: true
                 }
             }
 

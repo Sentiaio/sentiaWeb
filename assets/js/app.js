@@ -22,7 +22,8 @@
             'sHeatmap',
             'sFlowmap',
             'angulartics',
-            'angulartics.mixpanel'
+            'angulartics.mixpanel',
+            'linechart'
         ]);
     // configure routes
     // Controllers are definedd in controllers.js
@@ -35,7 +36,7 @@
                 })
                 .when('/dashboard', {
                     templateUrl : 'views/dashboard.html',
-                    controller: 'DashboardCtrl'
+                    controller: 'DashCtrl'
                 })
                 .when('/store/camera/:id', {
                     templateUrl : 'views/cam.html',
@@ -50,11 +51,24 @@
                 });
         }
     ]);
-    app.run(['$rootScope', function ($rootScope) {
+    app.run(function ($rootScope, $window, $location) {
         $rootScope.showHeader = false;
         $rootScope.user = {};
+        $rootScope.go = function (path, animation) {
+            console.log('GO');
+            if (typeof(pageAnimationClass) === undefined) { // Use a default, your choice
+                $rootScope.pageAnimationClass = '';
+            } else { // Use the specified animation
+                $rootScope.pageAnimationClass = animation;
+            }
+            if (path === 'back') { // Allow a 'back' keyword to go to previous page
+                $window.history.back();
+            } else { // Go to the specified path
+                $location.path(path);
+            }
+        };
         FastClick.attach(document.body);
-    }]);
+    });
     window.app = app;
 })();
 
