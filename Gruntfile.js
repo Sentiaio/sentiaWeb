@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         // linked in the proper order order
 
         // Bring in the socket.io client
-        // 'bower_components/jquery/dist/jquery.min.js',
+        'bower_components/jquery/dist/jquery.min.js',
         'bower_components/fastclick/lib/fastclick.js',
         'bower_components/d3/d3.js',
         'bower_components/angular/angular.min.js',

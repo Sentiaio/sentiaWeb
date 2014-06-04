@@ -797,7 +797,7 @@ this["JST"]["assets/views/dashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="page container">\n   <!-- <h1 class="big-text stamped text-center"> No Widgets Awailable</h1> -->\n   <div class="col-md-12 animate-fade">\n       <div class="widget widget-white widget-content gutter-top">\n            <linechart style="height: 300px;" data="customerData" ></linechart>\n       </div>\n   </div>\n</div>\n';
+__p += '<div class="page container">\n   <!-- <h1 class="big-text stamped text-center"> No Widgets Awailable</h1> -->\n   <div class="col-md-12 animate-fade">\n       <div class="widget widget-white widget-content gutter-top">\n            <barchart style="height: 300px;" data="customerData" ></barchart>\n       </div>\n   </div>\n</div>\n';
 
 }
 return __p

@@ -1,13 +1,22 @@
-linechart {
+linechart,
+barchart {
     display:block;
     &>svg {
         display : block;
         height : 100%;
     }
+    .horizontalGrid {
+        stroke : @gray-lighter;
+    }
+    .domain {
+        display: none;
+    }
+}
+linechart {
     .axis path,
     .axis line {
       fill: none;
-      stroke: #000;
+      stroke: @gray-light;
       shape-rendering: crispEdges;
     }
 
@@ -21,4 +30,31 @@ linechart {
       stroke-width: 1.5px;
     }
 
+}
+barchart {
+    .bar {
+      fill: @brand-danger;
+    }
+    .bar:hover {
+      fill: @brand-primary;
+    }
+
+    .axis {
+      font: 10px sans-serif;
+      text {
+        stroke:@gray;
+        fill: none;
+      }
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: @gray-light;
+      shape-rendering: crispEdges;
+    }
+
+    .y.axis path {
+      display: none;
+    }
 }

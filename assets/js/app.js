@@ -23,7 +23,8 @@
             'sFlowmap',
             'angulartics',
             'angulartics.mixpanel',
-            'linechart'
+            'linechart',
+            'barchart'
         ]);
     // configure routes
     // Controllers are definedd in controllers.js
