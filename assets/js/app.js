@@ -14,11 +14,12 @@
     // create new angular module app
     var app = angular.module('app', [
             'ngRoute',
+            'ngTouch',
+            'ngAnimate',
             'angular-md5',
             'ui.bootstrap',
             'ngSanitize',
             'ui.utils',
-            'ngAnimate',
             'sHeatmap',
             'sFlowmap',
             'angulartics',
@@ -68,7 +69,6 @@
                 $location.path(path);
             }
         };
-        FastClick.attach(document.body);
     });
     window.app = app;
 })();

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="app">
   <head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <!--
         For demonstration purposes, the `title` is dynamically set here based on
         your `sails.config.appName` to show that you can inject data into layouts
@@ -24,14 +26,14 @@
     <link type="text/css" href='styles/style.css' rel='stylesheet'/>
     <!--SCRIPTS-->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/fastclick/lib/fastclick.js"></script>
     <script src="/bower_components/d3/d3.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.min.js"></script>
     <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="/bower_components/angular-ui-utils/ui-utils.min.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-md5/angular-md5.js"></script>
     <script src="/bower_components/angulartics/dist/angulartics.min.js"></script>
     <script src="/bower_components/angulartics/dist/angulartics-mixpanel.min.js"></script>
@@ -69,7 +71,7 @@
       }
   </script><!-- end Mixpanel -->
     <!--STYLES-->
-    
+
     <!--STYLES END-->
 
     <!--TEMPLATES-->

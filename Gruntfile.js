@@ -58,14 +58,14 @@ module.exports = function(grunt) {
 
         // Bring in the socket.io client
         'bower_components/jquery/dist/jquery.min.js',
-        'bower_components/fastclick/lib/fastclick.js',
         'bower_components/d3/d3.js',
         'bower_components/angular/angular.min.js',
+        'bower_components/angular-touch/angular-touch.min.js',
         'bower_components/angular-route/angular-route.min.js',
+        'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-sanitize/angular-sanitize.min.js',
         'bower_components/angular-ui-utils/ui-utils.min.js',
         'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-        'bower_components/angular-animate/angular-animate.js',
         'bower_components/angular-md5/angular-md5.js',
         'bower_components/angulartics/dist/angulartics.min.js',
         'bower_components/angulartics/dist/angulartics-mixpanel.min.js',
