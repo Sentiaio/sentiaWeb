@@ -27,7 +27,9 @@
         "Heat" : false,
         "HeatService" : false,
         "Flow" : false,
-        "FlowService" : false
+        "FlowService" : false,
+        "Customers" : false,
+        "CustomersService" :false
 
 
 	}

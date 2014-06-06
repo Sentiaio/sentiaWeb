@@ -1,5 +1,5 @@
-# sentiaWeb
-*Real-time Retail Analytics *
+#sentiaWeb
+*Real-time Retail Analytics*
 
 [Sentia.io website](http://sentia.io)
 

@@ -14,17 +14,23 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-
+'use strict';
 module.exports = {
-    
-  
+    find: function(req, res) {
+        CustomersService.find(req.body, req.session.user)
+            .then(function (result) {
+                res.send(result);
+            })
+            .catch(function(err) {
+                res.send(500, err);
+            });
+    },
+
+    /**
+    * Overrides for the settings in `config/controllers.js`
+    * (specific to CustomersController)
+    */
+    _config: {}
 
 
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to CustomersController)
-   */
-  _config: {}
-
-  
 };
