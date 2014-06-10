@@ -9,6 +9,7 @@
 angular.module('app')
     .controller('MainCtrl', function ($scope, $http, $location) {
         'use strict';
+        $scope.$root.showMenu = false;
         $scope.logout = function () {
             $http.post('/users/logout')
                 .success(function () {
@@ -17,6 +18,11 @@ angular.module('app')
                 .error(function (err, status) {
                     console.log(status + ' : ' + err);
                 });
+        };
+        $scope.toggleMenu = function () {
+            $scope.$root.showMenu = !$scope.$root.showMenu;
+        };
+        $scope.alert = function () {
         };
 
     });

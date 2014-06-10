@@ -9,7 +9,7 @@ angular.module('app')
     .controller('DashCtrl', function($scope, $http) {
         'use strict';
         $scope.$root.showHeader = true;
-        $scope.$root.page = 'dash';
+        $scope.$root.page = 'dashboard';
         //
         $http.post('/customers/find', {date: new Date()})
             .then(function (response) {

@@ -4,8 +4,31 @@
     .getting-started li{overflow:visible;clear:both}.delete{width:690px}
     </style>
 <![endif]-->
-<div id="content" class="full-height full-width has-lg-toolbar-top" ng-controller="MainCtrl">
-    <% include ../partials/header.ejs %>
-    <div ng-view="" class="full-height full-width" ng-class="pageAnimationClass"></div>
+<div class="container-fluid full-height" ng-controller="MainCtrl">
+    <div class="row full-height">
 
+        <div id="sidebar" class="col-sm-2 sidebar">
+            <ul class="menu row">
+                <li><h4 class="shadow caps text-center">Sentia.io</h4></li>
+                <li>
+                    <img ng-src="http://www.gravatar.com/avatar/{{ user.email | gravatar }}?s=40&d=https://pbs.twimg.com/profile_images/3292107408/13effc3507c3fabffed7d4b034ea1a41.jpeg" alt="" id="active-user-avatar" class="img-xs-round">
+                    <span id="active-user-name" class="shadow caps">{{user.firstname}}</span>
+
+                </li>
+                <li ng-class="{active : page === 'dashboard'}" class="a icon-dashboard" ng-click="go('/dashboard')"> Dashboard</li>
+                <li ng-class="{active : page === 'store' || page === 'cam'}" class="a icon-home" ng-click="go('/store')"> Stores</li>
+                <li ng-class="{active : page === 'users'}" class="a icon-user" ng-click="go('/users')"> Users</li>
+                <li ng-class="{active : page === 'settings'}" class="a icon-cog" ng-click="go('/settings')"> Settings</li>
+            </ul>
+        </div>
+        <div id="content" ng-class="{'right' : showMenu}"class="pages full-height col-sm-10 col-xs-12 has-lg-toolbar-top">
+            <div class="toolbar-lg toolbar-absolute-top container-fluid bg-primary" ng-show="showHeader">
+                <div id="navmenu" class="pull-left hide-on-login" ng-click="toggleMenu()">
+                    <h3 class="icon-menu shadow caps text-white a"></h3>
+                </div>
+            </div>
+            <ng-view ng-class="pageAnimationClass"></ng-view>
+
+        </div>
+    </div>
 </div>

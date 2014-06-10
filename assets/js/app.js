@@ -68,6 +68,7 @@
             } else { // Go to the specified path
                 $location.path(path);
             }
+            $rootScope.showMenu = false;
         };
     });
     window.app = app;
