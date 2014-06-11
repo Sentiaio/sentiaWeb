@@ -7,7 +7,7 @@
 <div class="container-fluid full-height" ng-controller="MainCtrl">
     <div class="row full-height">
 
-        <div id="sidebar" class="col-sm-2 sidebar">
+        <div id="sidebar" class="col-sm-2 sidebar" ng-show="showHeader">
             <ul class="menu row">
                 <li><h4 class="shadow caps text-center">Sentia.io</h4></li>
                 <li>
@@ -21,7 +21,7 @@
                 <li ng-class="{active : page === 'settings'}" class="a icon-cog" ng-click="go('/settings')"> Settings</li>
             </ul>
         </div>
-        <div id="content" ng-class="{'right' : showMenu}"class="pages full-height col-sm-10 col-xs-12 has-lg-toolbar-top">
+        <div id="content" ng-class="{'right' : showMenu, 'col-sm-12' : showHeader }"class="pages full-height col-sm-10 col-xs-12 has-lg-toolbar-top">
             <div class="toolbar-lg toolbar-absolute-top container-fluid bg-primary" ng-show="showHeader">
                 <div id="navmenu" class="pull-left hide-on-login" ng-click="toggleMenu()">
                     <h3 class="icon-menu shadow caps text-white a"></h3>
