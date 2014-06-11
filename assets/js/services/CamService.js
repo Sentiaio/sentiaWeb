@@ -10,9 +10,6 @@ angular.module('app')
                         type: query.type
                     });
                     console.log('count');
-                    if (response.data) {
-                        console.log(response.data.data.length);
-                    }
                     return response.data || undefined;
                 })
                 .catch(function(error) {

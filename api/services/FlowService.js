@@ -64,6 +64,9 @@ exports.getTimeline = function (data, user) {
                 if (err) {
                     return reject(err);
                 }
+                if(!result) {
+                    return resolve([]);
+                }
                 for (i = 0; i < result.length; i += 1) {
                     result[i].value = result[i].avg * result[i].count;
                 }

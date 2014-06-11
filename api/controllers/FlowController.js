@@ -29,7 +29,7 @@ module.exports = {
             });
     },
     find: function(req, res) {
-        CustomersService.find(req.body)
+        FlowService.find(req.body, req.session.user)
             .then(function (result) {
                 res.send(result);
             })
