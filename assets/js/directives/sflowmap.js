@@ -22,14 +22,16 @@ angular.module('sFlowmap', [])
                     var data = [];
                     for (var i = 0; i < scope.data.data.length; i += 1){
                     	if (scope.data.data[i].x%3 === 0 && scope.data.data[i].y%3 === 0) {
-                    		data.push(scope.data.data[i]);
+                            if (scope.data.data[i].magnitude > (scope.data.max * 0.1)) {
+                                data.push(scope.data.data[i]);
+                            }
                     	}
                     }
                     width = element.width()*2.5;
                     height = element.height() * 2.5;
                     color = d3.scale.linear()
-                        .domain([0, scope.data.max])
-                        .range(['#FFFF83', 'red']);
+                        .domain([0, scope.data.max* 0.3, scope.data.max])
+                        .range(['yellowgreen','#FFFF83', 'red']);
 
 
                     scalex = d3.scale.linear()
