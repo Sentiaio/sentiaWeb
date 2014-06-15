@@ -9,6 +9,7 @@ module.exports = {
             type: 'email',
             required: true
         },
+        company : 'integer',
         password: {
             type: 'string',
             required: true

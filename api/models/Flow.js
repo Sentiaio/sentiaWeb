@@ -11,15 +11,15 @@ var objectId = require('mongodb').ObjectID,
 module.exports = {
     attributes: {
         cam: {
-            type: 'STRING',
+            type: 'integer',
             required: true
         },
         store: {
-            type: 'STRING',
+            type: 'integer',
             required: true
         },
         company: {
-            type: 'STRING',
+            type: 'integer',
             required: true
         },
         time: {
@@ -32,14 +32,7 @@ module.exports = {
 
     },
     beforeCreate: function(attrs, next) {
-        try {
-            attrs.cam = objectId(attrs.cam);
-            attrs.store = objectId(attrs.store);
-            attrs.company = objectId(attrs.company);
-            attrs.time = moment.utc(attrs.time).toDate();
-        } catch (e) {
-            return next('invalid object id');
-        }
+        attrs.time = moment.utc(attrs.time).toDate();
         next();
     }
 };

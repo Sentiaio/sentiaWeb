@@ -11,23 +11,12 @@ var objectId = require('mongodb').ObjectID;
 module.exports = {
 
     attributes: {
-        id : "STRING",
-        name : 'STRING',
+        company : 'integer',
+        name : 'STRING'
         /* e.g.
         nickname: 'string'
         */
 
-    },
-    beforeCreate: function (attrs, next) {
-        try {
-            if (attrs.hasOwnProperty('id')) {
-                attrs.id = objectId(attrs.id);
-            }
-            attrs.company = objectId(attrs.company);
-        } catch (e) {
-            return next('"id" is invalid');
-        }
-        next();
     }
 
 };
