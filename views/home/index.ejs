@@ -18,7 +18,7 @@
                 <li ng-class="{active : page === 'dashboard'}" class="a icon-dashboard" ng-click="go('/dashboard')"> Dashboard</li>
                 <li ng-class="{active : page === 'store' || page === 'cam'}" class="a icon-home" ng-click="go('/store')"> Stores</li>
                 <li ng-class="{active : page === 'users'}" class="a icon-user" > Users</li>
-                <li ng-class="{active : page === 'settings'}" class="a icon-cog" > Settings</li>
+                <li class="a icon-switch" ng-click="logout()" > Log Out</li>
             </ul>
         </div>
         <div id="content" ng-class="{'right' : showMenu, 'col-sm-12' : showHeader }"class="pages full-height col-sm-10 col-xs-12 has-lg-toolbar-top">
