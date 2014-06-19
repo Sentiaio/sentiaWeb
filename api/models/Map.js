@@ -19,11 +19,11 @@ module.exports = {
             type: 'integer',
             required: true
         },
-        angle: {
-            type: 'integer',
+        dx: {
+            type: 'float',
             required: true
         },
-        flow: {
+        dy: {
             type: 'float',
             required: true
         },

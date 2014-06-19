@@ -18,8 +18,8 @@ exports.create = function (payload) {
             x : item.x,
             y : item.y,
             heat : item.heat,
-            flow : item.flow,
-            angle : item.angle
+            dx : item.dx,
+            dy : item.dy
         })
         return result;
     }, [])
@@ -37,15 +37,15 @@ exports.create = function (payload) {
     return deferred.promise;
 },
 exports.find = function (payload) {
-    var query, deferred;
-
+    var query, deferred, date;
+    date = moment(payload.date).hours(payload.hour);
     deferred = when.defer(),
     query = squel.select()
         .field('x')
         .field('y')
+        .field('avg(dx) as dx')
+        .field('avg(dy) as dy')
         .field('avg(heat) as heat')
-        .field('avg(angle) as angle')
-        .field('avg(flow) as flow')
         .from('map')
         .group('x')
         .group('y');
