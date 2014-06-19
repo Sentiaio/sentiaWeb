@@ -7,46 +7,52 @@
  */
 
 module.exports = {
+    autoCreatedAt: false,
+    autoUpdatedAt: false,
 
-  attributes: {
-    x : {
-        type :'integer',
-        required : true
-    },
-    y : {
-        type :'integer',
-        required : true
-    },
-    angle:  {
-        type :'integer',
-        required : true
-    },
-    flow : {
-        type :'float',
-        required : true
-    },
-    heat : {
-        type :'float',
-        required : true
-    },
-    cam : {
-        type :'integer',
-        required : true
-    },
-    company : {
-        type :'integer',
-        required : true
-    },
-    time : {
-        type : "datetime",
-        required : true
+    attributes: {
+        x: {
+            type: 'integer',
+            required: true
+        },
+        y: {
+            type: 'integer',
+            required: true
+        },
+        angle: {
+            type: 'integer',
+            required: true
+        },
+        flow: {
+            type: 'float',
+            required: true
+        },
+        heat: {
+            type: 'float',
+            required: true
+        },
+        cam: {
+            type: 'integer',
+            required: true
+        },
+        company: {
+            type: 'integer',
+            required: true
+        },
+        store: {
+            type: 'integer',
+            required: true
+        },
+        time: {
+            type: "datetime",
+            required: true
 
-    }
+        }
 
-  	/* e.g.
+        /* e.g.
   	nickname: 'string'
   	*/
 
-  }
+    }
 
 };

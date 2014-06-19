@@ -1,22 +1,32 @@
 var _ = require('lodash'),
+    squel = require('squel'),
     moment = require('moment'),
     when = require('when');
 exports.create = function (payload) {
     var deferred = when.defer(),
-        keys = ['createdAt','updatedAt','x','y','heat','angle','flow','time','cam', 'company']
-        values = keys.map(function (key) {
-            if (key === 'createdAt' || key === 'updatedAt') {
-                return moment().format('YYYY-MM-DD HH:mm:SS+00');
-            } else if (key === 'time') {
-                return moment(payload.time).format('YYYY-MM-DD HH:mm:SS+00');
-            } else {
-                return payload[key];
-            }
-        });
-    console.log(keys);
-    console.log(values);
-    console.log('INSERT INTO map ('+keys.join(',')+') VALUES ('+values.join(',')+')');
-    Map.query('INSERT INTO map ('+keys.join(',')+') VALUES ('+values.join(',')+')', function (err, result) {
+        rows,
+        query = squel.insert();
+    console.log('payload');
+    console.log(payload);
+
+    rows = payload.data.reduce(function (result, item) {
+        result.push({
+            "cam": payload.cam,
+            "store": payload.store,
+            "company": payload.company,
+            "time": moment(payload.time).format('YYYY-MM-DD HH:mm:SS'),
+            x : item.x,
+            y : item.y,
+            heat : item.heat,
+            flow : item.flow,
+            angle : item.angle
+        })
+        return result;
+    }, [])
+    console.log(rows);
+    query.into('map')
+        .setFieldsRows(rows);
+    Map.query(query.toString(), function (err, result) {
         if (err) {
             deferred.reject(err);
         } else {
@@ -25,4 +35,28 @@ exports.create = function (payload) {
 
     });
     return deferred.promise;
+},
+exports.find = function (payload) {
+    var query, deferred;
+
+    deferred = when.defer(),
+    query = squel.select()
+        .field('x')
+        .field('y')
+        .field('avg(heat) as heat')
+        .field('avg(angle) as angle')
+        .field('avg(flow) as flow')
+        .from('map')
+        .group('x')
+        .group('y');
+
+    Map.query(query.toString(), function (err, result) {
+         if (err) {
+            deferred.reject(err);
+        } else {
+            deferred.resolve(result);
+        }
+    });
+    return deferred.promise;
+
 }
