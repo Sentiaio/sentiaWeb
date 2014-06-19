@@ -9,6 +9,10 @@ module.exports = {
             type: 'email',
             required: true
         },
+        company : {
+            type : 'integer',
+            required : true
+        },
         password: {
             type: 'string',
             required: true

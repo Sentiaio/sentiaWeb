@@ -8,7 +8,7 @@ angular.module('app')
             var query = {
                 store : this.selected.id
             };
-            return $http.post('/cameras/find', query)
+            return $http.post('/camera/find', query)
                 .then(function (response) {
                     return response.data;
                 });

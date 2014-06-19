@@ -19,15 +19,15 @@
 'use strict';
 
 module.exports = {
-    
-  
+
+
     login: function (req, res) {
         var bcrypt = require('bcrypt');
         if (!req.body.email || !req.body.password) {
             res.json({error : 'Missing user or password'}, 404);
             return;
         }
-        Users.findOneByEmail(req.body.email).done(function (err, user) {
+        User.findOneByEmail(req.body.email).done(function (err, user) {
             if (err) {res.json({ error: 'DB error' }, 509);}
 
             if (user) {
@@ -59,5 +59,5 @@ module.exports = {
     */
     _config: {}
 
-  
+
 };

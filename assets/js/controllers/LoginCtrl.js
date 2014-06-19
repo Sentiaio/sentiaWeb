@@ -15,7 +15,7 @@ angular.module('app')
         $scope.login = function () {
             console.log($scope.credentials);
             if(!$scope.credentials.email || !$scope.credentials.password) {return;}
-            $http.post('/users/login', $scope.credentials)
+            $http.post('/user/login', $scope.credentials)
                 .success(function (response) {
 
                     mixpanel.identify(response.id);

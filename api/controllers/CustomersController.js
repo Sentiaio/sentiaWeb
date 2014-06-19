@@ -22,6 +22,7 @@ module.exports = {
                 res.send(result);
             })
             .catch(function(err) {
+                console.log(err);
                 res.send(500, err);
             });
     },

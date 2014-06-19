@@ -12,19 +12,19 @@ module.exports = {
 
     attributes: {
         cam: {
-            type: 'STRING',
+            type: 'integer',
             required: true
         },
         store: {
-            type: 'STRING',
+            type: 'integer',
             required: true
         },
         company: {
-            type: 'STRING',
+            type: 'integer',
             required: true
         },
         time: {
-            type: 'INTEGER',
+            type: 'date',
             required: true
         },
         /* e.g.
@@ -32,15 +32,7 @@ module.exports = {
     */
     },
     beforeCreate: function(attrs, next) {
-        try {
-            attrs.cam = objectId(attrs.cam);
-            attrs.store = objectId(attrs.store);
-            attrs.company = objectId(attrs.company);
-            attrs.time = moment.utc(attrs.time).toDate();
-
-        } catch (e) {
-            return next('Could not convert to objectId');
-        }
+        attrs.time = moment(attrs.time).format('YYYY-MM-DD HH:mm:SS');
         next();
     }
 };

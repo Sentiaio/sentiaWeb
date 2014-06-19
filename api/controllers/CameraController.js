@@ -1,8 +1,8 @@
 /**
- * FlowController
+ * CamerasController
  *
  * @module      :: Controller
- * @description :: A set of functions called `actions`.
+ * @description	:: A set of functions called `actions`.
  *
  *                 Actions contain code telling Sails how to respond to a certain type of request.
  *                 (i.e. do stuff, then send some JSON, show an HTML page, or redirect to another URL)
@@ -14,33 +14,21 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
-
+/*globals Cameras:false*/
 'use strict';
-var _ = require('underscore');
-
 module.exports = {
-    timeline: function(req, res) {
-        FlowService.getTimeline(_.extend(req.body, req.query), req.session.user)
-            .then(function (timeline) {
-                res.send(timeline);
-            })
-            .catch(function (err) {
-                res.send(500, err);
-            });
-    },
     find: function(req, res) {
-        FlowService.find(req.body, req.session.user)
-            .then(function (result) {
-                res.send(result);
+        Camera.find()
+            .where({
+                company: req.session.user.company
             })
-            .catch(function (err) {
-                res.send(500, err);
+            .exec(function(err, cameras) {
+                res.send(cameras);
             });
     },
-
     /**
      * Overrides for the settings in `config/controllers.js`
-     * (specific to FlowController)
+     * (specific to CamerasController)
      */
     _config: {}
 };

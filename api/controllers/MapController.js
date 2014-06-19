@@ -16,6 +16,17 @@
  */
 
 module.exports = {
+    create : function (req, res) {
+        console.log(req.body);
+        MapService.create(req.body)
+            .then(function () {
+                res.send(200);
+            })
+            .catch(function (err) {
+                console.log(err);
+                res.send(500, err);
+            });
+    },
 
 
 

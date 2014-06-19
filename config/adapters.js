@@ -14,33 +14,33 @@
 
 module.exports.adapters = {
 
-  // If you leave the adapter config unspecified
-  // in a model definition, 'default' will be used.
-  'default': 'mongo',
+    // If you leave the adapter config unspecified
+    // in a model definition, 'default' will be used.
+    'default': 'postgres',
 
-  // Persistent adapter for DEVELOPMENT ONLY
-  // (data is preserved when the server shuts down)
-  disk: {
-    module: 'sails-disk'
-  },
+    // Persistent adapter for DEVELOPMENT ONLY
+    // (data is preserved when the server shuts down)
+    disk: {
+        module: 'sails-disk'
+    },
 
-  mongo: {
-    module: 'sails-mongo',
-    host: 'app.sentia.io',
-    port: 27017,
-    database: 'sentia'
-  },
+    mongo: {
+        module: 'sails-mongo',
+        host: 'app.sentia.io',
+        port: 27017,
+        database: 'sentia'
+    },
 
-  // MySQL is the world's most popular relational database.
-  // Learn more: http://en.wikipedia.org/wiki/MySQL
-  myLocalMySQLDatabase: {
-
-    module: 'sails-mysql',
-    host: 'YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS',
-    user: 'YOUR_MYSQL_USER',
-    // Psst.. You can put your password in config/local.js instead
-    // so you don't inadvertently push it up if you're using version control
-    password: 'YOUR_MYSQL_PASSWORD',
-    database: 'YOUR_MYSQL_DB'
-  }
+    postgres: {
+        module: 'sails-postgresql',
+        database: 'sentia',
+        host: 'sentia.clto0ldvohgx.eu-west-1.rds.amazonaws.com',
+        user: 'sentia',
+        password: 'SmartShopSentia.io',
+        port: 5432,
+        pool: false,
+        ssl: true,
+        schema: true
+        // url : "postgres://vcadzuwikgnphb:x4BfRBzjE1CJtRW1e36TDXX_id@ec2-54-83-201-54.compute-1.amazonaws.com:5432/d1u79je6c3rj70"
+    }
 };

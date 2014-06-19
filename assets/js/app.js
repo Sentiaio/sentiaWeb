@@ -48,6 +48,10 @@
                     templateUrl : 'views/store.html',
                     controller: 'StoreCtrl'
                 })
+                .when('/users', {
+                    templateUrl : 'views/users.html',
+                    controller: 'UserCtrl'
+                })
                 .otherwise({
                     redirectTo: '/login'
                 });
