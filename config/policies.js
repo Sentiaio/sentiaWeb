@@ -21,11 +21,7 @@ module.exports.policies = {
   	'*' : true,
   	'login' : true
   },
-  'flow' : {
-  	'*' : 'authenticated',
-  	'create' : true
-  },
-  'heat' : {
+  'map' : {
   	'*' : 'authenticated',
   	'create' : true
   },
