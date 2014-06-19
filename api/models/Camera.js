@@ -1,5 +1,5 @@
 /**
- * Stores
+ * Cameras
  *
  * @module      :: Model
  * @description :: A short summary of how this model works and what it represents.
@@ -7,15 +7,20 @@
  */
 /*jslint node:true, nomen:true*/
 'use strict';
-var objectId = require('mongodb').ObjectID;
 module.exports = {
-
     attributes: {
-        company : 'integer',
-        name : 'STRING'
-        /* e.g.
-        nickname: 'string'
-        */
+        company : {
+            type :"integer",
+            required : true
+        },
+        store : {
+            type :"integer",
+            required : true
+        },
+        name : {
+            type :"string",
+            required : true
+        },
 
     }
 

@@ -16,14 +16,12 @@
  */
 /*globals Cameras:false*/
 'use strict';
-var objectId = require('mongodb').ObjectID;
 module.exports = {
     find: function(req, res) {
-        console.log(req.session.user.company);
-        console.log(typeof req.session.user.company);
-        Cameras.find()
+        console.log(req.session.user);
+        Camera.find()
             .where({
-                company: objectId(req.session.user.company)
+                company: req.session.user.company
             })
             .exec(function(err, cameras) {
                 res.send(cameras);

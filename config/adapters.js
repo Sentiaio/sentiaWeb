@@ -14,32 +14,33 @@
 
 module.exports.adapters = {
 
-  // If you leave the adapter config unspecified
-  // in a model definition, 'default' will be used.
-  'default': 'postgres',
+    // If you leave the adapter config unspecified
+    // in a model definition, 'default' will be used.
+    'default': 'postgres',
 
-  // Persistent adapter for DEVELOPMENT ONLY
-  // (data is preserved when the server shuts down)
-  disk: {
-    module: 'sails-disk'
-  },
+    // Persistent adapter for DEVELOPMENT ONLY
+    // (data is preserved when the server shuts down)
+    disk: {
+        module: 'sails-disk'
+    },
 
-  mongo: {
-    module: 'sails-mongo',
-    host: 'app.sentia.io',
-    port: 27017,
-    database: 'sentia'
-  },
+    mongo: {
+        module: 'sails-mongo',
+        host: 'app.sentia.io',
+        port: 27017,
+        database: 'sentia'
+    },
 
-  postgres : {
-      module   : 'sails-postgresql',
-      database : 'sentia'
-      host: 'sentia.clto0ldvohgx.eu-west-1.rds.amazonaws.com',
-      user: 'sentia',
-      password: 'SmartShopSentia.io',
-      port: 5432,
-      pool: false,
-      ssl : true,
-      schema : true
-      // url : "postgres://vcadzuwikgnphb:x4BfRBzjE1CJtRW1e36TDXX_id@ec2-54-83-201-54.compute-1.amazonaws.com:5432/d1u79je6c3rj70"
+    postgres: {
+        module: 'sails-postgresql',
+        database: 'sentia',
+        host: 'sentia.clto0ldvohgx.eu-west-1.rds.amazonaws.com',
+        user: 'sentia',
+        password: 'SmartShopSentia.io',
+        port: 5432,
+        pool: false,
+        ssl: true,
+        schema: true
+        // url : "postgres://vcadzuwikgnphb:x4BfRBzjE1CJtRW1e36TDXX_id@ec2-54-83-201-54.compute-1.amazonaws.com:5432/d1u79je6c3rj70"
     }
+};

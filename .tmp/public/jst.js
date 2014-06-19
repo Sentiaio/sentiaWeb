@@ -832,3 +832,13 @@ __p += '<div class="page container-fluid">\n    <div class="row clearfix bg">\n 
 }
 return __p
 };
+
+this["JST"]["assets/views/users.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="page container-fluid">\n   <!-- <h1 class="big-text stamped text-center"> No Widgets Awailable</h1> -->\n   <div class="col-md-12 animate-fade">\n       <div class="widget widget-white widget-content gutter-top">\n            <img ng-src="http://www.gravatar.com/avatar/{{ user.email | gravatar }}?s=80&d=https://pbs.twimg.com/profile_images/3292107408/13effc3507c3fabffed7d4b034ea1a41.jpeg" alt="" class="img-md-round">\n            <h1>{{user.firstname + \' \' + user.lastname}}</h1>\n            <h4>{{user.email}}</h4>\n            <h4>Joined {{user.createdAt}}</h4>\n        </div>\n   </div>\n</div>';
+
+}
+return __p
+};
