@@ -32,6 +32,9 @@ module.exports = {
     */
     },
     beforeCreate: function(attrs, next) {
+        atters.cam = Number(atters.cam);
+        atters.store = Number(atters.store);
+        atters.company = Number(atters.company);
         attrs.time = moment(attrs.time).format('YYYY-MM-DD HH:mm:SS');
         next();
     }
