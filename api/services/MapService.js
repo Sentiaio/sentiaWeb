@@ -11,9 +11,9 @@ exports.create = function (payload) {
 
     rows = payload.data.reduce(function (result, item) {
         result.push({
-            "cam": payload.cam,
-            "store": payload.store,
-            "company": payload.company,
+            "cam": Number(payload.cam),
+            "store": Number(payload.store),
+            "company": Number(payload.company),
             "time": moment(payload.time).format('YYYY-MM-DD HH:mm:SS'),
             x : item.x,
             y : item.y,
@@ -32,7 +32,6 @@ exports.create = function (payload) {
         } else {
             deferred.resolve(result);
         }
-
     });
     return deferred.promise;
 },
@@ -46,11 +45,14 @@ exports.find = function (payload) {
         .field('avg(dx) as dx')
         .field('avg(dy) as dy')
         .field('avg(heat) as heat')
+        .where('time BETWEEN ? AND ?', date.format('YYYY-MM-DD HH:mm:SS'), date.add('day', 1).format('YYYY-MM-DD HH:mm:SS'))
         .from('map')
         .group('x')
-        .group('y');
+        .group('y')
+        .toString();
+    console.log(query);
 
-    Map.query(query.toString(), function (err, result) {
+    Map.query(query, function (err, result) {
          if (err) {
             deferred.reject(err);
         } else {

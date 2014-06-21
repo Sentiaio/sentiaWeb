@@ -11,7 +11,7 @@ angular.module('app')
         'use strict';
         $scope.$root.showMenu = false;
         $scope.logout = function () {
-            $http.post('/users/logout')
+            $http.post('/user/logout')
                 .success(function () {
                     $location.path('/login');
                 })
