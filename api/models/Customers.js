@@ -45,9 +45,9 @@ module.exports = {
     */
     },
     beforeValidation: function(attrs, next) {
-        attrs.cam = Number(atters.cam);
-        attrs.store = Number(atters.store);
-        attrs.company = Number(atters.company);
+        attrs.cam = Number(attrs.cam);
+        attrs.store = Number(attrs.store);
+        attrs.company = Number(attrs.company);
         attrs.time = moment(attrs.time).format('YYYY-MM-DD HH:mm:SS');
         console.log(attrs);
         next();
