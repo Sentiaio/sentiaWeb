@@ -1,17 +1,33 @@
 .sidebar {
+    vertical-align: top;
+    // float:left;
     height:100%;
+    width:100%;
     background-color: #272930;
+    // -webkit-transform : translate(-100%,0);
+    display:inline-block;
     box-shadow : -2px 0px 5px -2px rgba(0,0,0,0.5) inset;
     .menu {
+        background-color: darken(#272930, 5%);
+        width:80px;
+        position:absolute;
+        right:0;
+        top:0;
         padding:0;
+        padding-top: 100px;
         &>li {
             padding :15px;
             color :#A7B1C2;
+            font-size: 10px;
+            text-align: center;
             display:block;
             list-style-type: none;
-            &.a:hover,
-            &.active {
-                background-color: darken(#272930, 5%)
+            & > div {
+                font-size: 30px;
+                margin:5px;
+            }
+            &.a:hover,{
+                color: @gray-lighter;
             }
             &.active {
                 color : @brand-primary
@@ -21,17 +37,28 @@
 }
 @media(max-width : @screen-sm) {
     .sidebar {
-        position:fixed;
-        z-index: 0;
-        width : 85%;
     }
 }
 .pages {
+    // -webkit-transform : translate(-100%, 0);
+    position:relative;
+    width:100%;
+    vertical-align: top;
     overflow-y: auto;
-    z-index:1;
+    display:inline-block;
     background-color: @body-bg;
-    transition : -webkit-transform 500ms;
+
 }
-.pages.right {
-    -webkit-transform : translate(85%, 0);
+.content {
+    transition : -webkit-transform 500ms;
+    -webkit-transform:translate(-100%,0);
+    overflow-x : visible;
+    &.right {
+        -webkit-transform : translate(0%, 0);
+    }
+}
+.nav-button {
+    position: absolute;
+    right:0;
+    z-index:100;
 }

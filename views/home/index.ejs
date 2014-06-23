@@ -5,26 +5,26 @@
     </style>
 <![endif]-->
 <div class="container-fluid full-height" ng-controller="MainCtrl">
-    <div class="row full-height" style="overflow-x:hidden;">
+    <div class="row full-height content" style="white-space: nowrap;" ng-class="{'right' : showMenu}">
 
-        <div id="sidebar" class="col-sm-2 sidebar" ng-show="showHeader">
-            <ul class="menu row">
-                <li><h4 class="shadow caps text-center">Sentia.io</h4></li>
-                <li>
-                    <img ng-src="http://www.gravatar.com/avatar/{{ user.email | gravatar }}?s=40&d=https://pbs.twimg.com/profile_images/3292107408/13effc3507c3fabffed7d4b034ea1a41.jpeg" alt="" id="active-user-avatar" class="img-xs-round">
-                    <span id="active-user-name" class="shadow caps">{{user.firstname}}</span>
+        <div id="sidebar" class="sidebar" ng-show="showHeader">
+            <div><h4 class="shadow caps">Sentia.io</h4></div>
+            <div class="user">
+                <img ng-src="http://www.gravatar.com/avatar/{{ user.email | gravatar }}?s=40&d=https://pbs.twimg.com/profile_images/3292107408/13effc3507c3fabffed7d4b034ea1a41.jpeg" alt="" id="active-user-avatar" class="img-xs-round">
+                <span id="active-user-name" class="shadow caps">{{user.firstname}}</span>
 
-                </li>
-                <li ng-class="{active : page === 'dashboard'}" class="a icon-dashboard" ng-click="go('/dashboard')"> Dashboard</li>
-                <li ng-class="{active : page === 'store' || page === 'cam'}" class="a icon-home" ng-click="go('/store')"> Stores</li>
-                <li ng-class="{active : page === 'users'}" class="a icon-user" ng-click="go('/users')"> Users</li>
-                <li class="a icon-switch" ng-click="logout()" > Log Out</li>
+            </div>
+            <ul class="menu full-height">
+                <li ng-class="{active : page === 'dashboard'}" class="a" ng-click="go('/dashboard')"><div class="icon-dashboard"></div> Dashboard</li>
+                <li ng-class="{active : page === 'store' || page === 'cam'}" class="a" ng-click="go('/store')">  <div class="icon-home"></div> Stores</li>
+                <li ng-class="{active : page === 'users'}" class="a" ng-click="go('/users')">  <div class="icon-user"></div> Users</li>
+                <li class="a" ng-click="logout()" ><div class="icon-switch"></div> Log Out </li>
             </ul>
         </div>
-        <div id="content" ng-class="{'right' : showMenu, 'col-sm-12' : showHeader }"class="pages full-height col-sm-10 col-xs-12 has-lg-toolbar-top">
-            <div class="toolbar-lg toolbar-absolute-top container-fluid bg-primary" ng-show="showHeader">
-                <div id="navmenu" class="pull-left hide-on-login hidden-sm visible-xs" ng-click="toggleMenu()">
-                    <h3 class="icon-menu shadow caps text-white a"></h3>
+        <div id="content" class="pages full-height has-lg-toolbar-top">
+            <div class="toolbar-lg toolbar-absolute-top container-fluid" ng-show="showHeader">
+                <div id="navmenu" class="nav-button hide-on-login" ng-click="toggleMenu()">
+                    <h2 class="icon-menu caps a"></h2>
                 </div>
             </div>
             <ng-view class="animate-fade"></ng-view>

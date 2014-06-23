@@ -24,7 +24,7 @@ module.exports = {
             required: true
         },
         time: {
-            type: 'date',
+            type: 'datetime',
             required: true
         },
         in : {
