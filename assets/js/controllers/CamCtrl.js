@@ -27,15 +27,10 @@ angular.module('app')
                 hour : $scope.mapQuery.hour,
                 cam : $scope.cam
             };
-            $scope.heatmap = undefined;
-            $scope.flowmap = undefined;
+            $scope.map = undefined;
             Cam.getOverlay(query)
                 .then(function (response) {
-                    if ($scope.mapQuery.type === 'heat') {
-                        $scope.heatmap = response;
-                    } else {
-                        $scope.flowmap = response;
-                    }
+                    $scope.map = response;
                 });
         }
         $route.current.params.date = 123;

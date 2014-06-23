@@ -27,6 +27,19 @@ module.exports = {
             type: 'date',
             required: true
         },
+        in : {
+            type: 'integer',
+            requred : true
+        },
+        out : {
+            type: 'integer',
+            requred : true
+        },
+        bounce : {
+            type: 'integer',
+            requred : true
+        }
+
         /* e.g.
     nickname: 'string'
     */

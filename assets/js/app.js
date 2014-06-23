@@ -63,9 +63,9 @@
         $rootScope.go = function (path, animation) {
             console.log('GO');
             if (typeof(pageAnimationClass) === undefined) { // Use a default, your choice
-                $rootScope.pageAnimationClass = '';
+                // $rootScope.pageAnimationClass = '';
             } else { // Use the specified animation
-                $rootScope.pageAnimationClass = animation;
+                // $rootScope.pageAnimationClass = animation;
             }
             if (path === 'back') { // Allow a 'back' keyword to go to previous page
                 $window.history.back();

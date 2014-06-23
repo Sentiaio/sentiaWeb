@@ -2,14 +2,13 @@ angular.module('app')
     .service('Cam', function($http) {
         'use strict';
         this.getOverlay = function(query) {
-            return $http.post('/' + query.type + '/find', query)
+            return $http.post('/map/find', query)
                 .then(function(response) {
                     mixpanel.track('View Map', {
                         cam: query.cam,
                         date: query.date,
                         type: query.type
                     });
-                    console.log('count');
                     return response.data || undefined;
                 })
                 .catch(function(error) {
@@ -23,7 +22,7 @@ angular.module('app')
                 });
         };
         this.getTimeline = function(query) {
-            return $http.post('/' + query.type + '/timeline', query)
+            return $http.post('/map/timeline', query)
                 .then(function(response) {
                     var data = [24],
                         i,

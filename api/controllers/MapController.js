@@ -27,6 +27,26 @@ module.exports = {
                 res.send(500, err);
             });
     },
+    timeline : function (req, res) {
+        MapService.timeline(req.body, req.session.user)
+            .then(function () {
+                res.send(200);
+            })
+            .catch(function (err) {
+                console.log(err);
+                res.send(500, err);
+            });
+    },
+    find : function (req, res) {
+        MapService.find(req.body, req.session.user)
+            .then(function (response) {
+               res.send(200, response);
+           })
+           .catch(function (err) {
+               console.log(err);
+               res.send(500, err);
+           });
+    },
 
 
 

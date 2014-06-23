@@ -154,18 +154,29 @@ angular.module('sHeatmap', [])
                 link: function (scope, element) {
                     scope.$watch('data', function() {
                         var canvas = element.find('canvas')[0],
+                        cols = 0, rows = 0,
                         data;
 
                         if (!scope.data) {
                             return;
                         }
-                        data = $filter('heatfilter')(scope.data, 10);
-                        canvas.width = data.cols;
-                        canvas.height = data.rows;
+                        data = data.map(function (item) {
+                            cols = Math.max(cols, item.x);
+                            rows = Math.max(rows, item.y);
+                            return {
+                                x : item.x * 10,
+                                y : item.y * 10,
+                                heat : item.heat
+                            };
+                        });
+                        cols = cols*10;
+                        rows = rows*10;
+                        canvas.width = cols;
+                        canvas.height = rows;
                         simpleheat(canvas)
                             .radius(10,10) // 25,35
                             .max(300)
-                            .data(data.data)
+                            .data(data)
                             .draw();
                     });
                 }

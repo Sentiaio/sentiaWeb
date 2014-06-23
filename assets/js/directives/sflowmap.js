@@ -14,19 +14,24 @@ angular.module('sFlowmap', [])
             },
             link: function postLink(scope, element) {
                 scope.$watch('data', function() {
-                    var color, scalex, scaley, width, height;
+                    var color, scalex, scaley, width, height, max = 1000;
 
                     if (!scope.data) {
                         return;
                     }
-                    var data = [];
-                    for (var i = 0; i < scope.data.data.length; i += 1){
-                    	if (scope.data.data[i].x%3 === 0 && scope.data.data[i].y%3 === 0) {
-                            if (scope.data.data[i].magnitude > (scope.data.max * 0.1)) {
-                                data.push(scope.data.data[i]);
+                    var data = scope.data.map(function (item) {
+                        if (item.x%3 === 0 && item.y%3 === 0) {
+                            var i = {
+                                x : item.x,
+                                y : item.y,
+                                angel : Math.atan2(item.dx,item.dy),
+                                magnitude :Math.sqrt(Math.pow(item.dx,2), Math.pow(item.dy,1))
+                            };
+                            if (i.magnitude > (scope.data.max * 0.1)) {
+                                return i;
                             }
-                    	}
-                    }
+                        }
+                    });
                     width = element.width()*2.5;
                     height = element.height() * 2.5;
                     color = d3.scale.linear()

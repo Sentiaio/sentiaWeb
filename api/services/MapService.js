@@ -35,7 +35,31 @@ exports.create = function (payload) {
     });
     return deferred.promise;
 },
-exports.find = function (payload) {
+exports.timeline = function (payload, user) {
+    var query, deferred, date;
+    date = moment(payload.date);
+    date.hours(payload.hour);
+    deferred = when.defer(),
+    query = squel.select()
+        .field('sum(1), as count')
+        .field('extract(hour from time)')
+        .where('time BETWEEN ? AND ?', date.format('YYYY-MM-DD HH:mm:SS'), date.add('day', 1).format('YYYY-MM-DD HH:mm:SS'))
+        .where('company = ?', user.company)
+        .where('cam = ?', payload.cam)
+        .from('map')
+        .group('hour')
+        .order('hour')
+        .toString();
+    Map.query(query, function (err, result) {
+        if (err) {
+            deferred.reject(err);
+        } else {
+            deferred.resolve(result.rows);
+        }
+    });
+    return deferred.promise;
+},
+exports.find = function (payload, user) {
     var query, deferred, date;
     date = moment(payload.date).hours(payload.hour);
     deferred = when.defer(),
@@ -46,17 +70,18 @@ exports.find = function (payload) {
         .field('avg(dy) as dy')
         .field('avg(heat) as heat')
         .where('time BETWEEN ? AND ?', date.format('YYYY-MM-DD HH:mm:SS'), date.add('day', 1).format('YYYY-MM-DD HH:mm:SS'))
+        .where('company = ?', user.company)
+        .where('cam = ?', payload.cam)
         .from('map')
         .group('x')
         .group('y')
         .toString();
     console.log(query);
-
     Map.query(query, function (err, result) {
-         if (err) {
+        if (err) {
             deferred.reject(err);
         } else {
-            deferred.resolve(result);
+            deferred.resolve(result.rows);
         }
     });
     return deferred.promise;
