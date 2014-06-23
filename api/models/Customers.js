@@ -44,7 +44,7 @@ module.exports = {
     nickname: 'string'
     */
     },
-    beforeCreate: function(attrs, next) {
+    beforeValidation: function(attrs, next) {
         atters.cam = Number(atters.cam);
         atters.store = Number(atters.store);
         atters.company = Number(atters.company);
