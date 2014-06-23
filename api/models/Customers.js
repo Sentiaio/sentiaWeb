@@ -29,15 +29,15 @@ module.exports = {
         },
         in : {
             type: 'integer',
-            requred : true
+            required : true
         },
         out : {
             type: 'integer',
-            requred : true
+            required : true
         },
         bounce : {
             type: 'integer',
-            requred : true
+            required : true
         }
 
         /* e.g.
