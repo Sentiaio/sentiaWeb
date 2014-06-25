@@ -45,11 +45,11 @@ module.exports = {
     */
     },
     beforeValidation: function(attrs, next) {
+        console.log(attrs);
         attrs.cam = Number(attrs.cam);
         attrs.store = Number(attrs.store);
         attrs.company = Number(attrs.company);
         attrs.time = moment(attrs.time).format('YYYY-MM-DD HH:mm:SS');
-        console.log(attrs);
         next();
     }
 };
