@@ -50,6 +50,7 @@ exports.timeline = function (payload, user) {
         .group('hour')
         .order('hour')
         .toString();
+    console.log(query);
     Map.query(query, function (err, result) {
         if (err) {
             deferred.reject(err);
