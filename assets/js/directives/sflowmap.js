@@ -39,8 +39,6 @@ angular.module('sFlowmap', [])
                     color = d3.scale.linear()
                         .domain([0, max* 0.3, max])
                         .range(['yellowgreen','#FFFF83', 'red']);
-
-
                     scalex = d3.scale.linear()
                         .domain([0, scope.cols])
                         .range([0, width]);

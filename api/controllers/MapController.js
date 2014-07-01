@@ -29,8 +29,8 @@ module.exports = {
     },
     timeline : function (req, res) {
         MapService.timeline(req.body, req.session.user)
-            .then(function () {
-                res.send(200);
+            .then(function (result) {
+                res.send(200, result);
             })
             .catch(function (err) {
                 console.log(err);

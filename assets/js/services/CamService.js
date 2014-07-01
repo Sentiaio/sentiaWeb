@@ -49,7 +49,7 @@ angular.module('app')
                         data[i] = 0;
                     }
                     for (i = 0; i < response.data.length; i += 1) {
-                        data[response.data[i]._id] = response.data[i].count || 0;
+                        data[response.data[i].hour] = response.data[i].count || 0;
                         max = Math.max(max, response.data[i].count);
                     }
                     mixpanel.track('Update Timeline', {
