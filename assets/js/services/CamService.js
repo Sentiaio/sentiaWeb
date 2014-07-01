@@ -1,7 +1,21 @@
 angular.module('app')
-    .service('Cam', function($http) {
+    .service('Cam', function($http, $q) {
         'use strict';
+        var that = this;
+        this.selectedCam;
+        this.getCam = function (id) {
+            return $http.post('/camera/find', {id : id})
+                .then(function (response) {
+                    that.selectedCam = response.data[0];
+                    return response.data[0];
+                })
+        };
         this.getOverlay = function(query) {
+            if (!that.selectedCam) {
+                return $q.reject('No cam selected');
+            }
+            query.cam = that.selectedCam.id;
+            console.log(query);
             return $http.post('/map/find', query)
                 .then(function(response) {
                     mixpanel.track('View Map', {
@@ -22,6 +36,10 @@ angular.module('app')
                 });
         };
         this.getTimeline = function(query) {
+            if (!that.selectedCam) {
+                return $q.reject('No cam selected');
+            }
+            query.cam = that.selectedCam.id;
             return $http.post('/map/timeline', query)
                 .then(function(response) {
                     var data = [24],

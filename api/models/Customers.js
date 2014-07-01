@@ -49,7 +49,7 @@ module.exports = {
         attrs.cam = Number(attrs.cam);
         attrs.store = Number(attrs.store);
         attrs.company = Number(attrs.company);
-        attrs.time = moment(attrs.time).format('YYYY-MM-DD HH:mm:SS');
+        attrs.time = moment(attrs.time).format('YYYY-MM-DD HH:mm:ss');
         next();
     }
 };

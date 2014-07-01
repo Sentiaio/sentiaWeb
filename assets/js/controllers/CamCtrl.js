@@ -12,7 +12,6 @@ angular.module('app')
         function updateTimeline() {
             Cam.getTimeline({
                 date : $scope.mapQuery.date,
-                cam : $scope.cam,
                 type : $scope.mapQuery.type
             })
             .then(function (response) {
@@ -25,7 +24,6 @@ angular.module('app')
                 date : $scope.mapQuery.date,
                 type : $scope.mapQuery.type,
                 hour : $scope.mapQuery.hour,
-                cam : $scope.cam
             };
             $scope.map = undefined;
             Cam.getOverlay(query)
@@ -33,8 +31,18 @@ angular.module('app')
                     $scope.map = response;
                 });
         }
+        if (Cam.selectedCam) {
+            $scope.cam = Cam.selectedCam;
+        } else if ($routeParams.id) {
+            Cam.getCam($routeParams.id)
+                .then(function (cam) {
+                    $scope.cam = cam;
+                    updateTimeline();
+                    updateOverlay();
+                })
+        }
         $route.current.params.date = 123;
-        $scope.cam = $routeParams.id;
+
         $scope.store = "52fd38afe0461b48a7f9c297"; // because we only have one :)
         $scope.$root.showHeader = true;
         $scope.$root.page = 'cam';
@@ -50,8 +58,6 @@ angular.module('app')
             type: 'heat',
             cam : $scope.cam
         };
-        updateTimeline();
-        updateOverlay();
         $scope.$watch('mapQuery.hour', function() {
             updateOverlay();
         });

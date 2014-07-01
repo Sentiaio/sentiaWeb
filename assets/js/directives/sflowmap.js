@@ -7,10 +7,12 @@
 angular.module('sFlowmap', [])
     .directive('sFlowmap', function() {
         return {
-            template: '<div><svg></svg></div>',
+            template: '<svg></svg>',
             restrict: 'E',
             scope: {
-                data: '='
+                data: '=',
+                rows : '=',
+                cols : '='
             },
             link: function postLink(scope, element) {
                 scope.$watch('data', function() {
@@ -19,31 +21,31 @@ angular.module('sFlowmap', [])
                     if (!scope.data) {
                         return;
                     }
-                    var data = scope.data.map(function (item) {
+                    var data = scope.data.reduce(function (result, item) {
+                        result = result || [];
                         if (item.x%3 === 0 && item.y%3 === 0) {
                             var i = {
                                 x : item.x,
                                 y : item.y,
-                                angel : Math.atan2(item.dx,item.dy),
+                                angle : Math.atan2(item.dx,item.dy),
                                 magnitude :Math.sqrt(Math.pow(item.dx,2), Math.pow(item.dy,1))
                             };
-                            if (i.magnitude > (scope.data.max * 0.1)) {
-                                return i;
-                            }
+                            result.push(i);
                         }
-                    });
+                        return result;
+                    },[]);
                     width = element.width()*2.5;
                     height = element.height() * 2.5;
                     color = d3.scale.linear()
-                        .domain([0, scope.data.max* 0.3, scope.data.max])
+                        .domain([0, max* 0.3, max])
                         .range(['yellowgreen','#FFFF83', 'red']);
 
 
                     scalex = d3.scale.linear()
-                        .domain([0, scope.data.cols])
+                        .domain([0, scope.cols])
                         .range([0, width]);
                     scaley = d3.scale.linear()
-                        .domain([0, scope.data.rows])
+                        .domain([0, scope.rows])
                         .range([0, height]);
                     d3.select(element[0])
                         .select('svg')

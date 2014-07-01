@@ -14,4 +14,9 @@ angular.module('app')
             .then(function(cameras) {
                 $scope.cameras = cameras;
             });
+        $scope.selectCamera = function (cam) {
+            Cam.selectedCam = cam;
+            $scope.$root.go('/store/camera/'+cam.id, 'animate-scale');
+
+        }
     });

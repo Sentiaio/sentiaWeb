@@ -149,35 +149,33 @@ angular.module('sHeatmap', [])
                 template: '<canvas style="width : 100%; height : 100%"></canvas>',
                 restrict: 'E',
                 scope: {
-                    data: '='
+                    data: '=',
+                    rows : '=',
+                    cols : '='
                 },
                 link: function (scope, element) {
                     scope.$watch('data', function() {
                         var canvas = element.find('canvas')[0],
-                        cols = 0, rows = 0,
-                        data;
+                            rows,cols,
+                            data;
 
                         if (!scope.data) {
                             return;
                         }
-                        data = data.map(function (item) {
-                            cols = Math.max(cols, item.x);
-                            rows = Math.max(rows, item.y);
-                            return {
-                                x : item.x * 10,
-                                y : item.y * 10,
-                                heat : item.heat
-                            };
+                        data = scope.data.map(function (item) {
+                            return [item.x * 10, item.y * 10, item.heat];
                         });
-                        cols = cols*10;
-                        rows = rows*10;
+                        cols = scope.cols*10;
+                        rows = scope.rows*10;
                         canvas.width = cols;
                         canvas.height = rows;
-                        simpleheat(canvas)
-                            .radius(10,10) // 25,35
-                            .max(300)
-                            .data(data)
-                            .draw();
+                        if(cols!== 0 && rows !== 0) {
+                            simpleheat(canvas)
+                                .radius(10,10) // 25,35
+                                .max(300)
+                                .data(data)
+                                .draw();
+                        }
                     });
                 }
 

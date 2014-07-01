@@ -18,10 +18,14 @@
 'use strict';
 module.exports = {
     find: function(req, res) {
+        var where = {
+            company: req.session.user.company
+        };
+        if (req.body.id) {
+            where.id = req.body.id;
+        }
         Camera.find()
-            .where({
-                company: req.session.user.company
-            })
+            .where(where)
             .exec(function(err, cameras) {
                 res.send(cameras);
             });

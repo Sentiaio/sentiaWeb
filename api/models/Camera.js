@@ -21,6 +21,8 @@ module.exports = {
             type :"string",
             required : true
         },
+        cols : 'integer',
+        rows : 'integer'
 
     }
 

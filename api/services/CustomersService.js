@@ -24,7 +24,7 @@ exports.find = function (payload, user) {
             time : {'>=' : from.format('YYYY-MM-DD HH:mm:SS'), '<' :to.format('YYYY-MM-DD HH:mm:SS') },
             company : user.company
         })
-        . then(function (customers) {
+        .then(function (customers) {
             return customers;
         });
 };

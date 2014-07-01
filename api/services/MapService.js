@@ -14,7 +14,7 @@ exports.create = function (payload) {
             "cam": Number(payload.cam),
             "store": Number(payload.store),
             "company": Number(payload.company),
-            "time": moment(payload.time).format('YYYY-MM-DD HH:mm:SS'),
+            "time": moment(payload.time).format('YYYY-MM-DD HH:mm:ss'),
             x : item.x,
             y : item.y,
             heat : item.heat,
@@ -41,9 +41,9 @@ exports.timeline = function (payload, user) {
     date.hours(payload.hour);
     deferred = when.defer(),
     query = squel.select()
-        .field('sum(1), as count')
-        .field('extract(hour from time)')
-        .where('time BETWEEN ? AND ?', date.format('YYYY-MM-DD HH:mm:SS'), date.add('day', 1).format('YYYY-MM-DD HH:mm:SS'))
+        .field('sum(1) as count')
+        .field('extract(hour from time) as hour')
+        .where('time BETWEEN ? AND ?', date.format('YYYY-MM-DD HH:mm:ss'), date.add('day', 1).format('YYYY-MM-DD HH:mm:ss'))
         .where('company = ?', user.company)
         .where('cam = ?', payload.cam)
         .from('map')
@@ -70,7 +70,7 @@ exports.find = function (payload, user) {
         .field('avg(dx) as dx')
         .field('avg(dy) as dy')
         .field('avg(heat) as heat')
-        .where('time BETWEEN ? AND ?', date.format('YYYY-MM-DD HH:mm:SS'), date.add('day', 1).format('YYYY-MM-DD HH:mm:SS'))
+        .where('time BETWEEN ? AND ?', date.format('YYYY-MM-DD HH:mm:ss'), date.add('day', 1).format('YYYY-MM-DD HH:mm:ss'))
         .where('company = ?', user.company)
         .where('cam = ?', payload.cam)
         .from('map')
