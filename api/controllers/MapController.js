@@ -1,49 +1,42 @@
-/**
- * MapController
- *
- * @module      :: Controller
- * @description	:: A set of functions called `actions`.
- *
- *                 Actions contain code telling Sails how to respond to a certain type of request.
- *                 (i.e. do stuff, then send some JSON, show an HTML page, or redirect to another URL)
- *
- *                 You can configure the blueprint URLs which trigger these actions (`config/controllers.js`)
- *                 and/or override them with custom routes (`config/routes.js`)
- *
- *                 NOTE: The code you write here supports both HTTP and Socket.io automatically.
- *
- * @docs        :: http://sailsjs.org/#!documentation/controllers
- */
-
+'use strict';
+var log = require('sails').log;
 module.exports = {
+    // ## Create
+    // create a new Map
+    // called by SentiaWorker
     create : function (req, res) {
+        log.debug('POST map/create');
         console.log(req.body);
         MapService.create(req.body)
             .then(function () {
                 res.send(200);
             })
             .catch(function (err) {
-                console.log(err);
+                log.warn(err);
                 res.send(500, err);
             });
     },
+    // ## Timeline
+    // get a timeline with representaional values for the map data
     timeline : function (req, res) {
         MapService.timeline(req.body, req.session.user)
             .then(function (result) {
                 res.send(200, result);
             })
             .catch(function (err) {
-                console.log(err);
+                log.debug(err);
                 res.send(500, err);
             });
     },
+    // ## Find
+    // get map data
     find : function (req, res) {
         MapService.find(req.body, req.session.user)
             .then(function (response) {
                res.send(200, response);
            })
            .catch(function (err) {
-               console.log(err);
+               log.debug(err);
                res.send(500, err);
            });
     },

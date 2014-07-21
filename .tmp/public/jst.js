@@ -797,7 +797,7 @@ this["JST"]["assets/views/dashboard.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="page container-fluid">\n   <!-- <h1 class="big-text stamped text-center"> No Widgets Awailable</h1> -->\n   <div class="col-md-12 animate-fade">\n       <div class="widget widget-white widget-content gutter-top">\n            <barchart style="height: 300px;" data="customerData" ></barchart>\n       </div>\n   </div>\n</div>\n';
+__p += '<div class="page container-fluid">\n   <!-- <h1 class="big-text stamped text-center"> No Widgets Awailable</h1> -->\n   <div class="col-md-12 animate-fade">\n       <div class="widget widget-content gutter-top">\n            <barchart style="height: 300px;" data="customerData" ></barchart>\n       </div>\n   </div>\n</div>\n';
 
 }
 return __p
@@ -827,7 +827,7 @@ this["JST"]["assets/views/store.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="page container-fluid">\n    <div class="row clearfix">\n        <div id="camera-list" class="container-fluid scroll scroll-y p-top p-bottom">\n            <div class="container-fluid">\n                <input type="text" id="camera-list-search" class="form-control" role="search" ng-model="camSearch">\n            </div>\n            <ul class="list list-widgets row">\n                <li ng-repeat="cam in cameras | filter : camSearch | orderBy : \'name\'" ng-click="$parent.selectedCam = cam" ng-class="{active: selectedCam.id === cam.id}" class="col-md-4 col-sm-6 animate-slide">\n                <a ng-click="selectCamera(cam)">\n                    <div class="widget widget-white a widget-content gutter-top">\n                        <div style="height :195px; overflow: hidden;">\n                            <img ng-src="/images/cameras/{{cam.id}}.jpg" alt="" class="header-image">\n                        </div>\n                        <h5 class="searchable caps" ng-bind-html="\'{{cam.name}}\' | highlight:camSearch:false"></h5>\n                    </div>\n                </a>\n                </li>\n            </ul>\n        </div>\n    </div>\n</div>';
+__p += '<div class="page container-fluid">\n<div class="row">\n    <ul class="tabs">\n        <li class="tab">Details</li>\n        <li class="tab">Customers</li>\n        <li class="tab active">Cameras</li>\n    </ul>\n</div>\n    <div class="row clearfix">\n        <div id="camera-list" class="container-fluid scroll scroll-y p-top p-bottom">\n            <div class="container-fluid">\n                <input type="text" id="camera-list-search" class="form-control" role="search" ng-model="camSearch">\n            </div>\n            <ul class="list list-widgets row">\n                <li ng-repeat="cam in cameras | filter : camSearch | orderBy : \'name\'" ng-click="$parent.selectedCam = cam" ng-class="{active: selectedCam.id === cam.id}" class="col-md-4 col-sm-6 animate-slide">\n                <a ng-click="selectCamera(cam)">\n                    <div class="widget a widget-content gutter-top">\n                        <h5 class="searchable caps" ng-bind-html="\'{{cam.name}}\' | highlight:camSearch:false"></h5>\n                        <div style="height :195px; overflow: hidden;">\n                            <img ng-src="/images/cameras/{{cam.id}}.jpg" alt="" class="header-image">\n                        </div>\n                    </div>\n                </a>\n                </li>\n            </ul>\n        </div>\n    </div>\n</div>';
 
 }
 return __p

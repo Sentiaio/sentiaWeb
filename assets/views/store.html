@@ -1,4 +1,11 @@
 <div class="page container-fluid">
+<div class="row">
+    <ul class="tabs">
+        <li class="tab">Details</li>
+        <li class="tab">Customers</li>
+        <li class="tab active">Cameras</li>
+    </ul>
+</div>
     <div class="row clearfix">
         <div id="camera-list" class="container-fluid scroll scroll-y p-top p-bottom">
             <div class="container-fluid">
@@ -7,11 +14,11 @@
             <ul class="list list-widgets row">
                 <li ng-repeat="cam in cameras | filter : camSearch | orderBy : 'name'" ng-click="$parent.selectedCam = cam" ng-class="{active: selectedCam.id === cam.id}" class="col-md-4 col-sm-6 animate-slide">
                 <a ng-click="selectCamera(cam)">
-                    <div class="widget widget-white a widget-content gutter-top">
+                    <div class="widget a widget-content gutter-top">
+                        <h5 class="searchable caps" ng-bind-html="'{{cam.name}}' | highlight:camSearch:false"></h5>
                         <div style="height :195px; overflow: hidden;">
                             <img ng-src="/images/cameras/{{cam.id}}.jpg" alt="" class="header-image">
                         </div>
-                        <h5 class="searchable caps" ng-bind-html="'{{cam.name}}' | highlight:camSearch:false"></h5>
                     </div>
                 </a>
                 </li>

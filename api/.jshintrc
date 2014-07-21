@@ -28,6 +28,7 @@
         "HeatService" : false,
         "Flow" : false,
         "FlowService" : false,
+        "Camera" : false,
         "Customers" : false,
         "CustomersService" :false
 

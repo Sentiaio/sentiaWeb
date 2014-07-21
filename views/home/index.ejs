@@ -4,7 +4,7 @@
     .getting-started li{overflow:visible;clear:both}.delete{width:690px}
     </style>
 <![endif]-->
-<div class="container-fluid full-height" ng-controller="MainCtrl">
+<div class="full-height" ng-controller="MainCtrl">
     <div class="nav-button hide-on-login icon-menu a" ng-click="toggleMenu()">
     </div>
     <div class="row full-height content" style="white-space: nowrap;" ng-class="{'right' : showMenu}">
@@ -24,12 +24,8 @@
                 <li class="a" ng-click="logout()" ><div class="icon-switch"></div> Log Out </li>
             </ul>
         </div>
-        <div id="content" class="pages full-height has-lg-toolbar-top">
-            <div class="toolbar-lg toolbar-absolute-top container-fluid" ng-show="showHeader">
-
-            </div>
+        <div id="content" class="pages full-height">
             <ng-view class="animate-fade"></ng-view>
-
         </div>
     </div>
 </div>

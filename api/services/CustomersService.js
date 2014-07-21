@@ -3,9 +3,9 @@
 'use strict';
 var moment = require('moment'),
     when = require('when');
-// ## Login
-//  returns a promise that will either be resolved with the user object,
-//  or rejected with an error
+exports.buildCustomerQuery = function (payload, user) {
+
+};
 exports.find = function (payload, user) {
     var from, to;
     // define the time range
