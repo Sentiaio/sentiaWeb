@@ -3,11 +3,13 @@
 'use strict';
 var moment = require('moment'),
     when = require('when');
-exports.buildCustomerQuery = function (payload, user) {
 
-};
+
+// ## Find
+// returns all elements matching the supplied query
 exports.find = function (payload, user) {
     var from, to;
+
     // define the time range
     from = moment(payload.date)
         .utc()
@@ -19,6 +21,7 @@ exports.find = function (payload, user) {
         .utc()
         .add('day', 1);
 
+    // query customers
     return Customers.find()
         .where({
             time : {'>=' : from.format('YYYY-MM-DD HH:mm:SS'), '<' :to.format('YYYY-MM-DD HH:mm:SS') },
@@ -29,7 +32,9 @@ exports.find = function (payload, user) {
         });
 };
 
-
+// ## Create
+// Simple wrapper for Customers create that allows for easy extension
+// in the future.
 exports.create = function (payload) {
     return Customers.create(payload);
 };

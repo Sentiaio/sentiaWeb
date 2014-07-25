@@ -25,7 +25,8 @@
   },
   "scripts": {
     "start": "node app.js --prod",
-    "debug": "node debug app.js"
+    "debug": "node debug app.js",
+    "test" : "grunt test"
   },
   "main": "app.js",
   "repository": "",
@@ -51,6 +52,6 @@
     "chai-as-promised": "~4.1.1",
     "sinon": "~1.10.0",
     "phantomjs": "~1.9.7-12",
-    "karma-phantomjs-launcher": "~0.1.4"
+    "karma-phantomjs-launcher": "=0.1.4"
   }
 }

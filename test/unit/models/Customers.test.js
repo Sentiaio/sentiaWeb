@@ -1,6 +1,6 @@
 'use strict';
 var app = require('sails'),
-    Customers = require('../../../api/models/Customers.js'),
+    Customers = require(process.cwd() + '/api/models/Customers.js'),
     when = require('when'),
     moment = require('moment'),
     sinon = require('sinon'),
@@ -9,28 +9,28 @@ var app = require('sails'),
 
 describe('Models - Customers: ', function () {
     describe('Before validating when passing string values instead of numbers', function () {
-        var output, next;
+        var attrs, next;
         before(function () {
-            var attrs = {
+            attrs = {
                 cam : "1",
                 store : "1",
                 company : "1",
                 time : new Date().getTime()
             };
             next = sinon.spy();
-            Customers.beforeValidate(attrs, next);
+            Customers.beforeValidation(attrs, next);
         });
         it('should call next once', function () {
             next.calledOnce.should.be.true;
         });
         it('should convert company to a number', function () {
-            next.args[0][0].company.should.equal(1);
+            attrs.company.should.equal(1);
         });
         it('should convert cam to a number', function () {
-            next.args[0][0].cam.should.equal(1);
+            attrs.cam.should.equal(1);
         });
         it('should convert store to a number', function () {
-            next.args[0][0].store.should.equal(1);
+            attrs.store.should.equal(1);
         });
 
     });
