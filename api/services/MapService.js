@@ -1,5 +1,6 @@
 'use strict';
 var _ = require('lodash'),
+    log = require('sails').log,
     squel = require('squel'),
     moment = require('moment'),
     when = require('when');
@@ -27,6 +28,11 @@ exports.buildInsertQuery = function (payload) {
 
     return when.resolve(query);
 };
+
+
+exports.insertMapData = function (query) {
+
+}
 // ## Create
 // creates a number of maps
 // takes a combined map object.
@@ -34,7 +40,7 @@ exports.buildInsertQuery = function (payload) {
 exports.create = function (payload) {
     return when(payload)
         .then(exports.buildInsertQuery)
-        .then(exports.getMapData);
+        .then(exports.runMapQuery);
 };
 /**
  * build a query for timeline
@@ -69,13 +75,16 @@ exports.buildTimelineQuery = function (payload, user) {
  * @author Andreas
  * @date   2014-07-17
  */
-exports.getMapData = function (query) {
+exports.runMapQuery = function (query) {
+    log.debug(query);
     // due to the format of the query function we are using deferred
     var deferred = when.defer();
     Map.query(query, function (err, result) {
         if (err) {
+            log.debug(err);
             deferred.reject(err);
         } else {
+            log.debug(result);
             deferred.resolve(result.rows);
         }
     });
@@ -85,7 +94,7 @@ exports.getMapData = function (query) {
 // get a timeline representing the map data for a gice period
 exports.timeline = function (payload, user) {
     return exports.buildTimelineQuery(payload,user)
-        .then(exports.getMapData);
+        .then(exports.runMapQuery);
 };
 // ## buildMapQuery
 // generates a SQL query from the payload
@@ -110,5 +119,5 @@ exports.buildMapQuery = function (payload, user) {
 };
 exports.find = function (payload, user) {
     return exports.buildMapQuery(payload, user)
-        .then(exports.getMapData);
+        .then(exports.runMapQuery);
 };
