@@ -28,3 +28,8 @@ exports.find = function (payload, user) {
             return customers;
         });
 };
+
+
+exports.create = function (payload) {
+    return Customers.create(payload);
+};
