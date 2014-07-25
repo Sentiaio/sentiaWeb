@@ -24,7 +24,7 @@ exports.buildInsertQuery = function (payload) {
     query = squel.insert()
         .into('map')
         .setFieldsRows(rows)
-        .tostring();
+        .toString();
 
     return when.resolve(query);
 };
