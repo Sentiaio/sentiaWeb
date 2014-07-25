@@ -24,27 +24,27 @@ module.exports.adapters = {
         module: 'sails-disk'
     },
 
-    // postgres: {
-    //     module: 'sails-postgresql',
-    //     database: 'sentia',
-    //     host: 'sentia.clto0ldvohgx.eu-west-1.rds.amazonaws.com',
-    //     user: 'sentia',
-    //     password: 'SmartShopSentia.io',
-    //     port: 5432,
-    //     pool: false,
-    //     ssl: true,
-    //     schema: true
-    //     // url : "postgres://vcadzuwikgnphb:x4BfRBzjE1CJtRW1e36TDXX_id@ec2-54-83-201-54.compute-1.amazonaws.com:5432/d1u79je6c3rj70"
-    // }
     postgres: {
         module: 'sails-postgresql',
         database: 'sentia',
-        host: 'localhost',
-        user: 'andreasmoller',
-        password: '',
+        host: 'sentia.clto0ldvohgx.eu-west-1.rds.amazonaws.com',
+        user: 'sentia',
+        password: 'SmartShopSentia.io',
         port: 5432,
         pool: false,
+        ssl: true,
         schema: true
         // url : "postgres://vcadzuwikgnphb:x4BfRBzjE1CJtRW1e36TDXX_id@ec2-54-83-201-54.compute-1.amazonaws.com:5432/d1u79je6c3rj70"
     }
+    // postgres: {
+    //     module: 'sails-postgresql',
+    //     database: 'sentia',
+    //     host: 'localhost',
+    //     user: 'andreasmoller',
+    //     password: '',
+    //     port: 5432,
+    //     pool: false,
+    //     schema: true
+    //     // url : "postgres://vcadzuwikgnphb:x4BfRBzjE1CJtRW1e36TDXX_id@ec2-54-83-201-54.compute-1.amazonaws.com:5432/d1u79je6c3rj70"
+    // }
 };
