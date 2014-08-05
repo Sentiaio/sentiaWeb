@@ -1,20 +1,19 @@
 .tabs {
-    background: @gray-lighter;
     display: table;
     width: 100%;
-    background: #fdfdfd;
     box-shadow: inset -1px 0px 5px 2px #f9f9f9;
     border-bottom: 1px solid #dae3e9;
     padding: 0;
     &>li.tab {
+        cursor: pointer;
         list-style-type: none;
         display: table-cell;
         text-align: center;
-        padding: 20px;
-        border-left: 1px solid lighten(@gray-lighter, 10%);
-        border-right : 1px solid darken(@gray-lighter, 10%);
+        padding: 10px;
+        border-bottom: 3px transparent;
         &.active {
             color : @brand-primary;
+            border-bottom: 3px solid @brand-primary;
         }
     }
 }

@@ -15,7 +15,6 @@ module.exports = {
     create : function (req, res) {
         CustomersService.create(req.body)
             .then(function (result) {
-                log.debug(result);
                 res.send(result);
             })
             .catch(function (err) {

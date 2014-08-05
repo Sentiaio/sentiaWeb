@@ -1,26 +1,14 @@
 .sidebar {
-    vertical-align: top;
-    // float:left;
-    height:100%;
-    width:100%;
-
-    background-color: @gray-light;
-    // -webkit-transform : translate(-100%,0);
-    display:inline-block;
-    box-shadow : -2px 0px 5px -2px rgba(0,0,0,0.5) inset;
+    white-space: normal;
+    height: 100%;
+    position: fixed;
+    /* display: inline-block; */
+    width: 80px;
+    left:0px;
     .menu {
-        background-color: @gray-light;
-        border-right: 1px solid #dae3e9;
-        box-shadow: -3px 3px 3px -2px #f1f1f3 inset;
         transition : -webkit-transform 500ms;
-        -webkit-transform:translate(100%,0);
-        width:80px;
-        position:absolute;
-        right:0;
-        z-index:1;
-        top:0;
         padding:0;
-        padding-top: 30px;
+        // padding-top: 30px;
         &>li {
             padding :15px;
             color :@gray;
@@ -33,17 +21,15 @@
                 margin:5px 0px;
             }
             &.a:hover,{
-                color: @gray-dark;
+                color: @brand-primary;
             }
             &.active {
-                color : @gray-dark;
+                color : @brand-primary;
             }
         }
     }
 }
-
 .pages {
-    padding-left: 75px;
     // -webkit-transform : translate(-100%, 0);
     position:relative;
     width:100%;
@@ -51,18 +37,19 @@
     overflow-y: auto;
     display:inline-block;
     background-color: @body-bg;
+    border-left: 1px solid #dae3e9;
+    box-shadow: -3px 3px 3px -2px #f1f1f3;
+    transition : -webkit-transform 700ms;
+    -webkit-transform:translate(0%,0);
+    overflow-x : visible;
+    &.right {
+        -webkit-transform : translate(100%, 0);
+    }
 
 }
 .content {
-    transition : -webkit-transform 700ms;
-    -webkit-transform:translate(-100%,0);
-    overflow-x : visible;
-    &.right {
-        -webkit-transform : translate(0%, 0);
-    }
-}
-.content.right .sidebar .menu {
-    -webkit-transform:translate(0,0);
+    padding-left: 80px;
+    background-color: @gray-light;
 }
 .nav-button {
     position: fixed;
@@ -74,11 +61,28 @@
 }
 @media(max-width : @screen-sm) {
     .sidebar {
+        width :100%;
+        height:70px;
+        bottom:0;
+        top:auto;
         .menu {
-            -webkit-transform:translate(0,0);
+        display:table;
+        table-layout: fixed;
+        width : 100%;
+            li {
+                display:table-cell;
+                padding: 0;
+            }
         }
     }
     .pages {
-        padding-left:0px;
+        border-left: none;
+        border-bottom: 1px solid #dae3e9;
+
+        box-shadow: 0px 3px 3px -2px #f1f1f3;
     }
+   .content {
+       padding-bottom: 80px;
+       padding-left:0;
+   }
 }

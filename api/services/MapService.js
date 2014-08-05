@@ -84,7 +84,6 @@ exports.runMapQuery = function (query) {
             log.debug(err);
             deferred.reject(err);
         } else {
-            log.debug(result);
             deferred.resolve(result.rows);
         }
     });

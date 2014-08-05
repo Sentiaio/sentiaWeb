@@ -5,12 +5,11 @@
     </style>
 <![endif]-->
 <div class="full-height" ng-controller="MainCtrl">
-    <div class="nav-button hide-on-login icon-menu a" ng-click="toggleMenu()">
-    </div>
-    <div class="row full-height content" style="white-space: nowrap;" ng-class="{'right' : showMenu}">
-
+    <!-- <div class="nav-button hide-on-login icon-menu a" ng-click="toggleMenu()"> -->
+    <!-- </div> -->
+    <div class="row full-height content" style="white-space: nowrap;" >
         <div id="sidebar" class="sidebar" ng-show="showHeader" style="white-space: normal;">
-            <div><h4 class="shadow caps">Sentia.io</h4></div>
+            <!-- <div><h4 class="shadow caps">Sentia.io</h4></div> -->
             <ul class="menu full-height">
                 <li ng-class="{active : page === 'users'}" class="a" ng-click="go('/users')">
                 <div>
@@ -18,13 +17,13 @@
                 </div>
                     <span id="active-user-name" class="shadow caps">{{user.firstname}}</span>
                 </li>
-                <li ng-class="{active : page === 'dashboard'}" class="a" ng-click="go('/dashboard')"><div class="icon-dashboard"></div> Dashboard</li>
+                <!-- <li ng-class="{active : page === 'dashboard'}" class="a" ng-click="go('/dashboard')"><div class="icon-dashboard"></div> Dashboard</li> -->
                 <li ng-class="{active : page === 'store' || page === 'cam'}" class="a" ng-click="go('/store')">  <div class="icon-home"></div> Stores</li>
 
                 <li class="a" ng-click="logout()" ><div class="icon-switch"></div> Log Out </li>
             </ul>
         </div>
-        <div id="content" class="pages full-height">
+        <div id="content" class="pages full-height" ng-class="{'right' : showMenu}">
             <ng-view class="animate-fade"></ng-view>
         </div>
     </div>
