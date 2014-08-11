@@ -47,4 +47,3 @@ gulp.task('mocha', function () {
 // taks to be run before commit to the repository
 // Run the test suite followed by jshint
 gulp.task('validate', ['jshint', 'mocha']);
-
