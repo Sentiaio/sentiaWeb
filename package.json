@@ -27,7 +27,7 @@
   "scripts": {
     "start": "node app.js --prod",
     "debug": "node debug app.js",
-    "test" : "echo \"TEST\""
+    "test": "./node_modules/.bin/grunt test"
   },
   "main": "app.js",
   "repository": "",
