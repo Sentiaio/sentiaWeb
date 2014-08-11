@@ -2,7 +2,6 @@ language: node_js
 node_js:
   - "0.11"
   - "0.10"
-  - "0.8"
 
 branches :
   only :
@@ -10,3 +9,6 @@ branches :
 
 after_success:
     - echo "The build was successful"
+
+after_failiure:
+    - echo "The build failed"
