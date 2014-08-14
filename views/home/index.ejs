@@ -16,12 +16,13 @@
                 </li>
                 <!-- <li ng-class="{active : page === 'dashboard'}" class="a" ng-click="go('/dashboard')"><div class="icon-dashboard"></div> Dashboard</li> -->
                 <li ng-class="{active : page === 'store' || page === 'cam'}" class="a" ng-click="go('/store')">  <div class="icon-home"></div></li>
+                <li ng-class="{active : page === 'dashboard'}" class="a" ng-click="go('/dashboard')">  <div class="icon-bars"></div></li>
 
                 <li class="a" ng-click="logout()" ><div class="icon-switch"></div></li>
             </ul>
         </div>
         <div id="content" class="pages full-height" ng-class="{'right' : showMenu}">
-            <ng-view class="animate-fade"></ng-view>
+            <ng-view class="animate-fade full-height"></ng-view>
         </div>
     </div>
 </div>
